@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWModifyPassWord.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWModifyPassWord.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWBaseActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWAlterDialog.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWTextField.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWButton.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppDelegate.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApi.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApiObject.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWAdvertisementActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWNetwork.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWModifyPassWordPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWFindPwdActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/XMPPManager.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/include/CspPlatformCom.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Chat/ChatInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWNotifycationPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/XMPPInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPThreadMsgItem.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/MessageInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/ChatUserInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPThreadUserItem.h

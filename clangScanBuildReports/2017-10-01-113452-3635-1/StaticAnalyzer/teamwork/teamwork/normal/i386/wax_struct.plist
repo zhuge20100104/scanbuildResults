@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+ <key>clang_version</key>
+<string>clang version 4.0.0 (tags/checker/checker-279)</string>
+ <key>files</key>
+ <array>
+  <string>/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/wax/wax_struct.m</string>
+ </array>
+ <key>diagnostics</key>
+ <array>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>83</integer>
+      <key>col</key><integer>36</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>83</integer>
+         <key>col</key><integer>36</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>83</integer>
+         <key>col</key><integer>41</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+       <array>
+        <dict>
+         <key>line</key><integer>83</integer>
+         <key>col</key><integer>43</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>83</integer>
+         <key>col</key><integer>56</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Result of &apos;calloc&apos; is converted to a pointer of type &apos;char&apos;, which is incompatible with sizeof operand type &apos;char *&apos;</string>
+     <key>message</key>
+     <string>Result of &apos;calloc&apos; is converted to a pointer of type &apos;char&apos;, which is incompatible with sizeof operand type &apos;char *&apos;</string>
+    </dict>
+   </array>
+   <key>description</key><string>Result of &apos;calloc&apos; is converted to a pointer of type &apos;char&apos;, which is incompatible with sizeof operand type &apos;char *&apos;</string>
+   <key>category</key><string>Unix API</string>
+   <key>type</key><string>Allocator sizeof operand mismatch</string>
+   <key>check_name</key><string>unix.MallocSizeof</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>381cfb68a5e960d1c431864ab5f002d8</string>
+  <key>issue_context_kind</key><string>function</string>
+  <key>issue_context</key><string>wax_struct_create</string>
+  <key>issue_hash_function_offset</key><string>21</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>83</integer>
+   <key>col</key><integer>36</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-28e136.html</string>
+  </array>
+  </dict>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>235</integer>
+      <key>col</key><integer>31</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>235</integer>
+         <key>col</key><integer>31</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>235</integer>
+         <key>col</key><integer>36</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+       <array>
+        <dict>
+         <key>line</key><integer>235</integer>
+         <key>col</key><integer>38</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>235</integer>
+         <key>col</key><integer>51</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Result of &apos;calloc&apos; is converted to a pointer of type &apos;char&apos;, which is incompatible with sizeof operand type &apos;char *&apos;</string>
+     <key>message</key>
+     <string>Result of &apos;calloc&apos; is converted to a pointer of type &apos;char&apos;, which is incompatible with sizeof operand type &apos;char *&apos;</string>
+    </dict>
+   </array>
+   <key>description</key><string>Result of &apos;calloc&apos; is converted to a pointer of type &apos;char&apos;, which is incompatible with sizeof operand type &apos;char *&apos;</string>
+   <key>category</key><string>Unix API</string>
+   <key>type</key><string>Allocator sizeof operand mismatch</string>
+   <key>check_name</key><string>unix.MallocSizeof</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>4223b3044ac0c5dce25a3b2b752e28f6</string>
+  <key>issue_context_kind</key><string>function</string>
+  <key>issue_context</key><string>copy</string>
+  <key>issue_hash_function_offset</key><string>5</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>235</integer>
+   <key>col</key><integer>31</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-eb5764.html</string>
+  </array>
+  </dict>
+ </array>
+</dict>
+</plist>

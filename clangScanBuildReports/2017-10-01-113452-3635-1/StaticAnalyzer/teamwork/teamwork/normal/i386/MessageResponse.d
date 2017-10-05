@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageResponse.mm \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageResponse.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageBase.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/XMPPInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageData.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPThreadMsgItem.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/TWIMDataPaser.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/TWPushDataParser.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWMessageNotifycation.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/dao/TWWorkSpaceModuleDao.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/TWIMMsgModel.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/include/CspHeader/CspPublicDataDef.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/include/CspHeader/CspPlatform.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/include/CspHeader/CspPlatformDef.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/include/CspHeader/CspComError.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/XMPPManager.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/im/include/CspPlatformCom.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Chat/ChatInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWNotifycationPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/MessageInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/ChatUserInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPThreadUserItem.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZCActionOnCalendar.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWMessageClass.h

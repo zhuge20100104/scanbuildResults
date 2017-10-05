@@ -1,0 +1,1082 @@
+<html>
+<head>
+<title>csp_teamwork_iphone - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>csp_teamwork_iphone - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>Lily@LilydeMacBook-Pro.local</td></tr>
+<tr><th>Working Directory:</th><td>/Users/Lily/csp_teamwork_iphone</td></tr>
+<tr><th>Command Line:</th><td>xcodebuild -workspace workspace.xcworkspace -scheme teamwork -configuration Debug -sdk iphonesimulator ARCHS=i386 VALID_ARCHS=i386</td></tr>
+<tr><th>Clang Version:</th><td>clang version 4.0.0 (tags/checker/checker-279)
+</td></tr>
+<tr><th>Date:</th><td>Sun Oct  1 11:34:52 2017</td></tr>
+<tr><th>Version:</th><td>checker-279 (2016-11-14 15:34:09)</td></tr>
+</table>
+<h2>Bug Summary</h2>
+<p>Results in this analysis run are based on analyzer build <b>checker-279</b>.</p>
+<table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">321</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>API Misuse (Apple)</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">nil argument</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_api_misuse_apple_nil_argument');" checked/></center></td></tr>
+<tr><th>Core Foundation/Objective-C</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Incompatible instance method return type</td><td class="Q">5</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_core_foundation_objective-c_incompatible_instance_method_return_type');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Missing call to superclass</td><td class="Q">7</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_core_foundation_objective-c_missing_call_to_superclass');" checked/></center></td></tr>
+<tr><th>Dead store</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">58</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead increment</td><td class="Q">4</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_increment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead initialization</td><td class="Q">169</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_initialization');" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Assigned value is garbage or undefined</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_assigned_value_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">8</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
+<tr><th>Memory (Core Foundation/Objective-C)</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Bad release</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_core_foundation_objective-c_bad_release');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Extra ivar release</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_core_foundation_objective-c_extra_ivar_release');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Leak</td><td class="Q">32</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_core_foundation_objective-c_leak');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Leak of returned object</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_core_foundation_objective-c_leak_of_returned_object');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Missing ivar release (leak)</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_core_foundation_objective-c_missing_ivar_release_leak_');" checked/></center></td></tr>
+<tr><th>Memory Error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
+<tr><th>Optimization</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Unused instance variable</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_optimization_unused_instance_variable');" checked/></center></td></tr>
+<tr><th>Unix API</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Allocator sizeof operand mismatch</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unix_api_allocator_sizeof_operand_mismatch');" checked/></center></td></tr>
+</table>
+<h2>Reports</h2>
+
+<table class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_unix_api_allocator_sizeof_operand_mismatch"><td class="DESC">Unix API</td><td class="DESC">Allocator sizeof operand mismatch</td><td>third-libs/wax/wax_struct.m</td><td class="DESC">wax_struct_create</td><td class="Q">83</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-28e136.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-28e136.html" -->
+</tr>
+<tr class="bt_unix_api_allocator_sizeof_operand_mismatch"><td class="DESC">Unix API</td><td class="DESC">Allocator sizeof operand mismatch</td><td>third-libs/wax/wax_instance.m</td><td class="DESC">myForwardInvocation</td><td class="Q">576</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-92e3dc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-92e3dc.html" -->
+</tr>
+<tr class="bt_unix_api_allocator_sizeof_operand_mismatch"><td class="DESC">Unix API</td><td class="DESC">Allocator sizeof operand mismatch</td><td>third-libs/wax/wax_struct.m</td><td class="DESC">copy</td><td class="Q">235</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eb5764.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eb5764.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>third-libs/libqrencode/rscode.c</td><td class="DESC">init_rs_char</td><td class="Q">196</td><td class="Q">27</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ef5c01.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ef5c01.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_bad_release"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Bad release</td><td>app/common/TWPullTableView/TWAsynchronous/TWAsynchronous.m</td><td class="DESC">cleanUp</td><td class="Q">92</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-494a3c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-494a3c.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_bad_release"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Bad release</td><td>app/common/TWPullTableView/TWAsynchronous/TWAsynchronous.m</td><td class="DESC">startCleanUp</td><td class="Q">148</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b7c328.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b7c328.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/extensions/json/wax_json.c</td><td class="DESC">generate_value</td><td class="Q">222</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0023a4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0023a4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/my/TWUpdateUserInfo.m</td><td class="DESC">updateUserInfo:withString:withType:target:</td><td class="Q">76</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-009934.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-009934.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/TWIndexBarView.m</td><td class="DESC">positionForIndexItemsWhilePanLocation:</td><td class="Q">504</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0473e4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0473e4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/TWMessageClass.m</td><td class="DESC">mailComposeController:didFinishWithResult:error:</td><td class="Q">243</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0dffb9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0dffb9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/my/TWUpdateUserInfo.m</td><td class="DESC">updateUserInfo:withString:withType:target:</td><td class="Q">83</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-10d340.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-10d340.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/common/TWLightAppFramework/TWCDVEmployee.m</td><td class="DESC">select:</td><td class="Q">250</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-13f5d3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-13f5d3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/libqrencode/mask.c</td><td class="DESC">Mask_mask</td><td class="Q">277</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-19358e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-19358e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/wax_server.m</td><td class="DESC">startOnPort:</td><td class="Q">63</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1e8cc9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1e8cc9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/chat/TWChatImageBubbleView.m</td><td class="DESC">initWithFrame:bubbleType:</td><td class="Q">55</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-21130e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-21130e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/FuView/FuFrameworks/Compents/FuTextInput/FuTextInput.m</td><td class="DESC">insertText:</td><td class="Q">644</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-23965b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-23965b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/VoiceConvert/amrwapper/amrFileCodec.mm</td><td class="DESC">ReadAMRFrame</td><td class="Q">300</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2c370c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2c370c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/extensions/json/wax_json.c</td><td class="DESC">generate_value</td><td class="Q">207</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2c4f55.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2c4f55.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/RSKImageCropper/RSKImageCropViewController.m</td><td class="DESC">updateMaskRect</td><td class="Q">688</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2d5d60.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2d5d60.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/TWIndexBarView.m</td><td class="DESC">positionForIndexItemsWhilePanLocation:</td><td class="Q">452</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-351f94.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-351f94.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/RSKImageCropper/RSKImageCropViewController.m</td><td class="DESC">updateMaskRect</td><td class="Q">686</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-36a4b9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-36a4b9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/SearchCore/SearchCore.mm</td><td class="DESC">IsHit</td><td class="Q">1179</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-39ff31.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-39ff31.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/common/TWLightAppFramework/TWCDVEmployee.m</td><td class="DESC">select:</td><td class="Q">254</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3a443b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3a443b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/RDVTabBarController/RDVTabBarController.m</td><td class="DESC">unknown</td><td class="Q">219</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3e106f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3e106f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/chat/TWChatImageBubbleView.m</td><td class="DESC">setType:</td><td class="Q">85</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-587691.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-587691.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/SearchCore/SearchCore.mm</td><td class="DESC">LoadMultiPYinWords</td><td class="Q">508</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-58f1d9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-58f1d9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/dao/NSObject+Merge.m</td><td class="DESC">duplicate:new:key:</td><td class="Q">339</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5d9100.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5d9100.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/TWMessageClass.m</td><td class="DESC">mailComposeController:didFinishWithResult:error:</td><td class="Q">240</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5f39e0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5f39e0.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/VoiceConvert/amrwapper/amrFileCodec.mm</td><td class="DESC">ReadAMRFrame</td><td class="Q">293</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6a9b11.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6a9b11.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/RDVTabBarController/RDVTabBarController.m</td><td class="DESC">unknown</td><td class="Q">224</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-76de9a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-76de9a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/libqrencode/mask.c</td><td class="DESC">Mask_mask</td><td class="Q">287</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-84d452.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-84d452.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/extensions/json/wax_json.c</td><td class="DESC">generate_value</td><td class="Q">219</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c446e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c446e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/RSKImageCropper/RSKImageScrollView.m</td><td class="DESC">setMaxMinZoomScalesForCurrentBounds</td><td class="Q">213</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c59d2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c59d2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/services/XMPPInterface/XMPPRequestInterface.mm</td><td class="DESC">requestCreateCspPlatformWithEnableLog:logName:</td><td class="Q">34</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-965991.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-965991.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/minizip/zip.c</td><td class="DESC">zipCloseFileInZipRaw</td><td class="Q">1097</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9ba957.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9ba957.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/wax_instance.m</td><td class="DESC">overrideMethod</td><td class="Q">1034</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a1cdf5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a1cdf5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/chat/im/include/CspPlatformCom.mm</td><td class="DESC">LoadStaticCom:::</td><td class="Q">107</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a56119.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a56119.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/extensions/json/wax_json.c</td><td class="DESC">generate_value</td><td class="Q">285</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a568f6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a568f6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/photoZoomView/TWPhotoZoomActivity.m</td><td class="DESC">image:didFinishSavingWithError:contextInfo:</td><td class="Q">124</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a5dddd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a5dddd.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/extensions/json/wax_json.c</td><td class="DESC">generate_value</td><td class="Q">265</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a61b29.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a61b29.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/wax_instance.m</td><td class="DESC">overrideMethod</td><td class="Q">912</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a8077f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a8077f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/chat/TWChatImageBubbleView.m</td><td class="DESC">initWithFrame:bubbleType:</td><td class="Q">52</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a81afa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a81afa.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/company/TWColleagueDetailActivity.m</td><td class="DESC">reloadEmployeeStatue</td><td class="Q">1284</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-aed026.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-aed026.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/extensions/json/wax_json.c</td><td class="DESC">generate_value</td><td class="Q">203</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b525c9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b525c9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/TWMessageClass.m</td><td class="DESC">mailComposeController:didFinishWithResult:error:</td><td class="Q">249</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b82308.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b82308.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/extensions/json/yajl/yajl_lex.c</td><td class="DESC">yajl_lex_lex</td><td class="Q">604</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c5db1a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c5db1a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/SearchCore/SearchCore.mm</td><td class="DESC">SearchCachedHit</td><td class="Q">967</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c91c5b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c91c5b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/common/TW3DES/TW3DES.m</td><td class="DESC">decrypt:</td><td class="Q">176</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cb8368.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cb8368.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/RSKImageCropper/RSKImageScrollView.m</td><td class="DESC">setMaxMinZoomScalesForCurrentBounds</td><td class="Q">215</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cba861.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cba861.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/VoiceConvert/amrwapper/amrFileCodec.mm</td><td class="DESC">SkipToPCMAudioData</td><td class="Q">42</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ce78e8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ce78e8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/TWMessageClass.m</td><td class="DESC">mailComposeController:didFinishWithResult:error:</td><td class="Q">246</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-dcfd46.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-dcfd46.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/wax/wax_server.m</td><td class="DESC">startOnPort:</td><td class="Q">44</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-dd7016.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-dd7016.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/services/XMPPInterface/XMPPRequestInterface.mm</td><td class="DESC">requestCreateCspPlatformWithEnableLog:logName:</td><td class="Q">54</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e0f857.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e0f857.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/SearchCore/SearchCore.mm</td><td class="DESC">Tree_GetPinYin</td><td class="Q">1355</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e49ee6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e49ee6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/SearchCore/SearchCore.mm</td><td class="DESC">AddToCachedHit</td><td class="Q">757</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e919ea.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e919ea.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/services/XMPPInterface/XMPPRequestInterface.mm</td><td class="DESC">requestCreateCspPlatformWithEnableLog:logName:</td><td class="Q">35</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eb32f9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eb32f9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/chat/TWChatImageBubbleView.m</td><td class="DESC">setType:</td><td class="Q">81</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f0484f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f0484f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/widget/photoZoomView/TWPhotoZoomMainView.m</td><td class="DESC">image:didFinishSavingWithError:contextInfo:</td><td class="Q">188</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f37c58.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f37c58.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/SearchCore/SearchCore.mm</td><td class="DESC">SearchCachedHit</td><td class="Q">947</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f53e1e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f53e1e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/chat/NewChat/TWNewBaseChatActivity.m</td><td class="DESC">tableView:cellForRowAtIndexPath:</td><td class="Q">551</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f588b7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f588b7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>third-libs/minizip/unzip.c</td><td class="DESC">unzOpenCurrentFile3</td><td class="Q">1137</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f850d2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f850d2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/services/XMPPInterface/XMPPRequestInterface.mm</td><td class="DESC">requestCreateNewP2PSessionWithUserBid:toBid:platform:</td><td class="Q">263</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f8e809.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f8e809.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/view_iPhone/AuthCodeView.m</td><td class="DESC">drawRect:</td><td class="Q">93</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fc0e4b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fc0e4b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>app/common/TW3DES/TW3DES.m</td><td class="DESC">encrypt:</td><td class="Q">130</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fc5ec1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fc5ec1.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>app/widget/addPhoto/QBImagePickerController/QBImagePickerController.m</td><td class="DESC">viewWillAppear:</td><td class="Q">211</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3306c0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3306c0.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>app/widget/addPhoto/QBImagePickerController/QBAssetCollectionViewController.m</td><td class="DESC">viewWillAppear:</td><td class="Q">173</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-346e3e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-346e3e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>third-libs/minizip/unzip.c</td><td class="DESC">unzlocal_GetCurrentFileInfoInternal</td><td class="Q">737</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-943771.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-943771.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>third-libs/minizip/unzip.c</td><td class="DESC">unzlocal_GetCurrentFileInfoInternal</td><td class="Q">740</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9a4897.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9a4897.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamMembers.m</td><td class="DESC">routine</td><td class="Q">181</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-029d67.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-029d67.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/HMSegmentedControl/HMSegmentedControl.m</td><td class="DESC">frameForSelectionIndicator</td><td class="Q">247</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-02d320.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-02d320.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkUpdatememberstatePact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-03402e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-03402e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/graphicMixRow/SETextView.m</td><td class="DESC">positionWithinRange:farthestInDirection:</td><td class="Q">2034</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0346fa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0346fa.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWSearchContacts.m</td><td class="DESC">routine</td><td class="Q">75</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-045ed4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-045ed4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkSearchMembersPact.m</td><td class="DESC">routine</td><td class="Q">87</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0750d7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0750d7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWWorkSpaceModulePact.m</td><td class="DESC">routine</td><td class="Q">308</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0aaefa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0aaefa.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">911</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0d98fd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0d98fd.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/addPhoto/QBImagePickerController/QBImagePickerGroupCell.m</td><td class="DESC">layoutSubviews</td><td class="Q">67</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0eb19c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0eb19c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/view_iPhone/chat/TWChatCardBubbleView.m</td><td class="DESC">layoutSubviews</td><td class="Q">89</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0f704e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0f704e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyMessagePact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1226bc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1226bc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">771</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1246f0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1246f0.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetDepartmentTreePact.m</td><td class="DESC">routine</td><td class="Q">263</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-12e7be.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-12e7be.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">599</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1403b1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1403b1.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">523</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-162775.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-162775.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/services/im/sesson/TWIMConfigureData.m</td><td class="DESC">unknown</td><td class="Q">101</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-168407.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-168407.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWUmengSocial.m</td><td class="DESC">routine</td><td class="Q">95</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-18649f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-18649f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleInviteMemberPact.m</td><td class="DESC">routine</td><td class="Q">135</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1a8888.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1a8888.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWMessageNotifycation.m</td><td class="DESC">routine</td><td class="Q">503</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1ab475.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1ab475.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWAgent.m</td><td class="DESC">routine</td><td class="Q">169</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1b9734.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1b9734.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>third-libs/wax/wax_instance.m</td><td class="DESC">overrideMethod</td><td class="Q">830</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1bd462.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1bd462.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkSetTakerPact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1c6438.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1c6438.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">397</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1cb667.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1cb667.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicPact.m</td><td class="DESC">routine</td><td class="Q">588</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1d9bce.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1d9bce.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkTopicAdd.m</td><td class="DESC">routine</td><td class="Q">85</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1ec12a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1ec12a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCirclePact.m</td><td class="DESC">routine</td><td class="Q">145</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-21929f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-21929f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWSearchPact.m</td><td class="DESC">routine</td><td class="Q">349</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-21aaf5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-21aaf5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">83</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-255f19.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-255f19.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWSearchPact.m</td><td class="DESC">routine</td><td class="Q">435</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-256565.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-256565.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1474</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-25bf20.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-25bf20.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkTodolistPact.m</td><td class="DESC">routine</td><td class="Q">73</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2710bb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2710bb.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicFavoritePact.m</td><td class="DESC">routine</td><td class="Q">231</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2832c0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2832c0.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">483</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2a5de4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2a5de4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkUpdateMemberState.m</td><td class="DESC">routine</td><td class="Q">71</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2b06c7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2b06c7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/services/XMPPInterface/XMPPRequestInterface.mm</td><td class="DESC">requestCreateCspPlatformWithEnableLog:logName:</td><td class="Q">33</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2eca4e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2eca4e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWUpdataUserInfo.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2f5d8f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2f5d8f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/common/TWAngelLayer/TWAngelSwitchLayer.m</td><td class="DESC">angelLayerSwitch:</td><td class="Q">84</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-304424.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-304424.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">654</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-32e96f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-32e96f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkRemovememberPact.m</td><td class="DESC">routine</td><td class="Q">145</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-34aa11.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-34aa11.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCirclePact.m</td><td class="DESC">routine</td><td class="Q">230</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3889fc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3889fc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWJoinOrg.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3b07b8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3b07b8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicFavoritePact.m</td><td class="DESC">routine</td><td class="Q">145</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3db330.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3db330.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">311</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3f10db.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3f10db.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">818</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3fc168.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-3fc168.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWSignWiFi.m</td><td class="DESC">routine</td><td class="Q">85</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-412a11.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-412a11.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">658</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-423c03.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-423c03.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">997</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-42c6db.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-42c6db.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/services/XMPPInterface/Chat/ChatInterface.mm</td><td class="DESC">bodyMessage:</td><td class="Q">339</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-436761.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-436761.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicFavoritePact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-47cdef.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-47cdef.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetDepartmentTreePact.m</td><td class="DESC">routine</td><td class="Q">433</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-493790.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-493790.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">341</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-493f11.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-493f11.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1238</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4b27c1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4b27c1.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWCommentsAdd.m</td><td class="DESC">routine</td><td class="Q">165</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4d5522.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4d5522.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">169</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4ea332.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4ea332.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWEnterpriseColleagues.m</td><td class="DESC">routine</td><td class="Q">231</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4f02e9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4f02e9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWLatestNotificationPact.m</td><td class="DESC">routine</td><td class="Q">71</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-50327b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-50327b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">908</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-52104b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-52104b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/common/DLReachability/DLNetStatus.m</td><td class="DESC">enableDLNetStatus</td><td class="Q">30</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-52ef33.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-52ef33.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>third-libs/TWIndexBarView.m</td><td class="DESC">positionForIndexItemsWhilePanLocation:</td><td class="Q">415</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-56a712.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-56a712.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTopicLikeUsersPact.m</td><td class="DESC">routine</td><td class="Q">85</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a2293.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a2293.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CheckOrganizationPact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a2f12.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a2f12.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">569</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a64b4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a64b4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkGroupMemberPact.m</td><td class="DESC">routine</td><td class="Q">180</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a721c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5a721c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1560</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-60b6bd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-60b6bd.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkGroupMemberPact.m</td><td class="DESC">routine</td><td class="Q">95</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-612ec6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-612ec6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicPact.m</td><td class="DESC">routine</td><td class="Q">247</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-633fce.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-633fce.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleUpdatePact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-683c4e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-683c4e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWSearchPact.m</td><td class="DESC">routine</td><td class="Q">177</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-691af3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-691af3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/SyncMessageState.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6bcfdc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6bcfdc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>third-libs/TWNavigationController.m</td><td class="DESC">capture</td><td class="Q">217</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6d7002.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6d7002.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkRemovememberPact.m</td><td class="DESC">routine</td><td class="Q">230</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6d966b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6d966b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">255</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6d9c5d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6d9c5d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCirclePact.m</td><td class="DESC">routine</td><td class="Q">315</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6f8063.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6f8063.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkGroupMemberPact.m</td><td class="DESC">routine</td><td class="Q">446</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-713793.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-713793.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkUpdateMemberState.m</td><td class="DESC">routine</td><td class="Q">414</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-71967c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-71967c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CheckNewVersion.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-74070c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-74070c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleToTopPact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-746db3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-746db3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamMembers.m</td><td class="DESC">routine</td><td class="Q">85</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-74e772.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-74e772.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/services/im/sesson/TWIMConfigureData.m</td><td class="DESC">getDefaultData</td><td class="Q">28</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7751ff.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7751ff.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/view_iPhone/TWSplashActivity.m</td><td class="DESC">onCreateViews</td><td class="Q">36</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-77b828.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-77b828.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">740</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7ab92a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7ab92a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetDepartmentTreePact.m</td><td class="DESC">routine</td><td class="Q">518</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7af52f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7af52f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetDepartmentTreePact.m</td><td class="DESC">routine</td><td class="Q">348</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7c0bba.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7c0bba.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyMessagePact.m</td><td class="DESC">routine</td><td class="Q">144</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7cb042.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7cb042.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">344</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7cec0e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7cec0e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/photoBrowser/TWPhotoBrowserView.m</td><td class="DESC">refreshVisibleCellAppearance</td><td class="Q">268</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7d3717.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7d3717.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWFeedback.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7f0793.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7f0793.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/HMSegmentedControl/HMSegmentedControl.m</td><td class="DESC">frameForSelectionIndicator</td><td class="Q">248</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-80085f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-80085f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/graphicMixRow/SETextView.m</td><td class="DESC">characterRangeByExtendingPosition:inDirection:</td><td class="Q">2053</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-80e14d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-80e14d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">433</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-81878e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-81878e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWCABPact.m</td><td class="DESC">routine</td><td class="Q">161</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-833c3d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-833c3d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkTopicAdd.m</td><td class="DESC">routine</td><td class="Q">264</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-835713.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-835713.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">219</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-83b5c6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-83b5c6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWModifyPassWordPact.m</td><td class="DESC">routine</td><td class="Q">65</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-85ec54.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-85ec54.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/FuView/FuUI/TeamworkUI/emoji/EmojiKeyBoard.m</td><td class="DESC">loadEmoji</td><td class="Q">90</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8702be.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8702be.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkTopicAdd.m</td><td class="DESC">routine</td><td class="Q">173</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8782ca.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8782ca.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetUserInfo.m</td><td class="DESC">routine</td><td class="Q">255</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-88e64a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-88e64a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">83</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8b0c25.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8b0c25.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TPNotificationListPact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8b6c07.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8b6c07.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyMessagePact.m</td><td class="DESC">routine</td><td class="Q">229</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8b9fc6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8b9fc6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleUpdatePact.m</td><td class="DESC">routine</td><td class="Q">145</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c355b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c355b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWAPNSDeviceTokenPact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c3e06.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c3e06.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicDetailPact.m</td><td class="DESC">routine</td><td class="Q">161</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c75eb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c75eb.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWWorkSpaceModulePact.m</td><td class="DESC">routine</td><td class="Q">223</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c93b9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-8c93b9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicFavoritePact.m</td><td class="DESC">routine</td><td class="Q">403</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-957b4c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-957b4c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWCABPact.m</td><td class="DESC">routine</td><td class="Q">73</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-96b2b8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-96b2b8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkUpdateMemberState.m</td><td class="DESC">routine</td><td class="Q">156</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9993e6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9993e6.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">427</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9a1c35.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9a1c35.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">685</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9b78e4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9b78e4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWAdvertisementPact.m</td><td class="DESC">routine</td><td class="Q">85</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9c3f37.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9c3f37.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1324</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9c9800.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9c9800.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicFavoritePact.m</td><td class="DESC">routine</td><td class="Q">317</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9deaa5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9deaa5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/common/TWLightAppFramework/TWCDVScreenshot.m</td><td class="DESC">screenshot</td><td class="Q">56</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9ea21a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9ea21a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/view_iPhone/my/TWMyAboutActivity.m</td><td class="DESC">tableView:cellForRowAtIndexPath:</td><td class="Q">180</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a39c26.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a39c26.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/view_iPhone/ConferenceCall/CallController/TWCallCHeaderView.m</td><td class="DESC">layoutSubviews</td><td class="Q">92</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a51980.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a51980.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWEnterpriseColleagues.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a80e90.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a80e90.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWWorkSpaceModulePact.m</td><td class="DESC">routine</td><td class="Q">138</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a812cc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a812cc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">169</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-aaf789.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-aaf789.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWFindEmployeePact.m</td><td class="DESC">routine</td><td class="Q">133</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ab9eba.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ab9eba.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleDeletePact.m</td><td class="DESC">routine</td><td class="Q">145</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac567f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac567f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/dao/TWEmployeeDao_old.m</td><td class="DESC">sort:</td><td class="Q">385</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac8399.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac8399.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/view_iPhone/message/NewMessage/TWNewMessageActivity.m</td><td class="DESC">showNoNetworkView:</td><td class="Q">306</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b06d98.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b06d98.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkGroupMemberPact.m</td><td class="DESC">routine</td><td class="Q">355</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b11efe.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b11efe.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetDepartmentTreePact.m</td><td class="DESC">routine</td><td class="Q">178</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b27bc7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b27bc7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWUserInfoPact.m</td><td class="DESC">routine</td><td class="Q">83</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b52353.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b52353.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkUpdateMemberState.m</td><td class="DESC">routine</td><td class="Q">242</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b8b465.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-b8b465.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1817</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ba76b7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ba76b7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1731</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bd7664.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bd7664.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/FuView/FuUI/TeamworkUI/emoji/NewEmojiKeyBoard.m</td><td class="DESC">loadEmoji</td><td class="Q">99</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bf0c79.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bf0c79.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/FuView/FuUI/TeamworkUI/emoji/NewEmojiKeyBoard.m</td><td class="DESC">loadEmoji</td><td class="Q">90</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bf59a7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bf59a7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/UploadLogFile.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c2adc3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c2adc3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/services/im/sesson/TWIMConfigureData.m</td><td class="DESC">unknown</td><td class="Q">100</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c81678.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c81678.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicPact.m</td><td class="DESC">routine</td><td class="Q">332</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c8d8c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c8d8c3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/TWContactFunctionBar.m</td><td class="DESC">layoutItems</td><td class="Q">88</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c97e7d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c97e7d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWFindEmployeePact.m</td><td class="DESC">routine</td><td class="Q">218</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c9e93d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c9e93d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetUserInfo.m</td><td class="DESC">routine</td><td class="Q">168</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cbd2e4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cbd2e4.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">1087</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cc52bd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cc52bd.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CommonEmployeePact.m</td><td class="DESC">routine</td><td class="Q">85</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cccbf5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cccbf5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetDepartmentTreePact.m</td><td class="DESC">routine</td><td class="Q">604</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d0df2a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d0df2a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetUserInfo.m</td><td class="DESC">routine</td><td class="Q">83</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d25b12.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d25b12.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWCommentsAdd.m</td><td class="DESC">routine</td><td class="Q">79</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d40393.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d40393.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleDeletePact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d41fd7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d41fd7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWGetKaptchaImage.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d5cdcf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d5cdcf.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkGroupMemberPact.m</td><td class="DESC">routine</td><td class="Q">270</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d70f68.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d70f68.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkRemovememberPact.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d8dc9c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d8dc9c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWEnterpriseColleagues.m</td><td class="DESC">routine</td><td class="Q">317</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d8f710.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d8f710.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkSearchMembersPact.m</td><td class="DESC">routine</td><td class="Q">174</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-dca6ca.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-dca6ca.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWEnterpriseColleagues.m</td><td class="DESC">routine</td><td class="Q">145</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e102c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e102c3.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWSearchPact.m</td><td class="DESC">routine</td><td class="Q">263</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e1251c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e1251c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">857</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e12b6d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e12b6d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTransferTeam.m</td><td class="DESC">routine</td><td class="Q">59</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e3159b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e3159b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkInviteMembersPact.m</td><td class="DESC">routine</td><td class="Q">513</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e6731d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e6731d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1147</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e6e20a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e6e20a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWAgent.m</td><td class="DESC">routine</td><td class="Q">255</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e6e66a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e6e66a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWUserInfoPact.m</td><td class="DESC">routine</td><td class="Q">168</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e7872e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e7872e.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicPact.m</td><td class="DESC">routine</td><td class="Q">503</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e85807.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e85807.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">998</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e8c297.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e8c297.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">825</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ee9081.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ee9081.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/FuView/FuUI/TeamworkUI/emoji/EmojiKeyBoard.m</td><td class="DESC">loadEmoji</td><td class="Q">99</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eef8f7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eef8f7.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleCreatePact.m</td><td class="DESC">routine</td><td class="Q">65</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f05b3a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f05b3a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamWorkUpdateMemberState.m</td><td class="DESC">routine</td><td class="Q">328</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f0e63c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f0e63c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/PrintExceptionPact.m</td><td class="DESC">routine</td><td class="Q">70</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f15c57.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f15c57.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/widget/photoBrowser/TWPhotoBrowserView.m</td><td class="DESC">refreshVisibleCellAppearance</td><td class="Q">272</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f47af2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f47af2.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleDeletePact.m</td><td class="DESC">routine</td><td class="Q">231</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f5b7ec.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f5b7ec.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWTeamCircleTopicPact.m</td><td class="DESC">routine</td><td class="Q">418</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f7a68b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f7a68b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/view_iPhone/message/NewMessage/Detail/TWMessageGroupNoticeActivityCell.m</td><td class="DESC">getItemCellHeight:data:dom:</td><td class="Q">235</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fa7e69.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fa7e69.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/CompanyList.m</td><td class="DESC">routine</td><td class="Q">1645</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-faa89b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-faa89b.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWRegisterPact.m</td><td class="DESC">routine</td><td class="Q">255</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fb11e8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fb11e8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_initialization"><td class="DESC">Dead store</td><td class="DESC">Dead initialization</td><td>app/model/TWAPPVersion.m</td><td class="DESC">routine</td><td class="Q">73</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fe64fb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fe64fb.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>third-libs/libqrencode/qrinput.c</td><td class="DESC">QRinput_encodeBitStream</td><td class="Q">879</td><td class="Q">7</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-048558.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-048558.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>third-libs/wax/lua/liolib.c</td><td class="DESC">g_read</td><td class="Q">351</td><td class="Q">9</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2cdd9b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2cdd9b.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>app/view_iPhone/addMember/TWAddMembersCell.m</td><td class="DESC">initWithStyle:reuseIdentifier:dom:</td><td class="Q">22</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-331c35.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-331c35.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>third-libs/wax/lua/lparser.c</td><td class="DESC">breakstat</td><td class="Q">986</td><td class="Q">9</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5707d3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5707d3.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>third-libs/wax/lua/lvm.c</td><td class="DESC">luaV_execute</td><td class="Q">673</td><td class="Q">29</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9de256.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9de256.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>third-libs/SearchCore/SearchCore.mm</td><td class="DESC">Tree_Search</td><td class="Q">879</td><td class="Q">15</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bf987b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-bf987b.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>third-libs/libqrencode/qrinput.c</td><td class="DESC">QRinput_splitQRinputToStruct</td><td class="Q">1278</td><td class="Q">13</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d74a00.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d74a00.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>third-libs/wax/extensions/cjson/strbuf.c</td><td class="DESC">strbuf_new</td><td class="Q">79</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eee72c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-eee72c.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_extra_ivar_release"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Extra ivar release</td><td>third-libs/wax/extensions/HTTP/wax_http_connection.m</td><td class="DESC">dealloc</td><td class="Q">31</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-439ca4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-439ca4.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_incompatible_instance_method_return_type"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Incompatible instance method return type</td><td>app/widget/TWSearchBar.m</td><td class="DESC">becomeFirstResponder</td><td class="Q">185</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0e01d9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0e01d9.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_incompatible_instance_method_return_type"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Incompatible instance method return type</td><td>app/widget/TWSearchTableView.m</td><td class="DESC">resignFirstResponder</td><td class="Q">153</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-12c0ba.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-12c0ba.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_incompatible_instance_method_return_type"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Incompatible instance method return type</td><td>app/view_iPhone/addMember/unitView/WechatView.m</td><td class="DESC">resignFirstResponder</td><td class="Q">521</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2828e8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2828e8.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_incompatible_instance_method_return_type"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Incompatible instance method return type</td><td>app/widget/TWSearchPulltableView.m</td><td class="DESC">resignFirstResponder</td><td class="Q">217</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c8af38.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-c8af38.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_incompatible_instance_method_return_type"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Incompatible instance method return type</td><td>app/widget/TWSearchBar.m</td><td class="DESC">resignFirstResponder</td><td class="Q">179</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f20e75.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f20e75.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/richtextview/CTViewDrawer.m</td><td class="DESC">ascentCallback</td><td class="Q">26</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-044a5c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-044a5c.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">contactsWithoutImageCount</td><td class="Q">298</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0792c5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0792c5.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">TWContacts</td><td class="Q">277</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0af6dc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-0af6dc.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">newPersonViewController:didCompleteWithNewPerson:</td><td class="Q">387</td><td class="Q">7</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1e6893.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1e6893.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>third-libs/wax/wax_server.m</td><td class="DESC">startOnPort:</td><td class="Q">45</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1f9f79.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1f9f79.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">twContacts:</td><td class="Q">254</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-200a1b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-200a1b.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/common/TWLightAppFramework/WifiSign/TWCDVGZQWIFI.m</td><td class="DESC">findWifi</td><td class="Q">125</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-217011.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-217011.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/richtextview/CTColumnView.m</td><td class="DESC">drawRect:</td><td class="Q">164</td><td class="Q">10</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2e0971.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2e0971.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/common/DLReachability/DLReachability.m</td><td class="DESC">reachabilityWithHostname:</td><td class="Q">101</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-336d3c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-336d3c.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/SHLUILabel/SHLUILabel.m</td><td class="DESC">initAttributedString</td><td class="Q">161</td><td class="Q">9</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4a3181.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4a3181.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/common/DLReachability/DLReachability.m</td><td class="DESC">reachabilityWithAddress:</td><td class="Q">114</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-60c1f4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-60c1f4.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">checkPersonHandle:</td><td class="Q">321</td><td class="Q">6</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-61a0c7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-61a0c7.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/richtextview/CTViewDrawer.m</td><td class="DESC">descentCallback</td><td class="Q">38</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6f4d13.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-6f4d13.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">newPersonViewController:didCompleteWithNewPerson:</td><td class="Q">392</td><td class="Q">8</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7b8e1b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7b8e1b.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">checkPersonHandle:</td><td class="Q">311</td><td class="Q">13</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7ba25b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7ba25b.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>third-libs/phonegap-3.5.0/plugins/org.apache.cordova.network-information/src/ios/CDVReachability.m</td><td class="DESC">reachabilityWithHostName:</td><td class="Q">146</td><td class="Q">6</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-81519c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-81519c.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">contactsWithImageCount</td><td class="Q">290</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-89ff36.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-89ff36.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/common/TWWAXAppFramework/TWWAXAppMap.m</td><td class="DESC">popMapActivity</td><td class="Q">86</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a0394a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a0394a.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">checkPersonHandle:</td><td class="Q">282</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a21e41.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a21e41.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">checkPersonHandle:</td><td class="Q">299</td><td class="Q">15</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a432bf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a432bf.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>third-libs/phonegap-3.5.0/plugins/org.apache.cordova.network-information/src/ios/CDVReachability.m</td><td class="DESC">reachabilityWithAddress:</td><td class="Q">160</td><td class="Q">6</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac4c9c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac4c9c.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">contacts</td><td class="Q">99</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac934a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ac934a.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/ConferenceCall/TWConferenceCall.m</td><td class="DESC">writeRecord</td><td class="Q">252</td><td class="Q">6</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ae6e00.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ae6e00.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContact.m</td><td class="DESC">labelsForProperty:</td><td class="Q">120</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-aeb4b9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-aeb4b9.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">twContacts</td><td class="Q">165</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-af6128.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-af6128.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/common/TWHttpDnsCache/TWHttpDnsService.m</td><td class="DESC">getIpByServerHostWithLocalDns:</td><td class="Q">59</td><td class="Q">9</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cd0434.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cd0434.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>third-libs/wax/wax_server.m</td><td class="DESC">startOnPort:</td><td class="Q">64</td><td class="Q">7</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cd4d8f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-cd4d8f.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">checkPersonHandle:</td><td class="Q">282</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d28751.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d28751.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/richtextview/CTViewDrawer.m</td><td class="DESC">widthCallback</td><td class="Q">50</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e0fce6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e0fce6.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/contact/ABContact.m</td><td class="DESC">contactWithRecordID:</td><td class="Q">34</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e5215b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e5215b.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/widget/SHLUILabel/SHLUILabel.m</td><td class="DESC">drawTextInRect:</td><td class="Q">206</td><td class="Q">2</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e8eb66.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e8eb66.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak</td><td>app/view_iPhone/company/TWSystemContactActivity.m</td><td class="DESC">checkPersonHandle:</td><td class="Q">283</td><td class="Q">11</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fc8d28.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-fc8d28.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak_of_returned_object"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak of returned object</td><td>app/widget/contact/ABContact.m</td><td class="DESC">getRecordDate:</td><td class="Q">100</td><td class="Q">3</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-238045.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-238045.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak_of_returned_object"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak of returned object</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">addressBook</td><td class="Q">57</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4a9654.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4a9654.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak_of_returned_object"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak of returned object</td><td>app/widget/contact/ABContact.m</td><td class="DESC">arrayForProperty:</td><td class="Q">113</td><td class="Q">3</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7e4fdd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-7e4fdd.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak_of_returned_object"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak of returned object</td><td>app/widget/contact/ABContactsManage.m</td><td class="DESC">addressBookWithoutDenied</td><td class="Q">90</td><td class="Q">4</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a801aa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-a801aa.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak_of_returned_object"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak of returned object</td><td>app/widget/contact/ABContact.m</td><td class="DESC">getRecordString:</td><td class="Q">56</td><td class="Q">3</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d118ee.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d118ee.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_leak_of_returned_object"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Leak of returned object</td><td>app/widget/contact/ABContact.m</td><td class="DESC">compositeName</td><td class="Q">94</td><td class="Q">3</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f28c9a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f28c9a.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>third-libs/minizip/zip.c</td><td class="DESC">zipOpen2</td><td class="Q">617</td><td class="Q">32</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-efb546.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-efb546.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory Error</td><td class="DESC">Memory leak</td><td>third-libs/wax/wax_instance.m</td><td class="DESC">myForwardInvocation</td><td class="Q">592</td><td class="Q">5</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f5f3ed.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f5f3ed.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_missing_call_to_superclass"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Missing call to superclass</td><td>app/widget/TWSearchBar.m</td><td class="DESC">resignFirstResponder</td><td class="Q">183</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-084ca8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-084ca8.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_missing_call_to_superclass"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Missing call to superclass</td><td>third-libs/phonegap-3.5.0/Classes/CDVViewController.m</td><td class="DESC">viewDidUnload</td><td class="Q">615</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1406b6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1406b6.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_missing_call_to_superclass"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Missing call to superclass</td><td>app/view_iPhone/addMember/unitView/WechatView.m</td><td class="DESC">resignFirstResponder</td><td class="Q">528</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-42b7a1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-42b7a1.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_missing_call_to_superclass"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Missing call to superclass</td><td>app/view_iPhone/teamwork/TWTeamWorkTwoDimCodeActivity.m</td><td class="DESC">viewWillDisappear:</td><td class="Q">163</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-760851.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-760851.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_missing_call_to_superclass"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Missing call to superclass</td><td>app/widget/FuView/FuUI/TeamworkUI/TWTextBaseView.m</td><td class="DESC">resignFirstResponder</td><td class="Q">426</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-85f19a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-85f19a.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_missing_call_to_superclass"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Missing call to superclass</td><td>app/widget/TWSearchTableView.m</td><td class="DESC">resignFirstResponder</td><td class="Q">156</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ab26c7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ab26c7.html" -->
+</tr>
+<tr class="bt_core_foundation_objective-c_missing_call_to_superclass"><td class="DESC">Core Foundation/Objective-C</td><td class="DESC">Missing call to superclass</td><td>app/widget/TWSearchPulltableView.m</td><td class="DESC">resignFirstResponder</td><td class="Q">220</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e3f9bc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-e3f9bc.html" -->
+</tr>
+<tr class="bt_memory_core_foundation_objective-c_missing_ivar_release_leak_"><td class="DESC">Memory (Core Foundation/Objective-C)</td><td class="DESC">Missing ivar release (leak)</td><td>app/common/TWWAXAppFramework/TWWAXAppMapService.m</td><td class="DESC">dealloc</td><td class="Q">16</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2ebd66.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2ebd66.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>third-libs/wax/extensions/cjson/dtoa.c</td><td class="DESC">bigcomp</td><td class="Q">2438</td><td class="Q">24</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5005cc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-5005cc.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>third-libs/libqrencode/rscode.c</td><td class="DESC">init_rs_char</td><td class="Q">192</td><td class="Q">27</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-896181.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-896181.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>third-libs/IQKeyBoardManager/IQKeyBoardManager.m</td><td class="DESC">keyboardWillShow2:</td><td class="Q">291</td><td class="Q">7</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-986251.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-986251.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>third-libs/IQKeyBoardManager/IQKeyBoardManager.m</td><td class="DESC">keyboardWillShow2:</td><td class="Q">315</td><td class="Q">8</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ab5c20.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ab5c20.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>third-libs/IQKeyBoardManager/IQKeyBoardManager.m</td><td class="DESC">keyboardWillShow2:</td><td class="Q">363</td><td class="Q">15</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ccb3d6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ccb3d6.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>third-libs/wax/extensions/cjson/dtoa.c</td><td class="DESC">bigcomp</td><td class="Q">2435</td><td class="Q">24</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d93f4a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d93f4a.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>app/view_iPhone/my/TWUserInfoActivity.m</td><td class="DESC">tableViewCell:didSelectRowAtIndexPath:</td><td class="Q">521</td><td class="Q">9</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1a357c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1a357c.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>third-libs/IQKeyBoardManager/IQKeyBoardManager.m</td><td class="DESC">keyboardWillShow2:</td><td class="Q">346</td><td class="Q">13</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-26e126.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-26e126.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>third-libs/IQKeyBoardManager/IQKeyBoardManager.m</td><td class="DESC">keyboardWillShow2:</td><td class="Q">355</td><td class="Q">13</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4e69c9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-4e69c9.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>third-libs/IQKeyBoardManager/IQKeyBoardManager.m</td><td class="DESC">keyboardWillShow2:</td><td class="Q">352</td><td class="Q">13</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-83a957.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-83a957.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>app/widget/HMSegmentedControl/HMSegmentedControl.m</td><td class="DESC">drawRect:</td><td class="Q">226</td><td class="Q">3</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-855b1b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-855b1b.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>third-libs/IQKeyBoardManager/IQKeyBoardManager.m</td><td class="DESC">keyboardWillShow2:</td><td class="Q">349</td><td class="Q">13</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ce9ace.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-ce9ace.html" -->
+</tr>
+<tr class="bt_optimization_unused_instance_variable"><td class="DESC">Optimization</td><td class="DESC">Unused instance variable</td><td>third-libs/btRippleButton/BTRippleButtton.h</td><td class="DESC">BTRippleButtton</td><td class="Q">20</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-27550a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-27550a.html" -->
+</tr>
+<tr class="bt_optimization_unused_instance_variable"><td class="DESC">Optimization</td><td class="DESC">Unused instance variable</td><td>app/widget/SHLUILabel/SHLUILabel.h</td><td class="DESC">SHLUILabel</td><td class="Q">16</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9e6602.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9e6602.html" -->
+</tr>
+<tr class="bt_optimization_unused_instance_variable"><td class="DESC">Optimization</td><td class="DESC">Unused instance variable</td><td>app/common/TWAudioEffect/TWAudioEffect.h</td><td class="DESC">TWAudioEffect</td><td class="Q">18</td><td class="Q">1</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-beeda0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-beeda0.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory Error</td><td class="DESC">Use-after-free</td><td>third-libs/wax/wax_helpers.m</td><td class="DESC">wax_copyToObjc</td><td class="Q">566</td><td class="Q">11</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-794532.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-794532.html" -->
+</tr>
+<tr class="bt_api_misuse_apple_nil_argument"><td class="DESC">API Misuse (Apple)</td><td class="DESC">nil argument</td><td>app/view_iPhone/addMember/dataProvider/TWMembersDataProvider.m</td><td class="DESC">unknown</td><td class="Q">1024</td><td class="Q">12</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1b4408.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-1b4408.html" -->
+</tr>
+<tr class="bt_api_misuse_apple_nil_argument"><td class="DESC">API Misuse (Apple)</td><td class="DESC">nil argument</td><td>app/common/TWLightAppFramework/TWCDVDownload.m</td><td class="DESC">unknown</td><td class="Q">91</td><td class="Q">8</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2fb36c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-2fb36c.html" -->
+</tr>
+<tr class="bt_api_misuse_apple_nil_argument"><td class="DESC">API Misuse (Apple)</td><td class="DESC">nil argument</td><td>app/view_iPhone/addMember/base/TWBaseSelectCompanyEmployeeActivity.m</td><td class="DESC">unknown</td><td class="Q">1030</td><td class="Q">14</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-444559.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-444559.html" -->
+</tr>
+<tr class="bt_api_misuse_apple_nil_argument"><td class="DESC">API Misuse (Apple)</td><td class="DESC">nil argument</td><td>app/dao/TWEmployeeDao.m</td><td class="DESC">unknown</td><td class="Q">552</td><td class="Q">14</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9e07a6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-9e07a6.html" -->
+</tr>
+<tr class="bt_api_misuse_apple_nil_argument"><td class="DESC">API Misuse (Apple)</td><td class="DESC">nil argument</td><td>app/view_iPhone/addressBook/TWNewAddressBookActivity.m</td><td class="DESC">unknown</td><td class="Q">1958</td><td class="Q">14</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d7f1af.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-d7f1af.html" -->
+</tr>
+<tr class="bt_api_misuse_apple_nil_argument"><td class="DESC">API Misuse (Apple)</td><td class="DESC">nil argument</td><td>app/widget/TWChineseIndexedTableView.m</td><td class="DESC">unknown</td><td class="Q">288</td><td class="Q">14</td><td><a href="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f55bb3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="StaticAnalyzer/teamwork/teamwork/normal/i386/report-f55bb3.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>

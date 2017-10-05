@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextView.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SELinkText.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextAttachment.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SECompatibility.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/NSMutableAttributedString+Helper.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextInput.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextLayout.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SELineLayout.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextSelection.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextSelectionView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextEditingCaret.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextMagnifierCaret.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextMagnifierRanged.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SESelectionGrabber.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextGeometry.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SEConstants.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/NSString+Filter.h

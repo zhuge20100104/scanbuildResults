@@ -1,0 +1,993 @@
+<!doctype html>
+<html>
+<head>
+<title>/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/wax/wax_helpers.m</title>
+<style type="text/css">
+ body { color:#000000; background-color:#ffffff }
+ body { font-family:Helvetica, sans-serif; font-size:10pt }
+ h1 { font-size:14pt }
+ .code { border-collapse:collapse; width:100%; }
+ .code { font-family: "Monospace", monospace; font-size:10pt }
+ .code { line-height: 1.2em }
+ .comment { color: green; font-style: oblique }
+ .keyword { color: blue }
+ .string_literal { color: red }
+ .directive { color: darkmagenta }
+ .expansion { display: none; }
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
+ .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
+ .num { text-align:right; font-size:8pt }
+ .num { color:#444444 }
+ .line { padding-left: 1ex; border-left: 3px solid #ccc }
+ .line { white-space: pre }
+ .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
+ .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
+ .msg { font-family:Helvetica, sans-serif; font-size:8pt }
+ .msg { float:left }
+ .msg { padding:0.25em 1ex 0.25em 1ex }
+ .msg { margin-top:10px; margin-bottom:10px }
+ .msg { font-weight:bold }
+ .msg { max-width:60em; word-wrap: break-word; white-space: pre-wrap }
+ .msgT { padding:0x; spacing:0x }
+ .msgEvent { background-color:#fff8b4; color:#000000 }
+ .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
+ .mrange { background-color:#dfddf3 }
+ .mrange { border-bottom:1px solid #6F9DBE }
+ .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
+ .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
+ .PathIndexEvent { background-color:#bfba87 }
+ .PathIndexControl { background-color:#8c8c8c }
+ .PathNav a { text-decoration:none; font-size: larger }
+ .CodeInsertionHint { font-weight: bold; background-color: #10dd10 }
+ .CodeRemovalHint { background-color:#de1010 }
+ .CodeRemovalHint { border-bottom:1px solid #6F9DBE }
+ table.simpletable {
+   padding: 5px;
+   font-size:12pt;
+   margin:20px;
+   border-collapse: collapse; border-spacing: 0px;
+ }
+ td.rowname {
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
+</style>
+</head>
+<body>
+<!-- BUGDESC Use of memory after it is freed -->
+
+<!-- BUGTYPE Use-after-free -->
+
+<!-- BUGCATEGORY Memory Error -->
+
+<!-- BUGFILE /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/wax/wax_helpers.m -->
+
+<!-- FILENAME wax_helpers.m -->
+
+<!-- FUNCTIONNAME wax_copyToObjc -->
+
+<!-- ISSUEHASHCONTENTOFLINEINCONTEXT 87b86b76f3096291a682d7817e2a7117 -->
+
+<!-- BUGLINE 566 -->
+
+<!-- BUGCOLUMN 5 -->
+
+<!-- BUGPATHLENGTH 11 -->
+
+<!-- BUGMETAEND -->
+<!-- REPORTHEADER -->
+<h3>Bug Summary</h3>
+<table class="simpletable">
+<tr><td class="rowname">File:</td><td>third-libs/wax/wax_helpers.m</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 566, column 5</a><br />Use of memory after it is freed</td></tr>
+</table>
+<!-- REPORTSUMMARYEXTRA -->
+<h3>Annotated Source Code</h3>
+<table class="code">
+<tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"><span class='comment'>//  wax_helpers.m</span></td></tr>
+<tr><td class="num" id="LN3">3</td><td class="line"><span class='comment'>//  Lua</span></td></tr>
+<tr><td class="num" id="LN4">4</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN5">5</td><td class="line"><span class='comment'>//  Created by ProbablyInteractive on 5/18/09.</span></td></tr>
+<tr><td class="num" id="LN6">6</td><td class="line"><span class='comment'>//  Copyright 2009 Probably Interactive. All rights reserved.</span></td></tr>
+<tr><td class="num" id="LN7">7</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN8">8</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN9">9</td><td class="line"><span class='directive'>#import "wax_helpers.h"</span></td></tr>
+<tr><td class="num" id="LN10">10</td><td class="line"><span class='directive'>#import "wax_instance.h"</span></td></tr>
+<tr><td class="num" id="LN11">11</td><td class="line"><span class='directive'>#import "wax_struct.h"</span></td></tr>
+<tr><td class="num" id="LN12">12</td><td class="line"><span class='directive'>#import "lauxlib.h"</span></td></tr>
+<tr><td class="num" id="LN13">13</td><td class="line"><span class='directive'>#import "wax.h"</span></td></tr>
+<tr><td class="num" id="LN14">14</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN15">15</td><td class="line">@interface WaxFunction : NSObject</td></tr>
+<tr><td class="num" id="LN16">16</td><td class="line">- (<span class='keyword'>void</span> (^)())asBlock;</td></tr>
+<tr><td class="num" id="LN17">17</td><td class="line">@end</td></tr>
+<tr><td class="num" id="LN18">18</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN19">19</td><td class="line">@implementation WaxFunction <span class='comment'>// Used to pass lua fuctions around</span></td></tr>
+<tr><td class="num" id="LN20">20</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN21">21</td><td class="line"><span class='comment'>//我也没办法啊，va_list的问题还没解决，先这样写吧，最多支持5个参数</span></td></tr>
+<tr><td class="num" id="LN22">22</td><td class="line">- (<span class='keyword'>void</span> (^)())asBlock {</td></tr>
+<tr><td class="num" id="LN23">23</td><td class="line">    <span class='keyword'>return</span> [[^(NSObject *param1, NSObject *param2, NSObject *param3, NSObject *param4, NSObject *param5) {</td></tr>
+<tr><td class="num" id="LN24">24</td><td class="line">        lua_State *L = wax_currentLuaState();</td></tr>
+<tr><td class="num" id="LN25">25</td><td class="line">        wax_fromInstance(L, self);</td></tr>
+<tr><td class="num" id="LN26">26</td><td class="line">        wax_fromInstance(L, param1);</td></tr>
+<tr><td class="num" id="LN27">27</td><td class="line">        wax_fromInstance(L, param2);</td></tr>
+<tr><td class="num" id="LN28">28</td><td class="line">        wax_fromInstance(L, param3);</td></tr>
+<tr><td class="num" id="LN29">29</td><td class="line">        wax_fromInstance(L, param4);</td></tr>
+<tr><td class="num" id="LN30">30</td><td class="line">        wax_fromInstance(L, param5);</td></tr>
+<tr><td class="num" id="LN31">31</td><td class="line">        lua_call(L, 5, 0);</td></tr>
+<tr><td class="num" id="LN32">32</td><td class="line">    } copy] autorelease];</td></tr>
+<tr><td class="num" id="LN33">33</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN34">34</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN35">35</td><td class="line">@end</td></tr>
+<tr><td class="num" id="LN36">36</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN37">37</td><td class="line"><span class='keyword'>void</span> wax_printStack(lua_State *L) {</td></tr>
+<tr><td class="num" id="LN38">38</td><td class="line">    <span class='keyword'>int</span> i;</td></tr>
+<tr><td class="num" id="LN39">39</td><td class="line">    <span class='keyword'>int</span> top = lua_gettop(L);</td></tr>
+<tr><td class="num" id="LN40">40</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN41">41</td><td class="line">    <span class='keyword'>for</span> (i = 1; i &lt;= top; i++) {        </td></tr>
+<tr><td class="num" id="LN42">42</td><td class="line">        printf(<span class='string_literal'>"%d: "</span>, i);</td></tr>
+<tr><td class="num" id="LN43">43</td><td class="line">        wax_printStackAt(L, i);</td></tr>
+<tr><td class="num" id="LN44">44</td><td class="line">        printf(<span class='string_literal'>"\n"</span>);</td></tr>
+<tr><td class="num" id="LN45">45</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN46">46</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN47">47</td><td class="line">    printf(<span class='string_literal'>"\n"</span>);</td></tr>
+<tr><td class="num" id="LN48">48</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN49">49</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN50">50</td><td class="line"><span class='keyword'>void</span> wax_printStackAt(lua_State *L, <span class='keyword'>int</span> i) {</td></tr>
+<tr><td class="num" id="LN51">51</td><td class="line">    <span class='keyword'>int</span> t = lua_type(L, i);</td></tr>
+<tr><td class="num" id="LN52">52</td><td class="line">    printf(<span class='string_literal'>"(%s) "</span>, lua_typename(L, t));</td></tr>
+<tr><td class="num" id="LN53">53</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN54">54</td><td class="line">    <span class='keyword'>switch</span> (t) {</td></tr>
+<tr><td class="num" id="LN55">55</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>LUA_TSTRING<span class='expansion'>4</span></span>:</td></tr>
+<tr><td class="num" id="LN56">56</td><td class="line">            printf(<span class='string_literal'>"'%s'"</span>, <span class='macro'>lua_tostring(L, i)<span class='expansion'>lua_tolstring(L, (i), ((void*)0))</span></span>);</td></tr>
+<tr><td class="num" id="LN57">57</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN58">58</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>LUA_TBOOLEAN<span class='expansion'>1</span></span>:</td></tr>
+<tr><td class="num" id="LN59">59</td><td class="line">            printf(lua_toboolean(L, i) ? <span class='string_literal'>"true"</span> : <span class='string_literal'>"false"</span>);</td></tr>
+<tr><td class="num" id="LN60">60</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN61">61</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>LUA_TNUMBER<span class='expansion'>3</span></span>:</td></tr>
+<tr><td class="num" id="LN62">62</td><td class="line">            printf(<span class='string_literal'>"'%g'"</span>, lua_tonumber(L, i));</td></tr>
+<tr><td class="num" id="LN63">63</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN64">64</td><td class="line">        <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN65">65</td><td class="line">            printf(<span class='string_literal'>"%p"</span>, lua_topointer(L, i));</td></tr>
+<tr><td class="num" id="LN66">66</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN67">67</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN68">68</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN69">69</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN70">70</td><td class="line"><span class='keyword'>void</span> wax_printTable(lua_State *L, <span class='keyword'>int</span> t) {</td></tr>
+<tr><td class="num" id="LN71">71</td><td class="line">    <span class='comment'>// table is in the stack at index 't'</span></td></tr>
+<tr><td class="num" id="LN72">72</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN73">73</td><td class="line">    <span class='keyword'>if</span> (t &lt; 0) t = lua_gettop(L) + t + 1; <span class='comment'>// if t is negative, we need to normalize</span></td></tr>
+<tr><td class="num" id="LN74">74</td><td class="line">	<span class='keyword'>if</span> (t &lt;= 0 || t &gt; lua_gettop(L)) {</td></tr>
+<tr><td class="num" id="LN75">75</td><td class="line">		printf(<span class='string_literal'>"%d is not within stack boundries.\n"</span>, t);</td></tr>
+<tr><td class="num" id="LN76">76</td><td class="line">		<span class='keyword'>return</span>;</td></tr>
+<tr><td class="num" id="LN77">77</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN78">78</td><td class="line">	<span class='keyword'>else</span> <span class='keyword'>if</span> (!<span class='macro'>lua_istable(L, t)<span class='expansion'>(lua_type(L, (t)) == 5)</span></span>) {</td></tr>
+<tr><td class="num" id="LN79">79</td><td class="line">		printf(<span class='string_literal'>"Object at stack index %d is not a table.\n"</span>, t);</td></tr>
+<tr><td class="num" id="LN80">80</td><td class="line">		<span class='keyword'>return</span>;</td></tr>
+<tr><td class="num" id="LN81">81</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN82">82</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN83">83</td><td class="line">	lua_pushnil(L);  <span class='comment'>// first key</span></td></tr>
+<tr><td class="num" id="LN84">84</td><td class="line">    <span class='keyword'>while</span> (lua_next(L, t) != 0) {</td></tr>
+<tr><td class="num" id="LN85">85</td><td class="line">        wax_printStackAt(L, -2);</td></tr>
+<tr><td class="num" id="LN86">86</td><td class="line">        printf(<span class='string_literal'>" : "</span>);</td></tr>
+<tr><td class="num" id="LN87">87</td><td class="line">        wax_printStackAt(L, -1);</td></tr>
+<tr><td class="num" id="LN88">88</td><td class="line">        printf(<span class='string_literal'>"\n"</span>);</td></tr>
+<tr><td class="num" id="LN89">89</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN90">90</td><td class="line">        <span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>; <span class='comment'>// remove 'value'; keeps 'key' for next iteration</span></td></tr>
+<tr><td class="num" id="LN91">91</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN92">92</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN93">93</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN94">94</td><td class="line"><span class='keyword'>void</span> wax_log(<span class='keyword'>int</span> flag, NSString *format, ...) {</td></tr>
+<tr><td class="num" id="LN95">95</td><td class="line">    <span class='keyword'>if</span> (flag &amp; <span class='macro'>LOG_FLAGS<span class='expansion'>(1 &lt;&lt; 2 | 1 &lt;&lt; 1 | 1 &lt;&lt; 0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN96">96</td><td class="line">        va_list args;</td></tr>
+<tr><td class="num" id="LN97">97</td><td class="line">        <span class='macro'>va_start(args, format)<span class='expansion'>__builtin_va_start(args, format)</span></span>;</td></tr>
+<tr><td class="num" id="LN98">98</td><td class="line">        NSString *output = [[[NSString alloc] initWithFormat:format arguments:args] autorelease];</td></tr>
+<tr><td class="num" id="LN99">99</td><td class="line">        printf(<span class='string_literal'>"%s\n"</span>, [output UTF8String]);</td></tr>
+<tr><td class="num" id="LN100">100</td><td class="line">        <span class='macro'>va_end(args)<span class='expansion'>__builtin_va_end(args)</span></span>;</td></tr>
+<tr><td class="num" id="LN101">101</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN102">102</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN103">103</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN104">104</td><td class="line"><span class='keyword'>int</span> wax_getStackTrace(lua_State *L) {</td></tr>
+<tr><td class="num" id="LN105">105</td><td class="line">    lua_getfield(L, <span class='macro'>LUA_GLOBALSINDEX<span class='expansion'>(-10002)</span></span>, <span class='string_literal'>"debug"</span>);</td></tr>
+<tr><td class="num" id="LN106">106</td><td class="line">    <span class='keyword'>if</span> (!<span class='macro'>lua_istable(L, -1)<span class='expansion'>(lua_type(L, (-1)) == 5)</span></span>) {</td></tr>
+<tr><td class="num" id="LN107">107</td><td class="line">        <span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN108">108</td><td class="line">        <span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN109">109</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN110">110</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN111">111</td><td class="line">    lua_getfield(L, -1, <span class='string_literal'>"traceback"</span>);</td></tr>
+<tr><td class="num" id="LN112">112</td><td class="line">    <span class='keyword'>if</span> (!<span class='macro'>lua_isfunction(L, -1)<span class='expansion'>(lua_type(L, (-1)) == 6)</span></span>) {</td></tr>
+<tr><td class="num" id="LN113">113</td><td class="line">        <span class='macro'>lua_pop(L, 2)<span class='expansion'>lua_settop(L, -(2)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN114">114</td><td class="line">        <span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN115">115</td><td class="line">    }    </td></tr>
+<tr><td class="num" id="LN116">116</td><td class="line">    lua_remove(L, -2); <span class='comment'>// Remove debug</span></td></tr>
+<tr><td class="num" id="LN117">117</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN118">118</td><td class="line">    lua_call(L, 0, 1);    </td></tr>
+<tr><td class="num" id="LN119">119</td><td class="line">    <span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN120">120</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN121">121</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN122">122</td><td class="line"><span class='keyword'>int</span> wax_fromObjc(lua_State *L, <span class='keyword'>const</span> <span class='keyword'>char</span> *typeDescription, <span class='keyword'>void</span> *buffer) {</td></tr>
+<tr><td class="num" id="LN123">123</td><td class="line">    <span class='macro'>BEGIN_STACK_MODIFY(L)<span class='expansion'>int __startStackIndex = lua_gettop((L));</span></span></td></tr>
+<tr><td class="num" id="LN124">124</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN125">125</td><td class="line">    typeDescription = wax_removeProtocolEncodings(typeDescription);</td></tr>
+<tr><td class="num" id="LN126">126</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN127">127</td><td class="line">    <span class='keyword'>int</span> size = wax_sizeOfTypeDescription(typeDescription);</td></tr>
+<tr><td class="num" id="LN128">128</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN129">129</td><td class="line">    <span class='keyword'>switch</span> (typeDescription[0]) {</td></tr>
+<tr><td class="num" id="LN130">130</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_VOID<span class='expansion'>'v'</span></span>:</td></tr>
+<tr><td class="num" id="LN131">131</td><td class="line">            lua_pushnil(L);</td></tr>
+<tr><td class="num" id="LN132">132</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN133">133</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN134">134</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_POINTER<span class='expansion'>'^'</span></span>:</td></tr>
+<tr><td class="num" id="LN135">135</td><td class="line">            lua_pushlightuserdata(L, *(<span class='keyword'>void</span> **)buffer);</td></tr>
+<tr><td class="num" id="LN136">136</td><td class="line">            <span class='keyword'>break</span>;                        </td></tr>
+<tr><td class="num" id="LN137">137</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN138">138</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_CHAR<span class='expansion'>'c'</span></span>: {</td></tr>
+<tr><td class="num" id="LN139">139</td><td class="line">            <span class='keyword'>char</span> c = *(<span class='keyword'>char</span> *)buffer;</td></tr>
+<tr><td class="num" id="LN140">140</td><td class="line">            <span class='keyword'>if</span> (c &lt;= 1) lua_pushboolean(L, c); <span class='comment'>// If it's 1 or 0, then treat it like a bool</span></td></tr>
+<tr><td class="num" id="LN141">141</td><td class="line">            <span class='keyword'>else</span> lua_pushinteger(L, c);</td></tr>
+<tr><td class="num" id="LN142">142</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN143">143</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN144">144</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN145">145</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_SHORT<span class='expansion'>'s'</span></span>:</td></tr>
+<tr><td class="num" id="LN146">146</td><td class="line">            lua_pushinteger(L, *(<span class='keyword'>short</span> *)buffer);            </td></tr>
+<tr><td class="num" id="LN147">147</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN148">148</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN149">149</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_INT<span class='expansion'>'i'</span></span>:</td></tr>
+<tr><td class="num" id="LN150">150</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>int</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN151">151</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN152">152</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN153">153</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_CHAR<span class='expansion'>'C'</span></span>:</td></tr>
+<tr><td class="num" id="LN154">154</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>unsigned</span> <span class='keyword'>char</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN155">155</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN156">156</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN157">157</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_INT<span class='expansion'>'I'</span></span>:</td></tr>
+<tr><td class="num" id="LN158">158</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>unsigned</span> <span class='keyword'>int</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN159">159</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN160">160</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN161">161</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_SHORT<span class='expansion'>'S'</span></span>:</td></tr>
+<tr><td class="num" id="LN162">162</td><td class="line">            lua_pushinteger(L, *(<span class='keyword'>short</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN163">163</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN164">164</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN165">165</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_LONG<span class='expansion'>'l'</span></span>:</td></tr>
+<tr><td class="num" id="LN166">166</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>long</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN167">167</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN168">168</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN169">169</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_LONG_LONG<span class='expansion'>'q'</span></span>:</td></tr>
+<tr><td class="num" id="LN170">170</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>long</span> <span class='keyword'>long</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN171">171</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN172">172</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN173">173</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_LONG<span class='expansion'>'L'</span></span>:</td></tr>
+<tr><td class="num" id="LN174">174</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>unsigned</span> <span class='keyword'>long</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN175">175</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN176">176</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN177">177</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_LONG_LONG<span class='expansion'>'Q'</span></span>:</td></tr>
+<tr><td class="num" id="LN178">178</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>unsigned</span> <span class='keyword'>long</span> <span class='keyword'>long</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN179">179</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN180">180</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN181">181</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_FLOAT<span class='expansion'>'f'</span></span>:</td></tr>
+<tr><td class="num" id="LN182">182</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>float</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN183">183</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN184">184</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN185">185</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_DOUBLE<span class='expansion'>'d'</span></span>:</td></tr>
+<tr><td class="num" id="LN186">186</td><td class="line">            lua_pushnumber(L, *(<span class='keyword'>double</span> *)buffer);</td></tr>
+<tr><td class="num" id="LN187">187</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN188">188</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN189">189</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_C99_BOOL<span class='expansion'>'B'</span></span>:</td></tr>
+<tr><td class="num" id="LN190">190</td><td class="line">            lua_pushboolean(L, *(BOOL *)buffer);</td></tr>
+<tr><td class="num" id="LN191">191</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN192">192</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN193">193</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRING<span class='expansion'>'*'</span></span>:</td></tr>
+<tr><td class="num" id="LN194">194</td><td class="line">            lua_pushstring(L, *(<span class='keyword'>char</span> **)buffer);</td></tr>
+<tr><td class="num" id="LN195">195</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN196">196</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN197">197</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_ID<span class='expansion'>'@'</span></span>: {</td></tr>
+<tr><td class="num" id="LN198">198</td><td class="line">            id instance = *(id *)buffer;</td></tr>
+<tr><td class="num" id="LN199">199</td><td class="line">            wax_fromInstance(L, instance);</td></tr>
+<tr><td class="num" id="LN200">200</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN201">201</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN202">202</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN203">203</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRUCT<span class='expansion'>'{'</span></span>: {</td></tr>
+<tr><td class="num" id="LN204">204</td><td class="line">            wax_fromStruct(L, typeDescription, buffer);</td></tr>
+<tr><td class="num" id="LN205">205</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN206">206</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN207">207</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN208">208</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_SELECTOR<span class='expansion'>':'</span></span>:</td></tr>
+<tr><td class="num" id="LN209">209</td><td class="line">            lua_pushstring(L, sel_getName(*(SEL *)buffer));</td></tr>
+<tr><td class="num" id="LN210">210</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN211">211</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN212">212</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_CLASS<span class='expansion'>'#'</span></span>: {</td></tr>
+<tr><td class="num" id="LN213">213</td><td class="line">            id instance = *(id *)buffer;</td></tr>
+<tr><td class="num" id="LN214">214</td><td class="line">            wax_instance_create(L, instance, <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>);</td></tr>
+<tr><td class="num" id="LN215">215</td><td class="line">            <span class='keyword'>break</span>;                        </td></tr>
+<tr><td class="num" id="LN216">216</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN217">217</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN218">218</td><td class="line">        <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN219">219</td><td class="line">            luaL_error(L, <span class='string_literal'>"Unable to convert Obj-C type with type description '%s'"</span>, typeDescription);</td></tr>
+<tr><td class="num" id="LN220">220</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN221">221</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN222">222</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN223">223</td><td class="line">    <span class='macro'>END_STACK_MODIFY(L, 1)<span class='expansion'>while(lua_gettop((L)) &gt; (__startStackIndex + (1))) lua_remove<br>((L), __startStackIndex + 1);</span></span></td></tr>
+<tr><td class="num" id="LN224">224</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN225">225</td><td class="line">    <span class='keyword'>return</span> size;</td></tr>
+<tr><td class="num" id="LN226">226</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN227">227</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN228">228</td><td class="line"><span class='keyword'>void</span> wax_fromStruct(lua_State *L, <span class='keyword'>const</span> <span class='keyword'>char</span> *typeDescription, <span class='keyword'>void</span> *buffer) {</td></tr>
+<tr><td class="num" id="LN229">229</td><td class="line">    wax_struct_create(L, typeDescription, buffer);</td></tr>
+<tr><td class="num" id="LN230">230</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN231">231</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN232">232</td><td class="line"><span class='keyword'>void</span> wax_fromInstance(lua_State *L, id instance) {</td></tr>
+<tr><td class="num" id="LN233">233</td><td class="line">    <span class='macro'>BEGIN_STACK_MODIFY(L)<span class='expansion'>int __startStackIndex = lua_gettop((L));</span></span></td></tr>
+<tr><td class="num" id="LN234">234</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN235">235</td><td class="line">    <span class='keyword'>if</span> (instance) {</td></tr>
+<tr><td class="num" id="LN236">236</td><td class="line">        <span class='keyword'>if</span> ([instance isKindOfClass:[NSString class]]) {    </td></tr>
+<tr><td class="num" id="LN237">237</td><td class="line">            lua_pushstring(L, [(NSString *)instance UTF8String]);</td></tr>
+<tr><td class="num" id="LN238">238</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN239">239</td><td class="line">        <span class='keyword'>else</span> <span class='keyword'>if</span> ([instance isKindOfClass:[NSNumber class]]) {</td></tr>
+<tr><td class="num" id="LN240">240</td><td class="line">            lua_pushnumber(L, [instance doubleValue]);</td></tr>
+<tr><td class="num" id="LN241">241</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN242">242</td><td class="line">        <span class='keyword'>else</span> <span class='keyword'>if</span> ([instance isKindOfClass:[NSArray class]]) {</td></tr>
+<tr><td class="num" id="LN243">243</td><td class="line">            <span class='macro'>lua_newtable(L)<span class='expansion'>lua_createtable(L, 0, 0)</span></span>;</td></tr>
+<tr><td class="num" id="LN244">244</td><td class="line">            <span class='keyword'>for</span> (id obj in instance) {</td></tr>
+<tr><td class="num" id="LN245">245</td><td class="line">                <span class='keyword'>int</span> i = lua_objlen(L, -1);</td></tr>
+<tr><td class="num" id="LN246">246</td><td class="line">                wax_fromInstance(L, obj);</td></tr>
+<tr><td class="num" id="LN247">247</td><td class="line">                lua_rawseti(L, -2, i + 1);</td></tr>
+<tr><td class="num" id="LN248">248</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN249">249</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN250">250</td><td class="line">        <span class='keyword'>else</span> <span class='keyword'>if</span> ([instance isKindOfClass:[NSDictionary class]]) {</td></tr>
+<tr><td class="num" id="LN251">251</td><td class="line">            <span class='macro'>lua_newtable(L)<span class='expansion'>lua_createtable(L, 0, 0)</span></span>;</td></tr>
+<tr><td class="num" id="LN252">252</td><td class="line">            <span class='keyword'>for</span> (id key in instance) {</td></tr>
+<tr><td class="num" id="LN253">253</td><td class="line">                wax_fromInstance(L, key);</td></tr>
+<tr><td class="num" id="LN254">254</td><td class="line">                wax_fromInstance(L, [instance objectForKey:key]);</td></tr>
+<tr><td class="num" id="LN255">255</td><td class="line">                lua_rawset(L, -3);</td></tr>
+<tr><td class="num" id="LN256">256</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN257">257</td><td class="line">        }                </td></tr>
+<tr><td class="num" id="LN258">258</td><td class="line">        <span class='keyword'>else</span> <span class='keyword'>if</span> ([instance isKindOfClass:[NSValue class]]) {</td></tr>
+<tr><td class="num" id="LN259">259</td><td class="line">            <span class='keyword'>void</span> *buffer = malloc(wax_sizeOfTypeDescription([instance objCType]));</td></tr>
+<tr><td class="num" id="LN260">260</td><td class="line">            [instance getValue:buffer];</td></tr>
+<tr><td class="num" id="LN261">261</td><td class="line">            wax_fromObjc(L, [instance objCType], buffer);</td></tr>
+<tr><td class="num" id="LN262">262</td><td class="line">            free(buffer);</td></tr>
+<tr><td class="num" id="LN263">263</td><td class="line">        }    </td></tr>
+<tr><td class="num" id="LN264">264</td><td class="line">		<span class='keyword'>else</span> <span class='keyword'>if</span> ([instance isKindOfClass:[WaxFunction class]]) {</td></tr>
+<tr><td class="num" id="LN265">265</td><td class="line">			wax_instance_pushUserdata(L, instance);</td></tr>
+<tr><td class="num" id="LN266">266</td><td class="line">			<span class='keyword'>if</span> (<span class='macro'>lua_isnil(L, -1)<span class='expansion'>(lua_type(L, (-1)) == 0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN267">267</td><td class="line">				luaL_error(L, <span class='string_literal'>"Could not get userdata associated with WaxFunction"</span>);</td></tr>
+<tr><td class="num" id="LN268">268</td><td class="line">			}</td></tr>
+<tr><td class="num" id="LN269">269</td><td class="line">			lua_getfield(L, -1, <span class='string_literal'>"function"</span>);</td></tr>
+<tr><td class="num" id="LN270">270</td><td class="line">		}</td></tr>
+<tr><td class="num" id="LN271">271</td><td class="line">        <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN272">272</td><td class="line">            wax_instance_create(L, instance, <span class='macro'>NO<span class='expansion'>__objc_no</span></span>);</td></tr>
+<tr><td class="num" id="LN273">273</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN274">274</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN275">275</td><td class="line">    <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN276">276</td><td class="line">        lua_pushnil(L);</td></tr>
+<tr><td class="num" id="LN277">277</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN278">278</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN279">279</td><td class="line">    <span class='macro'>END_STACK_MODIFY(L, 1)<span class='expansion'>while(lua_gettop((L)) &gt; (__startStackIndex + (1))) lua_remove<br>((L), __startStackIndex + 1);</span></span></td></tr>
+<tr><td class="num" id="LN280">280</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN281">281</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN282">282</td><td class="line"><span class='directive'>#define <span class='macro'>WAX_TO_INTEGER(_type_)<span class='expansion'>*outsize = sizeof(_type_); value = calloc(sizeof(_type_), 1);<br> *((_type_ *)value) = (_type_)lua_tointeger(L, stackIndex);</span></span> *outsize = sizeof(_type_); value = calloc(sizeof(_type_), 1); *((_type_ *)value) = (_type_)lua_tointeger(L, stackIndex);</span></td></tr>
+<tr><td class="num" id="LN283">283</td><td class="line"><span class='directive'>#define <span class='macro'>WAX_TO_NUMBER(_type_)<span class='expansion'>*outsize = sizeof(_type_); value = calloc(sizeof(_type_), 1);<br> *((_type_ *)value) = (_type_)lua_tonumber(L, stackIndex);</span></span> *outsize = sizeof(_type_); value = calloc(sizeof(_type_), 1); *((_type_ *)value) = (_type_)lua_tonumber(L, stackIndex);</span></td></tr>
+<tr><td class="num" id="LN284">284</td><td class="line"><span class='directive'>#define <span class='macro'>WAX_TO_BOOL_OR_CHAR(_type_)<span class='expansion'>*outsize = sizeof(_type_); value = calloc(sizeof(_type_), 1);<br> *((_type_ *)value) = (_type_)(lua_isstring(L, stackIndex) ? lua_tolstring<br>(L, (stackIndex), ((void*)0))[0] : lua_toboolean(L, stackIndex<br>));</span></span> *outsize = sizeof(_type_); value = calloc(sizeof(_type_), 1); *((_type_ *)value) = (_type_)(lua_isstring(L, stackIndex) ? <span class='macro'>lua_tostring(L, stackIndex)<span class='expansion'>lua_tolstring(L, (stackIndex), ((void*)0))</span></span>[0] : lua_toboolean(L, stackIndex));</span></td></tr>
+<tr><td class="num" id="LN285">285</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN286">286</td><td class="line"><span class='comment'>// MAKE SURE YOU RELEASE THE RETURN VALUE!</span></td></tr>
+<tr><td class="num" id="LN287">287</td><td class="line"><span class='keyword'>void</span> *wax_copyToObjc(lua_State *L, <span class='keyword'>const</span> <span class='keyword'>char</span> *typeDescription, <span class='keyword'>int</span> stackIndex, <span class='keyword'>int</span> *outsize) {</td></tr>
+<tr><td class="num" id="LN288">288</td><td class="line">    <span class='keyword'>void</span> *value = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN289">289</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN290">290</td><td class="line">    <span class='comment'>// Ignore method encodings</span></td></tr>
+<tr><td class="num" id="LN291">291</td><td class="line">    <span class='keyword'>switch</span> (typeDescription[0]) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgControl" style="margin-left:5ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">1</div></td><td>'Default' branch taken. Execution continues on line 304</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN292">292</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_CONST<span class='expansion'>'r'</span></span>:</td></tr>
+<tr><td class="num" id="LN293">293</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_IN<span class='expansion'>'n'</span></span>:</td></tr>
+<tr><td class="num" id="LN294">294</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_INOUT<span class='expansion'>'N'</span></span>:</td></tr>
+<tr><td class="num" id="LN295">295</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_OUT<span class='expansion'>'o'</span></span>:</td></tr>
+<tr><td class="num" id="LN296">296</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_BYCOPY<span class='expansion'>'O'</span></span>:</td></tr>
+<tr><td class="num" id="LN297">297</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_BYREF<span class='expansion'>'R'</span></span>:</td></tr>
+<tr><td class="num" id="LN298">298</td><td class="line">        <span class='keyword'>case</span>  <span class='macro'>WAX_PROTOCOL_TYPE_ONEWAY<span class='expansion'>'V'</span></span>:</td></tr>
+<tr><td class="num" id="LN299">299</td><td class="line">            typeDescription = typeDescription + 1; <span class='comment'>// Skip first</span></td></tr>
+<tr><td class="num" id="LN300">300</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN301">301</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN302">302</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN303">303</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN304">304</td><td class="line">    <span class='keyword'>if</span> (<span class="mrange">outsize == <span class='macro'>nil<span class='expansion'>((void *)0)</span></span></span>) outsize = alloca(<span class='keyword'>sizeof</span>(<span class='keyword'>int</span>)); <span class='comment'>// if no outsize address set, treat it as a junk var</span></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Assuming 'outsize' is not equal to null</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:5ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN305">305</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN306">306</td><td class="line">    <span class='keyword'>switch</span> (typeDescription[0]) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgControl" style="margin-left:5ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Control jumps to 'case 94:'  at line 394</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN307">307</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_C99_BOOL<span class='expansion'>'B'</span></span>:</td></tr>
+<tr><td class="num" id="LN308">308</td><td class="line">            <span class='macro'>WAX_TO_BOOL_OR_CHAR(BOOL)<span class='expansion'>*outsize = sizeof(BOOL); value = calloc(sizeof(BOOL), 1); *((<br>BOOL *)value) = (BOOL)(lua_isstring(L, stackIndex) ? lua_tolstring<br>(L, (stackIndex), ((void*)0))[0] : lua_toboolean(L, stackIndex<br>));</span></span></td></tr>
+<tr><td class="num" id="LN309">309</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN310">310</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN311">311</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_CHAR<span class='expansion'>'c'</span></span>:</td></tr>
+<tr><td class="num" id="LN312">312</td><td class="line">            <span class='macro'>WAX_TO_BOOL_OR_CHAR(<span class='keyword'>char</span>)<span class='expansion'>*outsize = sizeof(char); value = calloc(sizeof(char), 1); *((<br>char *)value) = (char)(lua_isstring(L, stackIndex) ? lua_tolstring<br>(L, (stackIndex), ((void*)0))[0] : lua_toboolean(L, stackIndex<br>));</span></span></td></tr>
+<tr><td class="num" id="LN313">313</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN314">314</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN315">315</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_INT<span class='expansion'>'i'</span></span>:</td></tr>
+<tr><td class="num" id="LN316">316</td><td class="line">            <span class='macro'>WAX_TO_INTEGER(<span class='keyword'>int</span>)<span class='expansion'>*outsize = sizeof(int); value = calloc(sizeof(int), 1); *((int<br> *)value) = (int)lua_tointeger(L, stackIndex);</span></span></td></tr>
+<tr><td class="num" id="LN317">317</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN318">318</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN319">319</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_SHORT<span class='expansion'>'s'</span></span>:</td></tr>
+<tr><td class="num" id="LN320">320</td><td class="line">            <span class='macro'>WAX_TO_INTEGER(<span class='keyword'>short</span>)<span class='expansion'>*outsize = sizeof(short); value = calloc(sizeof(short), 1); *<br>((short *)value) = (short)lua_tointeger(L, stackIndex);</span></span></td></tr>
+<tr><td class="num" id="LN321">321</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN322">322</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN323">323</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_CHAR<span class='expansion'>'C'</span></span>:</td></tr>
+<tr><td class="num" id="LN324">324</td><td class="line">            <span class='macro'>WAX_TO_INTEGER(<span class='keyword'>unsigned</span> <span class='keyword'>char</span>)<span class='expansion'>*outsize = sizeof(unsigned char); value = calloc(sizeof(unsigned<br> char), 1); *((unsigned char *)value) = (unsigned char)lua_tointeger<br>(L, stackIndex);</span></span></td></tr>
+<tr><td class="num" id="LN325">325</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN326">326</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN327">327</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_INT<span class='expansion'>'I'</span></span>:</td></tr>
+<tr><td class="num" id="LN328">328</td><td class="line">            <span class='macro'>WAX_TO_INTEGER(<span class='keyword'>unsigned</span> <span class='keyword'>int</span>)<span class='expansion'>*outsize = sizeof(unsigned int); value = calloc(sizeof(unsigned<br> int), 1); *((unsigned int *)value) = (unsigned int)lua_tointeger<br>(L, stackIndex);</span></span></td></tr>
+<tr><td class="num" id="LN329">329</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN330">330</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN331">331</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_SHORT<span class='expansion'>'S'</span></span>:</td></tr>
+<tr><td class="num" id="LN332">332</td><td class="line">            <span class='macro'>WAX_TO_INTEGER(<span class='keyword'>unsigned</span> <span class='keyword'>short</span>)<span class='expansion'>*outsize = sizeof(unsigned short); value = calloc(sizeof(unsigned<br> short), 1); *((unsigned short *)value) = (unsigned short)lua_tointeger<br>(L, stackIndex);</span></span></td></tr>
+<tr><td class="num" id="LN333">333</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN334">334</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN335">335</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_LONG<span class='expansion'>'l'</span></span>:</td></tr>
+<tr><td class="num" id="LN336">336</td><td class="line">            <span class='macro'>WAX_TO_NUMBER(<span class='keyword'>long</span>)<span class='expansion'>*outsize = sizeof(long); value = calloc(sizeof(long), 1); *((<br>long *)value) = (long)lua_tonumber(L, stackIndex);</span></span></td></tr>
+<tr><td class="num" id="LN337">337</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN338">338</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN339">339</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_LONG_LONG<span class='expansion'>'q'</span></span>:</td></tr>
+<tr><td class="num" id="LN340">340</td><td class="line">            <span class='macro'>WAX_TO_NUMBER(<span class='keyword'>long</span> <span class='keyword'>long</span>)<span class='expansion'>*outsize = sizeof(long long); value = calloc(sizeof(long long<br>), 1); *((long long *)value) = (long long)lua_tonumber(L, stackIndex<br>);</span></span></td></tr>
+<tr><td class="num" id="LN341">341</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN342">342</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN343">343</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_LONG<span class='expansion'>'L'</span></span>:</td></tr>
+<tr><td class="num" id="LN344">344</td><td class="line">            <span class='macro'>WAX_TO_NUMBER(<span class='keyword'>unsigned</span> <span class='keyword'>long</span>)<span class='expansion'>*outsize = sizeof(unsigned long); value = calloc(sizeof(unsigned<br> long), 1); *((unsigned long *)value) = (unsigned long)lua_tonumber<br>(L, stackIndex);</span></span></td></tr>
+<tr><td class="num" id="LN345">345</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN346">346</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN347">347</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_LONG_LONG<span class='expansion'>'Q'</span></span>:</td></tr>
+<tr><td class="num" id="LN348">348</td><td class="line">            <span class='macro'>WAX_TO_NUMBER(<span class='keyword'>unsigned</span> <span class='keyword'>long</span> <span class='keyword'>long</span>)<span class='expansion'>*outsize = sizeof(unsigned long long); value = calloc(sizeof(<br>unsigned long long), 1); *((unsigned long long *)value) = (unsigned<br> long long)lua_tonumber(L, stackIndex);</span></span>;</td></tr>
+<tr><td class="num" id="LN349">349</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN350">350</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN351">351</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_FLOAT<span class='expansion'>'f'</span></span>:</td></tr>
+<tr><td class="num" id="LN352">352</td><td class="line">            <span class='macro'>WAX_TO_NUMBER(<span class='keyword'>float</span>)<span class='expansion'>*outsize = sizeof(float); value = calloc(sizeof(float), 1); *<br>((float *)value) = (float)lua_tonumber(L, stackIndex);</span></span>;</td></tr>
+<tr><td class="num" id="LN353">353</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN354">354</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN355">355</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_DOUBLE<span class='expansion'>'d'</span></span>:</td></tr>
+<tr><td class="num" id="LN356">356</td><td class="line">            <span class='macro'>WAX_TO_NUMBER(<span class='keyword'>double</span>)<span class='expansion'>*outsize = sizeof(double); value = calloc(sizeof(double), 1);<br> *((double *)value) = (double)lua_tonumber(L, stackIndex);</span></span>;</td></tr>
+<tr><td class="num" id="LN357">357</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN358">358</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN359">359</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_SELECTOR<span class='expansion'>':'</span></span>:</td></tr>
+<tr><td class="num" id="LN360">360</td><td class="line">            <span class='keyword'>if</span> (<span class='macro'>lua_isnil(L, stackIndex)<span class='expansion'>(lua_type(L, (stackIndex)) == 0)</span></span>) { <span class='comment'>// If no slector is passed it, just use an empty string</span></td></tr>
+<tr><td class="num" id="LN361">361</td><td class="line">                lua_pushstring(L, <span class='string_literal'>""</span>);</td></tr>
+<tr><td class="num" id="LN362">362</td><td class="line">                lua_replace(L, stackIndex);</td></tr>
+<tr><td class="num" id="LN363">363</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN364">364</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN365">365</td><td class="line">            *outsize = <span class='keyword'>sizeof</span>(SEL);</td></tr>
+<tr><td class="num" id="LN366">366</td><td class="line">            value = calloc(<span class='keyword'>sizeof</span>(SEL), 1);</td></tr>
+<tr><td class="num" id="LN367">367</td><td class="line">            <span class='keyword'>const</span> <span class='keyword'>char</span> *selectorName = <span class='macro'>luaL_checkstring(L, stackIndex)<span class='expansion'>(luaL_checklstring(L, (stackIndex), ((void*)0)))</span></span>;</td></tr>
+<tr><td class="num" id="LN368">368</td><td class="line">            *((SEL *)value) = sel_getUid(selectorName);                </td></tr>
+<tr><td class="num" id="LN369">369</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN370">370</td><td class="line">            <span class='keyword'>break</span>;            </td></tr>
+<tr><td class="num" id="LN371">371</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN372">372</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_CLASS<span class='expansion'>'#'</span></span>:</td></tr>
+<tr><td class="num" id="LN373">373</td><td class="line">            *outsize = <span class='keyword'>sizeof</span>(Class);</td></tr>
+<tr><td class="num" id="LN374">374</td><td class="line">            value = calloc(<span class='keyword'>sizeof</span>(Class), 1);</td></tr>
+<tr><td class="num" id="LN375">375</td><td class="line">            <span class='keyword'>if</span> (lua_isuserdata(L, stackIndex)) {</td></tr>
+<tr><td class="num" id="LN376">376</td><td class="line">                wax_instance_userdata *instanceUserdata = (wax_instance_userdata *)luaL_checkudata(L, stackIndex, <span class='macro'>WAX_INSTANCE_METATABLE_NAME<span class='expansion'>"wax.instance"</span></span>);</td></tr>
+<tr><td class="num" id="LN377">377</td><td class="line">                *(id *)value = instanceUserdata-&gt;instance;   </td></tr>
+<tr><td class="num" id="LN378">378</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN379">379</td><td class="line">            <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN380">380</td><td class="line">                *((Class *)value) = objc_getClass(<span class='macro'>lua_tostring(L, stackIndex)<span class='expansion'>lua_tolstring(L, (stackIndex), ((void*)0))</span></span>);</td></tr>
+<tr><td class="num" id="LN381">381</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN382">382</td><td class="line">            <span class='keyword'>break</span>;             </td></tr>
+<tr><td class="num" id="LN383">383</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN384">384</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRING<span class='expansion'>'*'</span></span>: {</td></tr>
+<tr><td class="num" id="LN385">385</td><td class="line">            <span class='keyword'>const</span> <span class='keyword'>char</span> *string = <span class='macro'>lua_tostring(L, stackIndex)<span class='expansion'>lua_tolstring(L, (stackIndex), ((void*)0))</span></span>;</td></tr>
+<tr><td class="num" id="LN386">386</td><td class="line">            <span class='keyword'>int</span> length = strlen(string) + 1;</td></tr>
+<tr><td class="num" id="LN387">387</td><td class="line">            *outsize = length;</td></tr>
+<tr><td class="num" id="LN388">388</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN389">389</td><td class="line">            value = calloc(<span class='keyword'>sizeof</span>(<span class='keyword'>char</span> *), length);</td></tr>
+<tr><td class="num" id="LN390">390</td><td class="line">            strcpy(value, string);</td></tr>
+<tr><td class="num" id="LN391">391</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN392">392</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN393">393</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN394">394</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_POINTER<span class='expansion'>'^'</span></span>:</td></tr>
+<tr><td class="num" id="LN395">395</td><td class="line">            *outsize = <span class='keyword'>sizeof</span>(<span class='keyword'>void</span> *);</td></tr>
+<tr><td class="num" id="LN396">396</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN397">397</td><td class="line">            value = <span class="mrange">calloc(<span class='keyword'>sizeof</span>(<span class='keyword'>void</span> *), 1)</span>;            </td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Memory is allocated</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN398">398</td><td class="line">            <span class='keyword'>void</span> *pointer = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN399">399</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN400">400</td><td class="line">            <span class='keyword'>switch</span> (typeDescription[1]) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgControl" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Control jumps to the 'default' case at line 425</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN401">401</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_VOID<span class='expansion'>'v'</span></span>:</td></tr>
+<tr><td class="num" id="LN402">402</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_ID<span class='expansion'>'@'</span></span>: {</td></tr>
+<tr><td class="num" id="LN403">403</td><td class="line">                    <span class='keyword'>switch</span> (lua_type(L, stackIndex)) {</td></tr>
+<tr><td class="num" id="LN404">404</td><td class="line">                        <span class='keyword'>case</span> <span class='macro'>LUA_TNIL<span class='expansion'>0</span></span>:</td></tr>
+<tr><td class="num" id="LN405">405</td><td class="line">                        <span class='keyword'>case</span> <span class='macro'>LUA_TNONE<span class='expansion'>(-1)</span></span>:</td></tr>
+<tr><td class="num" id="LN406">406</td><td class="line">                            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN407">407</td><td class="line">                            </td></tr>
+<tr><td class="num" id="LN408">408</td><td class="line">                        <span class='keyword'>case</span> <span class='macro'>LUA_TUSERDATA<span class='expansion'>7</span></span>: {</td></tr>
+<tr><td class="num" id="LN409">409</td><td class="line">                            wax_instance_userdata *instanceUserdata = (wax_instance_userdata *)luaL_checkudata(L, stackIndex, <span class='macro'>WAX_INSTANCE_METATABLE_NAME<span class='expansion'>"wax.instance"</span></span>);</td></tr>
+<tr><td class="num" id="LN410">410</td><td class="line">							<span class='keyword'>if</span> (typeDescription[1] == <span class='macro'>WAX_TYPE_VOID<span class='expansion'>'v'</span></span>) {</td></tr>
+<tr><td class="num" id="LN411">411</td><td class="line">								pointer = instanceUserdata-&gt;instance;</td></tr>
+<tr><td class="num" id="LN412">412</td><td class="line">							}</td></tr>
+<tr><td class="num" id="LN413">413</td><td class="line">							<span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN414">414</td><td class="line">								pointer = &amp;instanceUserdata-&gt;instance;</td></tr>
+<tr><td class="num" id="LN415">415</td><td class="line">							}</td></tr>
+<tr><td class="num" id="LN416">416</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN417">417</td><td class="line">                            <span class='keyword'>break</span>;                                  </td></tr>
+<tr><td class="num" id="LN418">418</td><td class="line">                        }</td></tr>
+<tr><td class="num" id="LN419">419</td><td class="line">                        <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN420">420</td><td class="line">                            luaL_error(L, <span class='string_literal'>"Can't convert %s to wax_instance_userdata."</span>, <span class='macro'>luaL_typename(L, stackIndex)<span class='expansion'>lua_typename(L, lua_type(L,(stackIndex)))</span></span>);</td></tr>
+<tr><td class="num" id="LN421">421</td><td class="line">                            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN422">422</td><td class="line">                    }    </td></tr>
+<tr><td class="num" id="LN423">423</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN424">424</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN425">425</td><td class="line">                <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN426">426</td><td class="line">                    <span class='keyword'>if</span> (<span class='macro'>lua_islightuserdata(L, stackIndex)<span class='expansion'>(lua_type(L, (stackIndex)) == 2)</span></span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN427">427</td><td class="line">                        pointer = lua_touserdata(L, stackIndex);</td></tr>
+<tr><td class="num" id="LN428">428</td><td class="line">                    }</td></tr>
+<tr><td class="num" id="LN429">429</td><td class="line">                    <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN430">430</td><td class="line">                        <span class="mrange">free(value)</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:25ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Memory is released</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN431">431</td><td class="line">                        luaL_error(L, <span class='string_literal'>"Converstion from %s to Objective-c not implemented."</span>, typeDescription);</td></tr>
+<tr><td class="num" id="LN432">432</td><td class="line">                    }</td></tr>
+<tr><td class="num" id="LN433">433</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN434">434</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN435">435</td><td class="line">            <span class='keyword'>if</span> (pointer) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgControl" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN436">436</td><td class="line">                memcpy(value, &amp;pointer, *outsize);</td></tr>
+<tr><td class="num" id="LN437">437</td><td class="line">            }   </td></tr>
+<tr><td class="num" id="LN438">438</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN439">439</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgControl" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td> Execution continues on line 566</td><td><div class="PathNav"><a href="#EndPath" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN440">440</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN441">441</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_ID<span class='expansion'>'@'</span></span>: {</td></tr>
+<tr><td class="num" id="LN442">442</td><td class="line">            *outsize = <span class='keyword'>sizeof</span>(id);</td></tr>
+<tr><td class="num" id="LN443">443</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN444">444</td><td class="line">            value = calloc(<span class='keyword'>sizeof</span>(id), 1);            </td></tr>
+<tr><td class="num" id="LN445">445</td><td class="line">            <span class='comment'>// add number, string</span></td></tr>
+<tr><td class="num" id="LN446">446</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN447">447</td><td class="line">            id instance = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN448">448</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN449">449</td><td class="line">            <span class='keyword'>switch</span> (lua_type(L, stackIndex)) {</td></tr>
+<tr><td class="num" id="LN450">450</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TNIL<span class='expansion'>0</span></span>:</td></tr>
+<tr><td class="num" id="LN451">451</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TNONE<span class='expansion'>(-1)</span></span>:</td></tr>
+<tr><td class="num" id="LN452">452</td><td class="line">                    instance = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN453">453</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN454">454</td><td class="line">                    </td></tr>
+<tr><td class="num" id="LN455">455</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TBOOLEAN<span class='expansion'>1</span></span>: {</td></tr>
+<tr><td class="num" id="LN456">456</td><td class="line">                    BOOL value = lua_toboolean(L, stackIndex);</td></tr>
+<tr><td class="num" id="LN457">457</td><td class="line">                    instance = [NSValue valueWithBytes:&amp;value objCType:@encode(<span class='macro'>bool<span class='expansion'>_Bool</span></span>)];</td></tr>
+<tr><td class="num" id="LN458">458</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN459">459</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN460">460</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TNUMBER<span class='expansion'>3</span></span>:</td></tr>
+<tr><td class="num" id="LN461">461</td><td class="line">                    instance = [NSNumber numberWithDouble:lua_tonumber(L, stackIndex)];                    </td></tr>
+<tr><td class="num" id="LN462">462</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN463">463</td><td class="line">                    </td></tr>
+<tr><td class="num" id="LN464">464</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TSTRING<span class='expansion'>4</span></span>: </td></tr>
+<tr><td class="num" id="LN465">465</td><td class="line">                    instance = [NSString stringWithUTF8String:<span class='macro'>lua_tostring(L, stackIndex)<span class='expansion'>lua_tolstring(L, (stackIndex), ((void*)0))</span></span>];  </td></tr>
+<tr><td class="num" id="LN466">466</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN467">467</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN468">468</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TTABLE<span class='expansion'>5</span></span>: {</td></tr>
+<tr><td class="num" id="LN469">469</td><td class="line">                    BOOL dictionary = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN470">470</td><td class="line">                    </td></tr>
+<tr><td class="num" id="LN471">471</td><td class="line">                    lua_pushvalue(L, stackIndex); <span class='comment'>// Push the table reference on the top</span></td></tr>
+<tr><td class="num" id="LN472">472</td><td class="line">                    lua_pushnil(L);  <span class='comment'>/* first key */</span></td></tr>
+<tr><td class="num" id="LN473">473</td><td class="line">                    <span class='keyword'>while</span> (!dictionary &amp;&amp; lua_next(L, -2)) {</td></tr>
+<tr><td class="num" id="LN474">474</td><td class="line">                        <span class='keyword'>if</span> (lua_type(L, -2) != <span class='macro'>LUA_TNUMBER<span class='expansion'>3</span></span>) {</td></tr>
+<tr><td class="num" id="LN475">475</td><td class="line">                            dictionary = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;                        </td></tr>
+<tr><td class="num" id="LN476">476</td><td class="line">                            <span class='macro'>lua_pop(L, 2)<span class='expansion'>lua_settop(L, -(2)-1)</span></span>; <span class='comment'>// pop key and value off the stack</span></td></tr>
+<tr><td class="num" id="LN477">477</td><td class="line">                        }</td></tr>
+<tr><td class="num" id="LN478">478</td><td class="line">                        <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN479">479</td><td class="line">                            <span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN480">480</td><td class="line">                        }</td></tr>
+<tr><td class="num" id="LN481">481</td><td class="line">                    }</td></tr>
+<tr><td class="num" id="LN482">482</td><td class="line">                                        </td></tr>
+<tr><td class="num" id="LN483">483</td><td class="line">                    <span class='keyword'>if</span> (dictionary) {</td></tr>
+<tr><td class="num" id="LN484">484</td><td class="line">                        instance = [NSMutableDictionary dictionary];</td></tr>
+<tr><td class="num" id="LN485">485</td><td class="line">                        </td></tr>
+<tr><td class="num" id="LN486">486</td><td class="line">                        lua_pushnil(L);  <span class='comment'>/* first key */</span></td></tr>
+<tr><td class="num" id="LN487">487</td><td class="line">                        <span class='keyword'>while</span> (lua_next(L, -2)) {</td></tr>
+<tr><td class="num" id="LN488">488</td><td class="line">                            id *key = wax_copyToObjc(L, <span class='string_literal'>"@"</span>, -2, <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>);</td></tr>
+<tr><td class="num" id="LN489">489</td><td class="line">                            id *object = wax_copyToObjc(L, <span class='string_literal'>"@"</span>, -1, <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>);</td></tr>
+<tr><td class="num" id="LN490">490</td><td class="line">                            [instance setObject:*object forKey:*key];</td></tr>
+<tr><td class="num" id="LN491">491</td><td class="line">                            <span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>; <span class='comment'>// Pop off the value</span></td></tr>
+<tr><td class="num" id="LN492">492</td><td class="line">                            free(key);</td></tr>
+<tr><td class="num" id="LN493">493</td><td class="line">                            free(object);</td></tr>
+<tr><td class="num" id="LN494">494</td><td class="line">                        }                        </td></tr>
+<tr><td class="num" id="LN495">495</td><td class="line">                    }</td></tr>
+<tr><td class="num" id="LN496">496</td><td class="line">                    <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN497">497</td><td class="line">                        instance = [NSMutableArray array];</td></tr>
+<tr><td class="num" id="LN498">498</td><td class="line">                        </td></tr>
+<tr><td class="num" id="LN499">499</td><td class="line">                        lua_pushnil(L);  <span class='comment'>/* first key */</span></td></tr>
+<tr><td class="num" id="LN500">500</td><td class="line">                        <span class='keyword'>while</span> (lua_next(L, -2)) {</td></tr>
+<tr><td class="num" id="LN501">501</td><td class="line">                            <span class='keyword'>int</span> index = lua_tonumber(L, -2) - 1;</td></tr>
+<tr><td class="num" id="LN502">502</td><td class="line">                            id *object = wax_copyToObjc(L, <span class='string_literal'>"@"</span>, -1, <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>);</td></tr>
+<tr><td class="num" id="LN503">503</td><td class="line">                            [instance insertObject:*object atIndex:index];</td></tr>
+<tr><td class="num" id="LN504">504</td><td class="line">                            <span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN505">505</td><td class="line">                            free(object);</td></tr>
+<tr><td class="num" id="LN506">506</td><td class="line">                        }                                </td></tr>
+<tr><td class="num" id="LN507">507</td><td class="line">                    }</td></tr>
+<tr><td class="num" id="LN508">508</td><td class="line">                      </td></tr>
+<tr><td class="num" id="LN509">509</td><td class="line">                    <span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>; <span class='comment'>// Pop the table reference off </span></td></tr>
+<tr><td class="num" id="LN510">510</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN511">511</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN512">512</td><td class="line">                                        </td></tr>
+<tr><td class="num" id="LN513">513</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TUSERDATA<span class='expansion'>7</span></span>: {</td></tr>
+<tr><td class="num" id="LN514">514</td><td class="line">                    wax_instance_userdata *instanceUserdata = (wax_instance_userdata *)luaL_checkudata(L, stackIndex, <span class='macro'>WAX_INSTANCE_METATABLE_NAME<span class='expansion'>"wax.instance"</span></span>);</td></tr>
+<tr><td class="num" id="LN515">515</td><td class="line">                    instance = instanceUserdata-&gt;instance;</td></tr>
+<tr><td class="num" id="LN516">516</td><td class="line">                    <span class='keyword'>break</span>;                                  </td></tr>
+<tr><td class="num" id="LN517">517</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN518">518</td><td class="line">                <span class='keyword'>case</span> <span class='macro'>LUA_TLIGHTUSERDATA<span class='expansion'>2</span></span>: {</td></tr>
+<tr><td class="num" id="LN519">519</td><td class="line">                    instance = lua_touserdata(L, -1);</td></tr>
+<tr><td class="num" id="LN520">520</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN521">521</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN522">522</td><td class="line">				<span class='keyword'>case</span> <span class='macro'>LUA_TFUNCTION<span class='expansion'>6</span></span>: {</td></tr>
+<tr><td class="num" id="LN523">523</td><td class="line">				    instance = [[[WaxFunction alloc] init] autorelease];</td></tr>
+<tr><td class="num" id="LN524">524</td><td class="line">				    wax_instance_create(L, instance, <span class='macro'>NO<span class='expansion'>__objc_no</span></span>);</td></tr>
+<tr><td class="num" id="LN525">525</td><td class="line">				    lua_pushvalue(L, -2);</td></tr>
+<tr><td class="num" id="LN526">526</td><td class="line">				    lua_setfield(L, -2, <span class='string_literal'>"function"</span>); <span class='comment'>// Stores function inside of this instance</span></td></tr>
+<tr><td class="num" id="LN527">527</td><td class="line">					<span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN528">528</td><td class="line">					</td></tr>
+<tr><td class="num" id="LN529">529</td><td class="line">					<span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN530">530</td><td class="line">				}</td></tr>
+<tr><td class="num" id="LN531">531</td><td class="line">                <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN532">532</td><td class="line">                    luaL_error(L, <span class='string_literal'>"Can't convert %s to obj-c."</span>, <span class='macro'>luaL_typename(L, stackIndex)<span class='expansion'>lua_typename(L, lua_type(L,(stackIndex)))</span></span>);</td></tr>
+<tr><td class="num" id="LN533">533</td><td class="line">                    <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN534">534</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN535">535</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN536">536</td><td class="line">            <span class='keyword'>if</span> (instance) {</td></tr>
+<tr><td class="num" id="LN537">537</td><td class="line">                *(id *)value = instance;</td></tr>
+<tr><td class="num" id="LN538">538</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN539">539</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN540">540</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN541">541</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN542">542</td><td class="line">        }        </td></tr>
+<tr><td class="num" id="LN543">543</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN544">544</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRUCT<span class='expansion'>'{'</span></span>: {</td></tr>
+<tr><td class="num" id="LN545">545</td><td class="line">            <span class='keyword'>if</span> (lua_isuserdata(L, stackIndex)) {</td></tr>
+<tr><td class="num" id="LN546">546</td><td class="line">                wax_struct_userdata *structUserdata = (wax_struct_userdata *)luaL_checkudata(L, stackIndex, <span class='macro'>WAX_STRUCT_METATABLE_NAME<span class='expansion'>"wax.struct"</span></span>);</td></tr>
+<tr><td class="num" id="LN547">547</td><td class="line">                value = malloc(structUserdata-&gt;size);</td></tr>
+<tr><td class="num" id="LN548">548</td><td class="line">                memcpy(value, structUserdata-&gt;data, structUserdata-&gt;size);</td></tr>
+<tr><td class="num" id="LN549">549</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN550">550</td><td class="line">            <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN551">551</td><td class="line">                <span class='keyword'>void</span> *data = (<span class='keyword'>void</span> *)<span class='macro'>lua_tostring(L, stackIndex)<span class='expansion'>lua_tolstring(L, (stackIndex), ((void*)0))</span></span>;            </td></tr>
+<tr><td class="num" id="LN552">552</td><td class="line">                size_t length = lua_objlen(L, stackIndex);</td></tr>
+<tr><td class="num" id="LN553">553</td><td class="line">                *outsize = length;</td></tr>
+<tr><td class="num" id="LN554">554</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN555">555</td><td class="line">                value = malloc(length);</td></tr>
+<tr><td class="num" id="LN556">556</td><td class="line">                memcpy(value, data, length);</td></tr>
+<tr><td class="num" id="LN557">557</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN558">558</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN559">559</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN560">560</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN561">561</td><td class="line">        <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN562">562</td><td class="line">            luaL_error(L, <span class='string_literal'>"Unable to get type for Obj-C method argument with type description '%s'"</span>, typeDescription);</td></tr>
+<tr><td class="num" id="LN563">563</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN564">564</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN565">565</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN566">566</td><td class="line">    <span class='keyword'>return</span> <span class="mrange">value</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:5ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Use of memory after it is freed</td></tr></table></div></td></tr>
+<tr><td class="num" id="LN567">567</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN568">568</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN569">569</td><td class="line"><span class='comment'>// You can't tell if there are 0 or 1 arguments based on selector alone, so pass in an SEL[2] for possibleSelectors</span></td></tr>
+<tr><td class="num" id="LN570">570</td><td class="line"><span class='keyword'>void</span> wax_selectorsForName(<span class='keyword'>const</span> <span class='keyword'>char</span> *methodName, SEL possibleSelectors[2]) {</td></tr>
+<tr><td class="num" id="LN571">571</td><td class="line">    <span class='keyword'>int</span> strlength = strlen(methodName) + 2; <span class='comment'>// Add 2. One for trailing : and one for \0</span></td></tr>
+<tr><td class="num" id="LN572">572</td><td class="line">    <span class='keyword'>char</span> *objcMethodName = calloc(strlength, 1); </td></tr>
+<tr><td class="num" id="LN573">573</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN574">574</td><td class="line">    <span class='keyword'>int</span> argCount = 0;</td></tr>
+<tr><td class="num" id="LN575">575</td><td class="line">    strcpy(objcMethodName, methodName);</td></tr>
+<tr><td class="num" id="LN576">576</td><td class="line">    <span class='keyword'>for</span>(<span class='keyword'>int</span> i = 0; objcMethodName[i]; i++) {</td></tr>
+<tr><td class="num" id="LN577">577</td><td class="line">        <span class='keyword'>if</span> (objcMethodName[i] == '_') {</td></tr>
+<tr><td class="num" id="LN578">578</td><td class="line">            argCount++;</td></tr>
+<tr><td class="num" id="LN579">579</td><td class="line">            objcMethodName[i] = ':';</td></tr>
+<tr><td class="num" id="LN580">580</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN581">581</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN582">582</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN583">583</td><td class="line">    objcMethodName[strlength - 2] = ':'; <span class='comment'>// Add final arg portion</span></td></tr>
+<tr><td class="num" id="LN584">584</td><td class="line">    possibleSelectors[0] = sel_getUid(objcMethodName);</td></tr>
+<tr><td class="num" id="LN585">585</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN586">586</td><td class="line">    <span class='keyword'>if</span> (argCount == 0) {</td></tr>
+<tr><td class="num" id="LN587">587</td><td class="line">        objcMethodName[strlength - 2] = '\0';</td></tr>
+<tr><td class="num" id="LN588">588</td><td class="line">        possibleSelectors[1] = sel_getUid(objcMethodName);        </td></tr>
+<tr><td class="num" id="LN589">589</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN590">590</td><td class="line">    <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN591">591</td><td class="line">        possibleSelectors[1] = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN592">592</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN593">593</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN594">594</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN595">595</td><td class="line">    free(objcMethodName);</td></tr>
+<tr><td class="num" id="LN596">596</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN597">597</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN598">598</td><td class="line">BOOL wax_selectorForInstance(wax_instance_userdata *instanceUserdata, SEL* foundSelectors, <span class='keyword'>const</span> <span class='keyword'>char</span> *methodName, BOOL forceInstanceCheck) {    </td></tr>
+<tr><td class="num" id="LN599">599</td><td class="line">    SEL possibleSelectors[2];</td></tr>
+<tr><td class="num" id="LN600">600</td><td class="line">    wax_selectorsForName(methodName, possibleSelectors);</td></tr>
+<tr><td class="num" id="LN601">601</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN602">602</td><td class="line">    <span class='keyword'>for</span> (<span class='keyword'>int</span> i = 0; i &lt; 2; i++) {</td></tr>
+<tr><td class="num" id="LN603">603</td><td class="line">        SEL selector = possibleSelectors[i];</td></tr>
+<tr><td class="num" id="LN604">604</td><td class="line">        <span class='keyword'>if</span> (!selector) <span class='keyword'>continue</span>; <span class='comment'>// There may be only one acceptable selector (i.e. methods with multiple keyword args)</span></td></tr>
+<tr><td class="num" id="LN605">605</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN606">606</td><td class="line">        BOOL addSelector = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN607">607</td><td class="line">        <span class='keyword'>if</span> (instanceUserdata-&gt;isClass &amp;&amp; (forceInstanceCheck || wax_isInitMethod(methodName))) {</td></tr>
+<tr><td class="num" id="LN608">608</td><td class="line">            <span class='keyword'>if</span> ([instanceUserdata-&gt;instance instanceMethodSignatureForSelector:selector]) addSelector = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN609">609</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN610">610</td><td class="line">        <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN611">611</td><td class="line">            <span class='keyword'>if</span> ([instanceUserdata-&gt;instance methodSignatureForSelector:selector]) addSelector = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN612">612</td><td class="line">        }    </td></tr>
+<tr><td class="num" id="LN613">613</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN614">614</td><td class="line">        <span class='keyword'>if</span> (addSelector) {</td></tr>
+<tr><td class="num" id="LN615">615</td><td class="line">            <span class='keyword'>if</span> (!foundSelectors[0]) foundSelectors[0] = selector;</td></tr>
+<tr><td class="num" id="LN616">616</td><td class="line">            <span class='keyword'>else</span> foundSelectors[1] = selector;</td></tr>
+<tr><td class="num" id="LN617">617</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN618">618</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN619">619</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN620">620</td><td class="line">    <span class='comment'>// True if it found any selectors</span></td></tr>
+<tr><td class="num" id="LN621">621</td><td class="line">    <span class='keyword'>return</span> foundSelectors[0] || foundSelectors[1];</td></tr>
+<tr><td class="num" id="LN622">622</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN623">623</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN624">624</td><td class="line"><span class='keyword'>void</span> wax_pushMethodNameFromSelector(lua_State *L, SEL selector) {</td></tr>
+<tr><td class="num" id="LN625">625</td><td class="line">    <span class='macro'>BEGIN_STACK_MODIFY(L)<span class='expansion'>int __startStackIndex = lua_gettop((L));</span></span></td></tr>
+<tr><td class="num" id="LN626">626</td><td class="line">    <span class='keyword'>const</span> <span class='keyword'>char</span> *methodName = [NSStringFromSelector(selector) UTF8String];</td></tr>
+<tr><td class="num" id="LN627">627</td><td class="line">    <span class='keyword'>int</span> length = strlen(methodName);</td></tr>
+<tr><td class="num" id="LN628">628</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN629">629</td><td class="line">    luaL_Buffer b;</td></tr>
+<tr><td class="num" id="LN630">630</td><td class="line">    luaL_buffinit(L, &amp;b);    </td></tr>
+<tr><td class="num" id="LN631">631</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN632">632</td><td class="line">    <span class='keyword'>int</span> i = 0;</td></tr>
+<tr><td class="num" id="LN633">633</td><td class="line">    <span class='keyword'>while</span>(methodName[i]) {</td></tr>
+<tr><td class="num" id="LN634">634</td><td class="line">        <span class='keyword'>if</span> (methodName[i] == ':') {</td></tr>
+<tr><td class="num" id="LN635">635</td><td class="line">            <span class='keyword'>if</span> (i &lt; length - 1) <span class='macro'>luaL_addchar(&amp;b, '_')<span class='expansion'>((void)((&amp;b)-&gt;p &lt; ((&amp;b)-&gt;buffer+1024) || luaL_prepbuffer<br>(&amp;b)), (*(&amp;b)-&gt;p++ = (char)('_')))</span></span>;</td></tr>
+<tr><td class="num" id="LN636">636</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN637">637</td><td class="line">        <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN638">638</td><td class="line">            <span class='macro'>luaL_addchar(&amp;b, methodName[i])<span class='expansion'>((void)((&amp;b)-&gt;p &lt; ((&amp;b)-&gt;buffer+1024) || luaL_prepbuffer<br>(&amp;b)), (*(&amp;b)-&gt;p++ = (char)(methodName[i])))</span></span>;</td></tr>
+<tr><td class="num" id="LN639">639</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN640">640</td><td class="line">        i++;</td></tr>
+<tr><td class="num" id="LN641">641</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN642">642</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN643">643</td><td class="line">    luaL_pushresult(&amp;b);</td></tr>
+<tr><td class="num" id="LN644">644</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN645">645</td><td class="line">    <span class='macro'>END_STACK_MODIFY(L, 1)<span class='expansion'>while(lua_gettop((L)) &gt; (__startStackIndex + (1))) lua_remove<br>((L), __startStackIndex + 1);</span></span></td></tr>
+<tr><td class="num" id="LN646">646</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN647">647</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN648">648</td><td class="line"><span class='comment'>// Wax assumes anything that starts with init[A-Z0-9]? is an init method</span></td></tr>
+<tr><td class="num" id="LN649">649</td><td class="line">BOOL wax_isInitMethod(<span class='keyword'>const</span> <span class='keyword'>char</span> *methodName) {</td></tr>
+<tr><td class="num" id="LN650">650</td><td class="line">    <span class='keyword'>if</span> (strncmp(methodName, <span class='string_literal'>"init"</span>, 4) == 0) {</td></tr>
+<tr><td class="num" id="LN651">651</td><td class="line">        <span class='keyword'>if</span> (methodName[4] == '\0') <span class='keyword'>return</span> <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>; <span class='comment'>// It's just an init</span></td></tr>
+<tr><td class="num" id="LN652">652</td><td class="line">        <span class='keyword'>if</span> (isupper(methodName[4]) || isdigit(methodName[4])) <span class='keyword'>return</span> <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>; <span class='comment'>// It's init[A-Z0-9]</span></td></tr>
+<tr><td class="num" id="LN653">653</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN654">654</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN655">655</td><td class="line">    <span class='keyword'>return</span> <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN656">656</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN657">657</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN658">658</td><td class="line"><span class='comment'>// I could get rid of this &lt;- Then why don't you?</span></td></tr>
+<tr><td class="num" id="LN659">659</td><td class="line"><span class='keyword'>const</span> <span class='keyword'>char</span> *wax_removeProtocolEncodings(<span class='keyword'>const</span> <span class='keyword'>char</span> *type_descriptions) {</td></tr>
+<tr><td class="num" id="LN660">660</td><td class="line">    <span class='keyword'>switch</span> (type_descriptions[0]) {</td></tr>
+<tr><td class="num" id="LN661">661</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_CONST<span class='expansion'>'r'</span></span>:</td></tr>
+<tr><td class="num" id="LN662">662</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_INOUT<span class='expansion'>'N'</span></span>:</td></tr>
+<tr><td class="num" id="LN663">663</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_OUT<span class='expansion'>'o'</span></span>:</td></tr>
+<tr><td class="num" id="LN664">664</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_BYCOPY<span class='expansion'>'O'</span></span>:</td></tr>
+<tr><td class="num" id="LN665">665</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_BYREF<span class='expansion'>'R'</span></span>:</td></tr>
+<tr><td class="num" id="LN666">666</td><td class="line">        <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_ONEWAY<span class='expansion'>'V'</span></span>:</td></tr>
+<tr><td class="num" id="LN667">667</td><td class="line">            <span class='keyword'>return</span> &amp;type_descriptions[1];</td></tr>
+<tr><td class="num" id="LN668">668</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN669">669</td><td class="line">        <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN670">670</td><td class="line">            <span class='keyword'>return</span> type_descriptions;</td></tr>
+<tr><td class="num" id="LN671">671</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN672">672</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN673">673</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN674">674</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN675">675</td><td class="line"><span class='keyword'>int</span> wax_sizeOfTypeDescription(<span class='keyword'>const</span> <span class='keyword'>char</span> *full_type_description) {</td></tr>
+<tr><td class="num" id="LN676">676</td><td class="line">    <span class='keyword'>int</span> index = 0;</td></tr>
+<tr><td class="num" id="LN677">677</td><td class="line">    <span class='keyword'>int</span> size = 0;</td></tr>
+<tr><td class="num" id="LN678">678</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN679">679</td><td class="line">    size_t length = strlen(full_type_description) + 1;</td></tr>
+<tr><td class="num" id="LN680">680</td><td class="line">    <span class='keyword'>char</span> *type_description = alloca(length);</td></tr>
+<tr><td class="num" id="LN681">681</td><td class="line">    bzero(type_description, length);</td></tr>
+<tr><td class="num" id="LN682">682</td><td class="line">    wax_simplifyTypeDescription(full_type_description, type_description);</td></tr>
+<tr><td class="num" id="LN683">683</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN684">684</td><td class="line">    <span class='keyword'>while</span>(type_description[index]) {</td></tr>
+<tr><td class="num" id="LN685">685</td><td class="line">        <span class='keyword'>switch</span> (type_description[index]) {</td></tr>
+<tr><td class="num" id="LN686">686</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_POINTER<span class='expansion'>'^'</span></span>:</td></tr>
+<tr><td class="num" id="LN687">687</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>void</span> *);</td></tr>
+<tr><td class="num" id="LN688">688</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN689">689</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_CHAR<span class='expansion'>'c'</span></span>:</td></tr>
+<tr><td class="num" id="LN690">690</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>char</span>);</td></tr>
+<tr><td class="num" id="LN691">691</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN692">692</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN693">693</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_INT<span class='expansion'>'i'</span></span>:</td></tr>
+<tr><td class="num" id="LN694">694</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>int</span>);</td></tr>
+<tr><td class="num" id="LN695">695</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN696">696</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN697">697</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_ARRAY<span class='expansion'>'['</span></span>:</td></tr>
+<tr><td class="num" id="LN698">698</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_ARRAY_END<span class='expansion'>']'</span></span>:</td></tr>
+<tr><td class="num" id="LN699">699</td><td class="line">                [NSException raise:@<span class='string_literal'>"Wax Error"</span> format:@<span class='string_literal'>"C array's are not implemented yet."</span>];</td></tr>
+<tr><td class="num" id="LN700">700</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN701">701</td><td class="line">            </td></tr>
+<tr><td class="num" id="LN702">702</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_SHORT<span class='expansion'>'s'</span></span>:</td></tr>
+<tr><td class="num" id="LN703">703</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>short</span>);</td></tr>
+<tr><td class="num" id="LN704">704</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN705">705</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN706">706</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_CHAR<span class='expansion'>'C'</span></span>:</td></tr>
+<tr><td class="num" id="LN707">707</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>unsigned</span> <span class='keyword'>char</span>);</td></tr>
+<tr><td class="num" id="LN708">708</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN709">709</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN710">710</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_INT<span class='expansion'>'I'</span></span>:</td></tr>
+<tr><td class="num" id="LN711">711</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>unsigned</span> <span class='keyword'>int</span>);</td></tr>
+<tr><td class="num" id="LN712">712</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN713">713</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN714">714</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_SHORT<span class='expansion'>'S'</span></span>:</td></tr>
+<tr><td class="num" id="LN715">715</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>unsigned</span> <span class='keyword'>short</span>);</td></tr>
+<tr><td class="num" id="LN716">716</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN717">717</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN718">718</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_LONG<span class='expansion'>'l'</span></span>:</td></tr>
+<tr><td class="num" id="LN719">719</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>long</span>);</td></tr>
+<tr><td class="num" id="LN720">720</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN721">721</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN722">722</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_LONG_LONG<span class='expansion'>'q'</span></span>:</td></tr>
+<tr><td class="num" id="LN723">723</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>long</span> <span class='keyword'>long</span>);</td></tr>
+<tr><td class="num" id="LN724">724</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN725">725</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN726">726</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_LONG<span class='expansion'>'L'</span></span>:</td></tr>
+<tr><td class="num" id="LN727">727</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>unsigned</span> <span class='keyword'>long</span>);</td></tr>
+<tr><td class="num" id="LN728">728</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN729">729</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN730">730</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNSIGNED_LONG_LONG<span class='expansion'>'Q'</span></span>:</td></tr>
+<tr><td class="num" id="LN731">731</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>unsigned</span> <span class='keyword'>long</span> <span class='keyword'>long</span>);</td></tr>
+<tr><td class="num" id="LN732">732</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN733">733</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN734">734</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_FLOAT<span class='expansion'>'f'</span></span>:</td></tr>
+<tr><td class="num" id="LN735">735</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>float</span>);</td></tr>
+<tr><td class="num" id="LN736">736</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN737">737</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN738">738</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_DOUBLE<span class='expansion'>'d'</span></span>:</td></tr>
+<tr><td class="num" id="LN739">739</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>double</span>);</td></tr>
+<tr><td class="num" id="LN740">740</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN741">741</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN742">742</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_C99_BOOL<span class='expansion'>'B'</span></span>:</td></tr>
+<tr><td class="num" id="LN743">743</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>_Bool</span>);</td></tr>
+<tr><td class="num" id="LN744">744</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN745">745</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN746">746</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRING<span class='expansion'>'*'</span></span>:</td></tr>
+<tr><td class="num" id="LN747">747</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>char</span> *);</td></tr>
+<tr><td class="num" id="LN748">748</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN749">749</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN750">750</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_VOID<span class='expansion'>'v'</span></span>:</td></tr>
+<tr><td class="num" id="LN751">751</td><td class="line">                size += <span class='keyword'>sizeof</span>(<span class='keyword'>char</span>);</td></tr>
+<tr><td class="num" id="LN752">752</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN753">753</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN754">754</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_BITFIELD<span class='expansion'>'b'</span></span>:</td></tr>
+<tr><td class="num" id="LN755">755</td><td class="line">                [NSException raise:@<span class='string_literal'>"Wax Error"</span> format:@<span class='string_literal'>"Bitfields are not implemented yet"</span>];</td></tr>
+<tr><td class="num" id="LN756">756</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN757">757</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN758">758</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_ID<span class='expansion'>'@'</span></span>:</td></tr>
+<tr><td class="num" id="LN759">759</td><td class="line">                size += <span class='keyword'>sizeof</span>(id);</td></tr>
+<tr><td class="num" id="LN760">760</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN761">761</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN762">762</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_CLASS<span class='expansion'>'#'</span></span>:</td></tr>
+<tr><td class="num" id="LN763">763</td><td class="line">                size += <span class='keyword'>sizeof</span>(Class);</td></tr>
+<tr><td class="num" id="LN764">764</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN765">765</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN766">766</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_SELECTOR<span class='expansion'>':'</span></span>:</td></tr>
+<tr><td class="num" id="LN767">767</td><td class="line">                size += <span class='keyword'>sizeof</span>(SEL);</td></tr>
+<tr><td class="num" id="LN768">768</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN769">769</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN770">770</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRUCT<span class='expansion'>'{'</span></span>:</td></tr>
+<tr><td class="num" id="LN771">771</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRUCT_END<span class='expansion'>'}'</span></span>:</td></tr>
+<tr><td class="num" id="LN772">772</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNION<span class='expansion'>'('</span></span>:</td></tr>
+<tr><td class="num" id="LN773">773</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNION_END<span class='expansion'>')'</span></span>:</td></tr>
+<tr><td class="num" id="LN774">774</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNKNOWN<span class='expansion'>'?'</span></span>:                </td></tr>
+<tr><td class="num" id="LN775">775</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_CONST<span class='expansion'>'r'</span></span>:                </td></tr>
+<tr><td class="num" id="LN776">776</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_IN<span class='expansion'>'n'</span></span>:                </td></tr>
+<tr><td class="num" id="LN777">777</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_INOUT<span class='expansion'>'N'</span></span>:</td></tr>
+<tr><td class="num" id="LN778">778</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_OUT<span class='expansion'>'o'</span></span>:</td></tr>
+<tr><td class="num" id="LN779">779</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_BYCOPY<span class='expansion'>'O'</span></span>:</td></tr>
+<tr><td class="num" id="LN780">780</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_BYREF<span class='expansion'>'R'</span></span>:</td></tr>
+<tr><td class="num" id="LN781">781</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_PROTOCOL_TYPE_ONEWAY<span class='expansion'>'V'</span></span>:                    </td></tr>
+<tr><td class="num" id="LN782">782</td><td class="line">                <span class='comment'>// Weeeee! Just ignore this stuff I guess?</span></td></tr>
+<tr><td class="num" id="LN783">783</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN784">784</td><td class="line">            <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN785">785</td><td class="line">                [NSException raise:@<span class='string_literal'>"Wax Error"</span> format:@<span class='string_literal'>"Unknown type encoding %c"</span>, type_description[index]];</td></tr>
+<tr><td class="num" id="LN786">786</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN787">787</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN788">788</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN789">789</td><td class="line">        index++;</td></tr>
+<tr><td class="num" id="LN790">790</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN791">791</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN792">792</td><td class="line">    <span class='keyword'>return</span> size;</td></tr>
+<tr><td class="num" id="LN793">793</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN794">794</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN795">795</td><td class="line"><span class='keyword'>int</span> wax_simplifyTypeDescription(<span class='keyword'>const</span> <span class='keyword'>char</span> *in, <span class='keyword'>char</span> *out) {</td></tr>
+<tr><td class="num" id="LN796">796</td><td class="line">    <span class='keyword'>int</span> out_index = 0;</td></tr>
+<tr><td class="num" id="LN797">797</td><td class="line">    <span class='keyword'>int</span> in_index = 0;</td></tr>
+<tr><td class="num" id="LN798">798</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN799">799</td><td class="line">    <span class='keyword'>while</span>(in[in_index]) {</td></tr>
+<tr><td class="num" id="LN800">800</td><td class="line">        <span class='keyword'>switch</span> (in[in_index]) {</td></tr>
+<tr><td class="num" id="LN801">801</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRUCT<span class='expansion'>'{'</span></span>:</td></tr>
+<tr><td class="num" id="LN802">802</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNION<span class='expansion'>'('</span></span>:                </td></tr>
+<tr><td class="num" id="LN803">803</td><td class="line">                <span class='keyword'>for</span> (; in[in_index] != '='; in_index++); <span class='comment'>// Eat the name!</span></td></tr>
+<tr><td class="num" id="LN804">804</td><td class="line">                in_index++; <span class='comment'>// Eat the = sign </span></td></tr>
+<tr><td class="num" id="LN805">805</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN806">806</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN807">807</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_ARRAY<span class='expansion'>'['</span></span>:            </td></tr>
+<tr><td class="num" id="LN808">808</td><td class="line">                <span class='keyword'>do</span> {</td></tr>
+<tr><td class="num" id="LN809">809</td><td class="line">                    out[out_index++] = in[in_index++];</td></tr>
+<tr><td class="num" id="LN810">810</td><td class="line">                } <span class='keyword'>while</span>(in[in_index] != <span class='macro'>WAX_TYPE_ARRAY_END<span class='expansion'>']'</span></span>);</td></tr>
+<tr><td class="num" id="LN811">811</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN812">812</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN813">813</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_POINTER<span class='expansion'>'^'</span></span>: { <span class='comment'>//get rid of internal stucture parts</span></td></tr>
+<tr><td class="num" id="LN814">814</td><td class="line">                out[out_index++] = in[in_index++]; </td></tr>
+<tr><td class="num" id="LN815">815</td><td class="line">                <span class='keyword'>for</span> (; in[in_index] == '^'; in_index++); <span class='comment'>// Eat all the pointers</span></td></tr>
+<tr><td class="num" id="LN816">816</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN817">817</td><td class="line">                <span class='keyword'>switch</span> (in[in_index]) {</td></tr>
+<tr><td class="num" id="LN818">818</td><td class="line">                    <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNION<span class='expansion'>'('</span></span>:</td></tr>
+<tr><td class="num" id="LN819">819</td><td class="line">                    <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRUCT<span class='expansion'>'{'</span></span>: {</td></tr>
+<tr><td class="num" id="LN820">820</td><td class="line">                        in_index++;</td></tr>
+<tr><td class="num" id="LN821">821</td><td class="line">                        <span class='keyword'>int</span> openCurlies = 1;</td></tr>
+<tr><td class="num" id="LN822">822</td><td class="line">                        </td></tr>
+<tr><td class="num" id="LN823">823</td><td class="line">                        <span class='keyword'>for</span> (; openCurlies &gt; 1 || (in[in_index] != <span class='macro'>WAX_TYPE_UNION_END<span class='expansion'>')'</span></span> &amp;&amp; in[in_index] != <span class='macro'>WAX_TYPE_STRUCT_END<span class='expansion'>'}'</span></span>); in_index++) {</td></tr>
+<tr><td class="num" id="LN824">824</td><td class="line">                            <span class='keyword'>if</span> (in[in_index] == <span class='macro'>WAX_TYPE_UNION<span class='expansion'>'('</span></span> || in[in_index] == <span class='macro'>WAX_TYPE_STRUCT<span class='expansion'>'{'</span></span>) openCurlies++;</td></tr>
+<tr><td class="num" id="LN825">825</td><td class="line">                            <span class='keyword'>else</span> <span class='keyword'>if</span> (in[in_index] == <span class='macro'>WAX_TYPE_UNION_END<span class='expansion'>')'</span></span> || in[in_index] == <span class='macro'>WAX_TYPE_STRUCT_END<span class='expansion'>'}'</span></span>) openCurlies--;</td></tr>
+<tr><td class="num" id="LN826">826</td><td class="line">                        }</td></tr>
+<tr><td class="num" id="LN827">827</td><td class="line">                        <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN828">828</td><td class="line">                    }</td></tr>
+<tr><td class="num" id="LN829">829</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN830">830</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN831">831</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN832">832</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_STRUCT_END<span class='expansion'>'}'</span></span>:</td></tr>
+<tr><td class="num" id="LN833">833</td><td class="line">            <span class='keyword'>case</span> <span class='macro'>WAX_TYPE_UNION_END<span class='expansion'>')'</span></span>:</td></tr>
+<tr><td class="num" id="LN834">834</td><td class="line">            <span class='keyword'>case</span> '0':</td></tr>
+<tr><td class="num" id="LN835">835</td><td class="line">            <span class='keyword'>case</span> '1':</td></tr>
+<tr><td class="num" id="LN836">836</td><td class="line">            <span class='keyword'>case</span> '2':</td></tr>
+<tr><td class="num" id="LN837">837</td><td class="line">            <span class='keyword'>case</span> '3':</td></tr>
+<tr><td class="num" id="LN838">838</td><td class="line">            <span class='keyword'>case</span> '4':</td></tr>
+<tr><td class="num" id="LN839">839</td><td class="line">            <span class='keyword'>case</span> '5':</td></tr>
+<tr><td class="num" id="LN840">840</td><td class="line">            <span class='keyword'>case</span> '6':</td></tr>
+<tr><td class="num" id="LN841">841</td><td class="line">            <span class='keyword'>case</span> '7':</td></tr>
+<tr><td class="num" id="LN842">842</td><td class="line">            <span class='keyword'>case</span> '8':</td></tr>
+<tr><td class="num" id="LN843">843</td><td class="line">            <span class='keyword'>case</span> '9':                </td></tr>
+<tr><td class="num" id="LN844">844</td><td class="line">                in_index++;</td></tr>
+<tr><td class="num" id="LN845">845</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN846">846</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN847">847</td><td class="line">            <span class='keyword'>default</span>:</td></tr>
+<tr><td class="num" id="LN848">848</td><td class="line">                out[out_index++] = in[in_index++];</td></tr>
+<tr><td class="num" id="LN849">849</td><td class="line">                <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN850">850</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN851">851</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN852">852</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN853">853</td><td class="line">    out[out_index] = '\0';</td></tr>
+<tr><td class="num" id="LN854">854</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN855">855</td><td class="line">    <span class='keyword'>return</span> out_index;</td></tr>
+<tr><td class="num" id="LN856">856</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN857">857</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN858">858</td><td class="line"><span class='keyword'>int</span> wax_errorFunction(lua_State *L) {</td></tr>
+<tr><td class="num" id="LN859">859</td><td class="line">    lua_getfield(L, <span class='macro'>LUA_GLOBALSINDEX<span class='expansion'>(-10002)</span></span>, <span class='string_literal'>"debug"</span>);</td></tr>
+<tr><td class="num" id="LN860">860</td><td class="line">    <span class='keyword'>if</span> (!<span class='macro'>lua_istable(L, -1)<span class='expansion'>(lua_type(L, (-1)) == 5)</span></span>) {</td></tr>
+<tr><td class="num" id="LN861">861</td><td class="line">        <span class='macro'>lua_pop(L, 1)<span class='expansion'>lua_settop(L, -(1)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN862">862</td><td class="line">        <span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN863">863</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN864">864</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN865">865</td><td class="line">    lua_getfield(L, -1, <span class='string_literal'>"traceback"</span>);</td></tr>
+<tr><td class="num" id="LN866">866</td><td class="line">    <span class='keyword'>if</span> (!<span class='macro'>lua_isfunction(L, -1)<span class='expansion'>(lua_type(L, (-1)) == 6)</span></span>) {</td></tr>
+<tr><td class="num" id="LN867">867</td><td class="line">        <span class='macro'>lua_pop(L, 2)<span class='expansion'>lua_settop(L, -(2)-1)</span></span>;</td></tr>
+<tr><td class="num" id="LN868">868</td><td class="line">        <span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN869">869</td><td class="line">    }    </td></tr>
+<tr><td class="num" id="LN870">870</td><td class="line">    lua_remove(L, -2); <span class='comment'>// Remove debug</span></td></tr>
+<tr><td class="num" id="LN871">871</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN872">872</td><td class="line">    lua_pushvalue(L, -2); <span class='comment'>// Grab the error string and place it on the stack</span></td></tr>
+<tr><td class="num" id="LN873">873</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN874">874</td><td class="line">    lua_call(L, 1, 1);</td></tr>
+<tr><td class="num" id="LN875">875</td><td class="line">    lua_remove(L, -2); <span class='comment'>// Remove original error string</span></td></tr>
+<tr><td class="num" id="LN876">876</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN877">877</td><td class="line">    <span class='keyword'>return</span> 1;</td></tr>
+<tr><td class="num" id="LN878">878</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN879">879</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN880">880</td><td class="line"><span class='keyword'>int</span> wax_pcall(lua_State *L, <span class='keyword'>int</span> argumentCount, <span class='keyword'>int</span> returnCount) {</td></tr>
+<tr><td class="num" id="LN881">881</td><td class="line">    lua_pushcclosure(L, wax_errorFunction, 0);</td></tr>
+<tr><td class="num" id="LN882">882</td><td class="line">    <span class='keyword'>int</span> errorFuncStackIndex = lua_gettop(L) - (argumentCount + 1); <span class='comment'>// Insert error function before arguments</span></td></tr>
+<tr><td class="num" id="LN883">883</td><td class="line">    lua_insert(L, errorFuncStackIndex);</td></tr>
+<tr><td class="num" id="LN884">884</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN885">885</td><td class="line">    <span class='keyword'>return</span> lua_pcall(L, argumentCount, returnCount, errorFuncStackIndex);</td></tr>
+<tr><td class="num" id="LN886">886</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN887">887</td><td class="line"> </td></tr>
+</table></body></html>

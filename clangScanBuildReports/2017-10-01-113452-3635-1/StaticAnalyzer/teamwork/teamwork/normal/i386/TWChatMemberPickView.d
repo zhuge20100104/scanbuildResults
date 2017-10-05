@@ -1,0 +1,22 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/chatMembers/TWChatMemberPickView.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/chatMembers/TWChatMemberPickView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/chat/chatMembers/TWChatMemberView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWImageView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWLabel.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWButton.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/TWChatGroup.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/homePage/TWMainHomePageActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWBaseActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWAlterDialog.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWTeamCircleTopicDetailPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/NSString+HeadPicture.h \
+  IMFramework/IMFramework/IM/src/IM/Model/IMGroupMember.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/im/person/TWIMSyncPersonInfo.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/im/person/TWSycPersonService.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/im/person/TWPersonInfo.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWFileServerHelper.h

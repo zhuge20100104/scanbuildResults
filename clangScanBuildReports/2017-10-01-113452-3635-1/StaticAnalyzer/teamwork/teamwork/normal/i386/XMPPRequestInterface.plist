@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+ <key>clang_version</key>
+<string>clang version 4.0.0 (tags/checker/checker-279)</string>
+ <key>files</key>
+ <array>
+  <string>/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/XMPPRequestInterface.mm</string>
+ </array>
+ <key>diagnostics</key>
+ <array>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>33</integer>
+      <key>col</key><integer>15</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>33</integer>
+         <key>col</key><integer>15</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>33</integer>
+         <key>col</key><integer>17</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+       <array>
+        <dict>
+         <key>line</key><integer>33</integer>
+         <key>col</key><integer>21</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>33</integer>
+         <key>col</key><integer>73</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Value stored to &apos;ret&apos; during its initialization is never read</string>
+     <key>message</key>
+     <string>Value stored to &apos;ret&apos; during its initialization is never read</string>
+    </dict>
+   </array>
+   <key>description</key><string>Value stored to &apos;ret&apos; during its initialization is never read</string>
+   <key>category</key><string>Dead store</string>
+   <key>type</key><string>Dead initialization</string>
+   <key>check_name</key><string>deadcode.DeadStores</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>251f3827020dd7da2661a758286b8c4b</string>
+  <key>issue_context_kind</key><string>Objective-C method</string>
+  <key>issue_context</key><string>requestCreateCspPlatformWithEnableLog:logName:</string>
+  <key>issue_hash_function_offset</key><string>7</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>33</integer>
+   <key>col</key><integer>15</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-2eca4e.html</string>
+  </array>
+  </dict>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>34</integer>
+      <key>col</key><integer>5</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>34</integer>
+         <key>col</key><integer>15</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>34</integer>
+         <key>col</key><integer>64</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Value stored to &apos;ret&apos; is never read</string>
+     <key>message</key>
+     <string>Value stored to &apos;ret&apos; is never read</string>
+    </dict>
+   </array>
+   <key>description</key><string>Value stored to &apos;ret&apos; is never read</string>
+   <key>category</key><string>Dead store</string>
+   <key>type</key><string>Dead assignment</string>
+   <key>check_name</key><string>deadcode.DeadStores</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>7ebf260a639f51eba97ad37b660f7e11</string>
+  <key>issue_context_kind</key><string>Objective-C method</string>
+  <key>issue_context</key><string>requestCreateCspPlatformWithEnableLog:logName:</string>
+  <key>issue_hash_function_offset</key><string>8</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>34</integer>
+   <key>col</key><integer>5</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-965991.html</string>
+  </array>
+  </dict>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>35</integer>
+      <key>col</key><integer>5</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>35</integer>
+         <key>col</key><integer>15</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>35</integer>
+         <key>col</key><integer>66</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Value stored to &apos;ret&apos; is never read</string>
+     <key>message</key>
+     <string>Value stored to &apos;ret&apos; is never read</string>
+    </dict>
+   </array>
+   <key>description</key><string>Value stored to &apos;ret&apos; is never read</string>
+   <key>category</key><string>Dead store</string>
+   <key>type</key><string>Dead assignment</string>
+   <key>check_name</key><string>deadcode.DeadStores</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>5fefa0f366bb31584a09051b2f00af53</string>
+  <key>issue_context_kind</key><string>Objective-C method</string>
+  <key>issue_context</key><string>requestCreateCspPlatformWithEnableLog:logName:</string>
+  <key>issue_hash_function_offset</key><string>9</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>35</integer>
+   <key>col</key><integer>5</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-eb32f9.html</string>
+  </array>
+  </dict>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>54</integer>
+      <key>col</key><integer>5</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>54</integer>
+         <key>col</key><integer>12</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>54</integer>
+         <key>col</key><integer>111</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Value stored to &apos;nret&apos; is never read</string>
+     <key>message</key>
+     <string>Value stored to &apos;nret&apos; is never read</string>
+    </dict>
+   </array>
+   <key>description</key><string>Value stored to &apos;nret&apos; is never read</string>
+   <key>category</key><string>Dead store</string>
+   <key>type</key><string>Dead assignment</string>
+   <key>check_name</key><string>deadcode.DeadStores</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>e06efc4fedcb734723b346ba43c1c4f7</string>
+  <key>issue_context_kind</key><string>Objective-C method</string>
+  <key>issue_context</key><string>requestCreateCspPlatformWithEnableLog:logName:</string>
+  <key>issue_hash_function_offset</key><string>28</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>54</integer>
+   <key>col</key><integer>5</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-e0f857.html</string>
+  </array>
+  </dict>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>263</integer>
+      <key>col</key><integer>29</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>263</integer>
+         <key>col</key><integer>36</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>263</integer>
+         <key>col</key><integer>49</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Value stored to &apos;nRtn&apos; is never read</string>
+     <key>message</key>
+     <string>Value stored to &apos;nRtn&apos; is never read</string>
+    </dict>
+   </array>
+   <key>description</key><string>Value stored to &apos;nRtn&apos; is never read</string>
+   <key>category</key><string>Dead store</string>
+   <key>type</key><string>Dead assignment</string>
+   <key>check_name</key><string>deadcode.DeadStores</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>ef9fb40eaee2cf0b5513b8145da16075</string>
+  <key>issue_context_kind</key><string>Objective-C method</string>
+  <key>issue_context</key><string>requestCreateNewP2PSessionWithUserBid:toBid:platform:</string>
+  <key>issue_hash_function_offset</key><string>54</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>263</integer>
+   <key>col</key><integer>29</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-f8e809.html</string>
+  </array>
+  </dict>
+ </array>
+</dict>
+</plist>

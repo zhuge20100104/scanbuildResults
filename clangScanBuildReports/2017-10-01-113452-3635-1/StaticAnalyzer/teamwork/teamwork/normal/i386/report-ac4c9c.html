@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+<head>
+<title>/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/phonegap-3.5.0/plugins/org.apache.cordova.network-information/src/ios/CDVReachability.m</title>
+<style type="text/css">
+ body { color:#000000; background-color:#ffffff }
+ body { font-family:Helvetica, sans-serif; font-size:10pt }
+ h1 { font-size:14pt }
+ .code { border-collapse:collapse; width:100%; }
+ .code { font-family: "Monospace", monospace; font-size:10pt }
+ .code { line-height: 1.2em }
+ .comment { color: green; font-style: oblique }
+ .keyword { color: blue }
+ .string_literal { color: red }
+ .directive { color: darkmagenta }
+ .expansion { display: none; }
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
+ .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
+ .num { text-align:right; font-size:8pt }
+ .num { color:#444444 }
+ .line { padding-left: 1ex; border-left: 3px solid #ccc }
+ .line { white-space: pre }
+ .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
+ .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
+ .msg { font-family:Helvetica, sans-serif; font-size:8pt }
+ .msg { float:left }
+ .msg { padding:0.25em 1ex 0.25em 1ex }
+ .msg { margin-top:10px; margin-bottom:10px }
+ .msg { font-weight:bold }
+ .msg { max-width:60em; word-wrap: break-word; white-space: pre-wrap }
+ .msgT { padding:0x; spacing:0x }
+ .msgEvent { background-color:#fff8b4; color:#000000 }
+ .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
+ .mrange { background-color:#dfddf3 }
+ .mrange { border-bottom:1px solid #6F9DBE }
+ .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
+ .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
+ .PathIndexEvent { background-color:#bfba87 }
+ .PathIndexControl { background-color:#8c8c8c }
+ .PathNav a { text-decoration:none; font-size: larger }
+ .CodeInsertionHint { font-weight: bold; background-color: #10dd10 }
+ .CodeRemovalHint { background-color:#de1010 }
+ .CodeRemovalHint { border-bottom:1px solid #6F9DBE }
+ table.simpletable {
+   padding: 5px;
+   font-size:12pt;
+   margin:20px;
+   border-collapse: collapse; border-spacing: 0px;
+ }
+ td.rowname {
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
+</style>
+</head>
+<body>
+<!-- BUGDESC Potential leak of an object stored into 'reachability' -->
+
+<!-- BUGTYPE Leak -->
+
+<!-- BUGCATEGORY Memory (Core Foundation/Objective-C) -->
+
+<!-- BUGFILE /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/phonegap-3.5.0/plugins/org.apache.cordova.network-information/src/ios/CDVReachability.m -->
+
+<!-- FILENAME CDVReachability.m -->
+
+<!-- FUNCTIONNAME reachabilityWithAddress: -->
+
+<!-- ISSUEHASHCONTENTOFLINEINCONTEXT 475117d7893a8553475665a4f1cdf3af -->
+
+<!-- BUGLINE 160 -->
+
+<!-- BUGCOLUMN 12 -->
+
+<!-- BUGPATHLENGTH 6 -->
+
+<!-- BUGMETAEND -->
+<!-- REPORTHEADER -->
+<h3>Bug Summary</h3>
+<table class="simpletable">
+<tr><td class="rowname">File:</td><td>third-libs/phonegap-3.5.0/plugins/org.apache.cordova.network-information/src/ios/CDVReachability.m</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 160, column 12</a><br />Potential leak of an object stored into 'reachability'</td></tr>
+<tr><td></td><td>Code is compiled to use reference counts</td></tr>
+</table>
+<!-- REPORTSUMMARYEXTRA -->
+<h3>Annotated Source Code</h3>
+<table class="code">
+<tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>File: Reachability.m</span></td></tr>
+<tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>Abstract: Basic demonstration of how to use the SystemConfiguration Reachability APIs.</span></td></tr>
+<tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>Version: 2.2</span></td></tr>
+<tr><td class="num" id="LN6">6</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN7">7</td><td class="line"> <span class='comment'>Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple Inc.</span></td></tr>
+<tr><td class="num" id="LN8">8</td><td class="line"> <span class='comment'>("Apple") in consideration of your agreement to the following terms, and your</span></td></tr>
+<tr><td class="num" id="LN9">9</td><td class="line"> <span class='comment'>use, installation, modification or redistribution of this Apple software</span></td></tr>
+<tr><td class="num" id="LN10">10</td><td class="line"> <span class='comment'>constitutes acceptance of these terms.  If you do not agree with these terms,</span></td></tr>
+<tr><td class="num" id="LN11">11</td><td class="line"> <span class='comment'>please do not use, install, modify or redistribute this Apple software.</span></td></tr>
+<tr><td class="num" id="LN12">12</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN13">13</td><td class="line"> <span class='comment'>In consideration of your agreement to abide by the following terms, and subject</span></td></tr>
+<tr><td class="num" id="LN14">14</td><td class="line"> <span class='comment'>to these terms, Apple grants you a personal, non-exclusive license, under</span></td></tr>
+<tr><td class="num" id="LN15">15</td><td class="line"> <span class='comment'>Apple's copyrights in this original Apple software (the "Apple Software"), to</span></td></tr>
+<tr><td class="num" id="LN16">16</td><td class="line"> <span class='comment'>use, reproduce, modify and redistribute the Apple Software, with or without</span></td></tr>
+<tr><td class="num" id="LN17">17</td><td class="line"> <span class='comment'>modifications, in source and/or binary forms; provided that if you redistribute</span></td></tr>
+<tr><td class="num" id="LN18">18</td><td class="line"> <span class='comment'>the Apple Software in its entirety and without modifications, you must retain</span></td></tr>
+<tr><td class="num" id="LN19">19</td><td class="line"> <span class='comment'>this notice and the following text and disclaimers in all such redistributions</span></td></tr>
+<tr><td class="num" id="LN20">20</td><td class="line"> <span class='comment'>of the Apple Software.</span></td></tr>
+<tr><td class="num" id="LN21">21</td><td class="line"> <span class='comment'>Neither the name, trademarks, service marks or logos of Apple Inc. may be used</span></td></tr>
+<tr><td class="num" id="LN22">22</td><td class="line"> <span class='comment'>to endorse or promote products derived from the Apple Software without specific</span></td></tr>
+<tr><td class="num" id="LN23">23</td><td class="line"> <span class='comment'>prior written permission from Apple.  Except as expressly stated in this notice,</span></td></tr>
+<tr><td class="num" id="LN24">24</td><td class="line"> <span class='comment'>no other rights or licenses, express or implied, are granted by Apple herein,</span></td></tr>
+<tr><td class="num" id="LN25">25</td><td class="line"> <span class='comment'>including but not limited to any patent rights that may be infringed by your</span></td></tr>
+<tr><td class="num" id="LN26">26</td><td class="line"> <span class='comment'>derivative works or by other works in which the Apple Software may be</span></td></tr>
+<tr><td class="num" id="LN27">27</td><td class="line"> <span class='comment'>incorporated.</span></td></tr>
+<tr><td class="num" id="LN28">28</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN29">29</td><td class="line"> <span class='comment'>The Apple Software is provided by Apple on an "AS IS" basis.  APPLE MAKES NO</span></td></tr>
+<tr><td class="num" id="LN30">30</td><td class="line"> <span class='comment'>WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED</span></td></tr>
+<tr><td class="num" id="LN31">31</td><td class="line"> <span class='comment'>WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span></td></tr>
+<tr><td class="num" id="LN32">32</td><td class="line"> <span class='comment'>PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND OPERATION ALONE OR IN</span></td></tr>
+<tr><td class="num" id="LN33">33</td><td class="line"> <span class='comment'>COMBINATION WITH YOUR PRODUCTS.</span></td></tr>
+<tr><td class="num" id="LN34">34</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN35">35</td><td class="line"> <span class='comment'>IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL OR</span></td></tr>
+<tr><td class="num" id="LN36">36</td><td class="line"> <span class='comment'>CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE</span></td></tr>
+<tr><td class="num" id="LN37">37</td><td class="line"> <span class='comment'>GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)</span></td></tr>
+<tr><td class="num" id="LN38">38</td><td class="line"> <span class='comment'>ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION, MODIFICATION AND/OR</span></td></tr>
+<tr><td class="num" id="LN39">39</td><td class="line"> <span class='comment'>DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED AND WHETHER UNDER THEORY OF</span></td></tr>
+<tr><td class="num" id="LN40">40</td><td class="line"> <span class='comment'>CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF</span></td></tr>
+<tr><td class="num" id="LN41">41</td><td class="line"> <span class='comment'>APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></td></tr>
+<tr><td class="num" id="LN42">42</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN43">43</td><td class="line"> <span class='comment'>Copyright (C) 2010 Apple Inc. All Rights Reserved.</span></td></tr>
+<tr><td class="num" id="LN44">44</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN45">45</td><td class="line"><span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN46">46</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN47">47</td><td class="line"><span class='directive'>#import &lt;sys/socket.h&gt;</span></td></tr>
+<tr><td class="num" id="LN48">48</td><td class="line"><span class='directive'>#import &lt;netinet/in.h&gt;</span></td></tr>
+<tr><td class="num" id="LN49">49</td><td class="line"><span class='directive'>#import &lt;netinet6/in6.h&gt;</span></td></tr>
+<tr><td class="num" id="LN50">50</td><td class="line"><span class='directive'>#import &lt;arpa/inet.h&gt;</span></td></tr>
+<tr><td class="num" id="LN51">51</td><td class="line"><span class='directive'>#import &lt;ifaddrs.h&gt;</span></td></tr>
+<tr><td class="num" id="LN52">52</td><td class="line"><span class='directive'>#import &lt;netdb.h&gt;</span></td></tr>
+<tr><td class="num" id="LN53">53</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN54">54</td><td class="line"><span class='directive'>#import &lt;CoreFoundation/CoreFoundation.h&gt;</span></td></tr>
+<tr><td class="num" id="LN55">55</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN56">56</td><td class="line"><span class='directive'>#import "CDVReachability.h"</span></td></tr>
+<tr><td class="num" id="LN57">57</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN58">58</td><td class="line"><span class='directive'>#define <span class='macro'>kShouldPrintReachabilityFlags<span class='expansion'>0</span></span> 0</span></td></tr>
+<tr><td class="num" id="LN59">59</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN60">60</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span> CDVPrintReachabilityFlags(SCNetworkReachabilityFlags flags, <span class='keyword'>const</span> <span class='keyword'>char</span>* comment)</td></tr>
+<tr><td class="num" id="LN61">61</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN62">62</td><td class="line"><span class='directive'>#if <span class='macro'>kShouldPrintReachabilityFlags<span class='expansion'>0</span></span></span></td></tr>
+<tr><td class="num" id="LN63">63</td><td class="line">        NSLog(@<span class='string_literal'>"Reachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n"</span>,</td></tr>
+<tr><td class="num" id="LN64">64</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsIsWWAN)               ? 'W' : '-',</td></tr>
+<tr><td class="num" id="LN65">65</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsReachable)            ? 'R' : '-',</td></tr>
+<tr><td class="num" id="LN66">66</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN67">67</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsTransientConnection)  ? 't' : '-',</td></tr>
+<tr><td class="num" id="LN68">68</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsConnectionRequired)   ? 'c' : '-',</td></tr>
+<tr><td class="num" id="LN69">69</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsConnectionOnTraffic)  ? 'C' : '-',</td></tr>
+<tr><td class="num" id="LN70">70</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsInterventionRequired) ? 'i' : '-',</td></tr>
+<tr><td class="num" id="LN71">71</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsConnectionOnDemand)   ? 'D' : '-',</td></tr>
+<tr><td class="num" id="LN72">72</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsIsLocalAddress)       ? 'l' : '-',</td></tr>
+<tr><td class="num" id="LN73">73</td><td class="line">            (flags &amp; kSCNetworkReachabilityFlagsIsDirect)             ? 'd' : '-',</td></tr>
+<tr><td class="num" id="LN74">74</td><td class="line">            comment</td></tr>
+<tr><td class="num" id="LN75">75</td><td class="line">            );</td></tr>
+<tr><td class="num" id="LN76">76</td><td class="line"><span class='directive'>#endif</span></td></tr>
+<tr><td class="num" id="LN77">77</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN78">78</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN79">79</td><td class="line">@implementation CDVReachability</td></tr>
+<tr><td class="num" id="LN80">80</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN81">81</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>void</span> CDVReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, <span class='keyword'>void</span>* info)</td></tr>
+<tr><td class="num" id="LN82">82</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN83">83</td><td class="line"><span class='directive'>#pragma unused (target, flags)</span></td></tr>
+<tr><td class="num" id="LN84">84</td><td class="line">    <span class='comment'>//	NSCAssert(info != NULL, @"info was NULL in ReachabilityCallback");</span></td></tr>
+<tr><td class="num" id="LN85">85</td><td class="line">    <span class='comment'>//	NSCAssert([(NSObject*) info isKindOfClass: [Reachability class]], @"info was wrong class in ReachabilityCallback");</span></td></tr>
+<tr><td class="num" id="LN86">86</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN87">87</td><td class="line">    <span class='comment'>// Converted the asserts above to conditionals, with safe return from the function</span></td></tr>
+<tr><td class="num" id="LN88">88</td><td class="line">    <span class='keyword'>if</span> (info == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN89">89</td><td class="line">        NSLog(@<span class='string_literal'>"info was NULL in ReachabilityCallback"</span>);</td></tr>
+<tr><td class="num" id="LN90">90</td><td class="line">        <span class='keyword'>return</span>;</td></tr>
+<tr><td class="num" id="LN91">91</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN92">92</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN93">93</td><td class="line">    <span class='keyword'>if</span> (![(<span class='keyword'>__bridge</span> NSObject*)info isKindOfClass :[CDVReachability class]]) {</td></tr>
+<tr><td class="num" id="LN94">94</td><td class="line">        NSLog(@<span class='string_literal'>"info was wrong class in ReachabilityCallback"</span>);</td></tr>
+<tr><td class="num" id="LN95">95</td><td class="line">        <span class='keyword'>return</span>;</td></tr>
+<tr><td class="num" id="LN96">96</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN97">97</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN98">98</td><td class="line">    <span class='comment'>// We're on the main RunLoop, so an NSAutoreleasePool is not necessary, but is added defensively</span></td></tr>
+<tr><td class="num" id="LN99">99</td><td class="line">    <span class='comment'>// in case someon uses the Reachability object in a different thread.</span></td></tr>
+<tr><td class="num" id="LN100">100</td><td class="line">    @autoreleasepool {</td></tr>
+<tr><td class="num" id="LN101">101</td><td class="line">        CDVReachability* noteObject = (<span class='keyword'>__bridge</span> CDVReachability*)info;</td></tr>
+<tr><td class="num" id="LN102">102</td><td class="line">        <span class='comment'>// Post a notification to notify the client that the network reachability changed.</span></td></tr>
+<tr><td class="num" id="LN103">103</td><td class="line">        [[NSNotificationCenter defaultCenter] postNotificationName:<span class='macro'>kReachabilityChangedNotification<span class='expansion'>@"kNetworkReachabilityChangedNotification"</span></span> object:noteObject];</td></tr>
+<tr><td class="num" id="LN104">104</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN105">105</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN106">106</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN107">107</td><td class="line">- (BOOL)startNotifier</td></tr>
+<tr><td class="num" id="LN108">108</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN109">109</td><td class="line">    BOOL retVal = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN110">110</td><td class="line">    SCNetworkReachabilityContext context = {0, (<span class='keyword'>__bridge</span> <span class='keyword'>void</span>*)(self), <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>};</td></tr>
+<tr><td class="num" id="LN111">111</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN112">112</td><td class="line">    <span class='keyword'>if</span> (SCNetworkReachabilitySetCallback(reachabilityRef, CDVReachabilityCallback, &amp;context)) {</td></tr>
+<tr><td class="num" id="LN113">113</td><td class="line">        <span class='keyword'>if</span> (SCNetworkReachabilityScheduleWithRunLoop(reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode)) {</td></tr>
+<tr><td class="num" id="LN114">114</td><td class="line">            retVal = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN115">115</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN116">116</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN117">117</td><td class="line">    <span class='keyword'>return</span> retVal;</td></tr>
+<tr><td class="num" id="LN118">118</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN119">119</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN120">120</td><td class="line">- (<span class='keyword'>void</span>)stopNotifier</td></tr>
+<tr><td class="num" id="LN121">121</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN122">122</td><td class="line">    <span class='keyword'>if</span> (reachabilityRef != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN123">123</td><td class="line">        SCNetworkReachabilityUnscheduleFromRunLoop(reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);</td></tr>
+<tr><td class="num" id="LN124">124</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN125">125</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN126">126</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN127">127</td><td class="line">- (<span class='keyword'>void</span>)dealloc</td></tr>
+<tr><td class="num" id="LN128">128</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN129">129</td><td class="line">    [self stopNotifier];</td></tr>
+<tr><td class="num" id="LN130">130</td><td class="line">    <span class='keyword'>if</span> (reachabilityRef != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN131">131</td><td class="line">        CFRelease(reachabilityRef);</td></tr>
+<tr><td class="num" id="LN132">132</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN133">133</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN134">134</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN135">135</td><td class="line">+ (CDVReachability*)reachabilityWithHostName:(NSString*)hostName;</td></tr>
+<tr><td class="num" id="LN136">136</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN137">137</td><td class="line">    CDVReachability* retVal = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN138">138</td><td class="line">    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(<span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>, [hostName UTF8String]);</td></tr>
+<tr><td class="num" id="LN139">139</td><td class="line">    <span class='keyword'>if</span> (reachability != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN140">140</td><td class="line">        retVal = [[self alloc] init];</td></tr>
+<tr><td class="num" id="LN141">141</td><td class="line">        <span class='keyword'>if</span> (retVal != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN142">142</td><td class="line">            retVal-&gt;reachabilityRef = reachability;</td></tr>
+<tr><td class="num" id="LN143">143</td><td class="line">            retVal-&gt;localWiFiRef = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN144">144</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN145">145</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN146">146</td><td class="line">    <span class='keyword'>return</span> retVal;</td></tr>
+<tr><td class="num" id="LN147">147</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN148">148</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN149">149</td><td class="line">+ (CDVReachability*)reachabilityWithAddress:(<span class='keyword'>const</span> <span class='keyword'>struct</span> sockaddr_in*)hostAddress;</td></tr>
+<tr><td class="num" id="LN150">150</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN151">151</td><td class="line">    SCNetworkReachabilityRef reachability = <span class="mrange">SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (<span class='keyword'>const</span> <span class='keyword'>struct</span> sockaddr*)hostAddress)</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgEvent" style="margin-left:45ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">1</div></td><td>Call to function 'SCNetworkReachabilityCreateWithAddress' returns a Core Foundation object with a +1 retain count</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN152">152</td><td class="line">    CDVReachability* retVal = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN153">153</td><td class="line">    <span class='keyword'>if</span> (<span class="mrange">reachability != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgEvent" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Assuming 'reachability' is not equal to null</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:5ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking true branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN154">154</td><td class="line">        retVal = [[self alloc] init];</td></tr>
+<tr><td class="num" id="LN155">155</td><td class="line">        <span class='keyword'>if</span> (<span class="mrange">retVal != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:13ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming 'retVal' is equal to nil</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:9ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN156">156</td><td class="line">            retVal-&gt;reachabilityRef = reachability;</td></tr>
+<tr><td class="num" id="LN157">157</td><td class="line">            retVal-&gt;localWiFiRef = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN158">158</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN159">159</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN160">160</td><td class="line">    <span class='keyword'>return</span> <span class="mrange">retVal</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:12ex; max-width:35em"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Object leaked: object allocated and stored into 'reachability' is not referenced later in this execution path and has a retain count of +1</td></tr></table></div></td></tr>
+<tr><td class="num" id="LN161">161</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN162">162</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN163">163</td><td class="line">+ (CDVReachability*)reachabilityForInternetConnection;</td></tr>
+<tr><td class="num" id="LN164">164</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN165">165</td><td class="line">    <span class='keyword'>struct</span> sockaddr_in zeroAddress;</td></tr>
+<tr><td class="num" id="LN166">166</td><td class="line">    bzero(&amp;zeroAddress, <span class='keyword'>sizeof</span>(zeroAddress));</td></tr>
+<tr><td class="num" id="LN167">167</td><td class="line">    zeroAddress.sin_len = <span class='keyword'>sizeof</span>(zeroAddress);</td></tr>
+<tr><td class="num" id="LN168">168</td><td class="line">    zeroAddress.sin_family = <span class='macro'>AF_INET<span class='expansion'>2</span></span>;</td></tr>
+<tr><td class="num" id="LN169">169</td><td class="line">    <span class='keyword'>return</span> [self reachabilityWithAddress:&amp;zeroAddress];</td></tr>
+<tr><td class="num" id="LN170">170</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN171">171</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN172">172</td><td class="line">+ (CDVReachability*)reachabilityForLocalWiFi;</td></tr>
+<tr><td class="num" id="LN173">173</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN174">174</td><td class="line">    <span class='keyword'>struct</span> sockaddr_in localWifiAddress;</td></tr>
+<tr><td class="num" id="LN175">175</td><td class="line">    bzero(&amp;localWifiAddress, <span class='keyword'>sizeof</span>(localWifiAddress));</td></tr>
+<tr><td class="num" id="LN176">176</td><td class="line">    localWifiAddress.sin_len = <span class='keyword'>sizeof</span>(localWifiAddress);</td></tr>
+<tr><td class="num" id="LN177">177</td><td class="line">    localWifiAddress.sin_family = <span class='macro'>AF_INET<span class='expansion'>2</span></span>;</td></tr>
+<tr><td class="num" id="LN178">178</td><td class="line">    <span class='comment'>// IN_LINKLOCALNETNUM is defined in &lt;netinet/in.h&gt; as 169.254.0.0</span></td></tr>
+<tr><td class="num" id="LN179">179</td><td class="line">    localWifiAddress.sin_addr.s_addr = <span class='macro'>htonl(IN_LINKLOCALNETNUM)<span class='expansion'>(__builtin_constant_p((u_int32_t)0xA9FE0000) ? ((__uint32_t)(<br>(((__uint32_t)((u_int32_t)0xA9FE0000) &amp; 0xff000000) &gt;&gt;<br> 24) | (((__uint32_t)((u_int32_t)0xA9FE0000) &amp; 0x00ff0000<br>) &gt;&gt; 8) | (((__uint32_t)((u_int32_t)0xA9FE0000) &amp; 0x0000ff00<br>) &lt;&lt; 8) | (((__uint32_t)((u_int32_t)0xA9FE0000) &amp; 0x000000ff<br>) &lt;&lt; 24))) : _OSSwapInt32((u_int32_t)0xA9FE0000))</span></span>;</td></tr>
+<tr><td class="num" id="LN180">180</td><td class="line">    CDVReachability* retVal = [self reachabilityWithAddress:&amp;localWifiAddress];</td></tr>
+<tr><td class="num" id="LN181">181</td><td class="line">    <span class='keyword'>if</span> (retVal != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN182">182</td><td class="line">        retVal-&gt;localWiFiRef = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN183">183</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN184">184</td><td class="line">    <span class='keyword'>return</span> retVal;</td></tr>
+<tr><td class="num" id="LN185">185</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN186">186</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN187">187</td><td class="line"><span class='directive'>#pragma mark Network Flag Handling</span></td></tr>
+<tr><td class="num" id="LN188">188</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN189">189</td><td class="line">- (CDVNetworkStatus)localWiFiStatusForFlags:(SCNetworkReachabilityFlags)flags</td></tr>
+<tr><td class="num" id="LN190">190</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN191">191</td><td class="line">    CDVPrintReachabilityFlags(flags, <span class='string_literal'>"localWiFiStatusForFlags"</span>);</td></tr>
+<tr><td class="num" id="LN192">192</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN193">193</td><td class="line">    BOOL retVal = CDVNotReachable;</td></tr>
+<tr><td class="num" id="LN194">194</td><td class="line">    <span class='keyword'>if</span> ((flags &amp; kSCNetworkReachabilityFlagsReachable) &amp;&amp; (flags &amp; kSCNetworkReachabilityFlagsIsDirect)) {</td></tr>
+<tr><td class="num" id="LN195">195</td><td class="line">        retVal = CDVReachableViaWiFi;</td></tr>
+<tr><td class="num" id="LN196">196</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN197">197</td><td class="line">    <span class='keyword'>return</span> retVal;</td></tr>
+<tr><td class="num" id="LN198">198</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN199">199</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN200">200</td><td class="line">- (CDVNetworkStatus)networkStatusForFlags:(SCNetworkReachabilityFlags)flags</td></tr>
+<tr><td class="num" id="LN201">201</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN202">202</td><td class="line">    CDVPrintReachabilityFlags(flags, <span class='string_literal'>"networkStatusForFlags"</span>);</td></tr>
+<tr><td class="num" id="LN203">203</td><td class="line">    <span class='keyword'>if</span> ((flags &amp; kSCNetworkReachabilityFlagsReachable) == 0) {</td></tr>
+<tr><td class="num" id="LN204">204</td><td class="line">        <span class='comment'>// if target host is not reachable</span></td></tr>
+<tr><td class="num" id="LN205">205</td><td class="line">        <span class='keyword'>return</span> CDVNotReachable;</td></tr>
+<tr><td class="num" id="LN206">206</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN207">207</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN208">208</td><td class="line">    NetworkStatus retVal = NotReachable;</td></tr>
+<tr><td class="num" id="LN209">209</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN210">210</td><td class="line">    <span class='keyword'>if</span> ((flags &amp; kSCNetworkReachabilityFlagsConnectionRequired) == 0) {</td></tr>
+<tr><td class="num" id="LN211">211</td><td class="line">        <span class='comment'>// if target host is reachable and no connection is required</span></td></tr>
+<tr><td class="num" id="LN212">212</td><td class="line">        <span class='comment'>//  then we'll assume (for now) that your on Wi-Fi</span></td></tr>
+<tr><td class="num" id="LN213">213</td><td class="line">        retVal = CDVReachableViaWiFi;</td></tr>
+<tr><td class="num" id="LN214">214</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN215">215</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN216">216</td><td class="line">    <span class='keyword'>if</span> ((((flags &amp; kSCNetworkReachabilityFlagsConnectionOnDemand) != 0) ||</td></tr>
+<tr><td class="num" id="LN217">217</td><td class="line">        ((flags &amp; kSCNetworkReachabilityFlagsConnectionOnTraffic) != 0))) {</td></tr>
+<tr><td class="num" id="LN218">218</td><td class="line">        <span class='comment'>// ... and the connection is on-demand (or on-traffic) if the</span></td></tr>
+<tr><td class="num" id="LN219">219</td><td class="line">        <span class='comment'>//     calling application is using the CFSocketStream or higher APIs</span></td></tr>
+<tr><td class="num" id="LN220">220</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN221">221</td><td class="line">        <span class='keyword'>if</span> ((flags &amp; kSCNetworkReachabilityFlagsInterventionRequired) == 0) {</td></tr>
+<tr><td class="num" id="LN222">222</td><td class="line">            <span class='comment'>// ... and no [user] intervention is needed</span></td></tr>
+<tr><td class="num" id="LN223">223</td><td class="line">            retVal = CDVReachableViaWiFi;</td></tr>
+<tr><td class="num" id="LN224">224</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN225">225</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN226">226</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN227">227</td><td class="line">    <span class='keyword'>if</span> ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN) {</td></tr>
+<tr><td class="num" id="LN228">228</td><td class="line">        <span class='comment'>// ... but WWAN connections are OK if the calling application</span></td></tr>
+<tr><td class="num" id="LN229">229</td><td class="line">        <span class='comment'>//     is using the CFNetwork (CFSocketStream?) APIs.</span></td></tr>
+<tr><td class="num" id="LN230">230</td><td class="line">        retVal = CDVReachableViaWWAN;</td></tr>
+<tr><td class="num" id="LN231">231</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN232">232</td><td class="line">    <span class='keyword'>return</span> retVal;</td></tr>
+<tr><td class="num" id="LN233">233</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN234">234</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN235">235</td><td class="line">- (BOOL)connectionRequired;</td></tr>
+<tr><td class="num" id="LN236">236</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN237">237</td><td class="line">    <span class='macro'>NSAssert(reachabilityRef != NULL, @<span class='string_literal'>"connectionRequired called with NULL reachabilityRef"</span>)<span class='expansion'>do { clang diagnostic push
+ clang diagnostic ignored "-Wformat-extra-args"<br>
+ if (!(reachabilityRef != ((void*)0))) { NSString *__assert_file__<br> = [NSString stringWithUTF8String:"/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/phonegap-3.5.0/plugins/org.apache.cordova.network-information/src/ios/CDVReachability.m"<br>]; __assert_file__ = __assert_file__ ? __assert_file__ : @"&lt;Unknown File&gt;"<br>; [[NSAssertionHandler currentHandler] handleFailureInMethod:<br>_cmd object:self file:__assert_file__ lineNumber:237 description<br>:(@"connectionRequired called with NULL reachabilityRef")]; }<br> clang diagnostic pop
+ } while(0)</span></span>;</td></tr>
+<tr><td class="num" id="LN238">238</td><td class="line">    SCNetworkReachabilityFlags flags;</td></tr>
+<tr><td class="num" id="LN239">239</td><td class="line">    <span class='keyword'>if</span> (SCNetworkReachabilityGetFlags(reachabilityRef, &amp;flags)) {</td></tr>
+<tr><td class="num" id="LN240">240</td><td class="line">        <span class='keyword'>return</span> flags &amp; kSCNetworkReachabilityFlagsConnectionRequired;</td></tr>
+<tr><td class="num" id="LN241">241</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN242">242</td><td class="line">    <span class='keyword'>return</span> <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN243">243</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN244">244</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN245">245</td><td class="line">- (CDVNetworkStatus)currentReachabilityStatus</td></tr>
+<tr><td class="num" id="LN246">246</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN247">247</td><td class="line">    <span class='macro'>NSAssert(reachabilityRef != NULL, @<span class='string_literal'>"currentNetworkStatus called with NULL reachabilityRef"</span>)<span class='expansion'>do { clang diagnostic push
+ clang diagnostic ignored "-Wformat-extra-args"<br>
+ if (!(reachabilityRef != ((void*)0))) { NSString *__assert_file__<br> = [NSString stringWithUTF8String:"/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/phonegap-3.5.0/plugins/org.apache.cordova.network-information/src/ios/CDVReachability.m"<br>]; __assert_file__ = __assert_file__ ? __assert_file__ : @"&lt;Unknown File&gt;"<br>; [[NSAssertionHandler currentHandler] handleFailureInMethod:<br>_cmd object:self file:__assert_file__ lineNumber:247 description<br>:(@"currentNetworkStatus called with NULL reachabilityRef")];<br> } clang diagnostic pop
+ } while(0)</span></span>;</td></tr>
+<tr><td class="num" id="LN248">248</td><td class="line">    CDVNetworkStatus retVal = CDVNotReachable;</td></tr>
+<tr><td class="num" id="LN249">249</td><td class="line">    SCNetworkReachabilityFlags flags;</td></tr>
+<tr><td class="num" id="LN250">250</td><td class="line">    <span class='keyword'>if</span> (SCNetworkReachabilityGetFlags(reachabilityRef, &amp;flags)) {</td></tr>
+<tr><td class="num" id="LN251">251</td><td class="line">        <span class='keyword'>if</span> (localWiFiRef) {</td></tr>
+<tr><td class="num" id="LN252">252</td><td class="line">            retVal = [self localWiFiStatusForFlags:flags];</td></tr>
+<tr><td class="num" id="LN253">253</td><td class="line">        } <span class='keyword'>else</span> {</td></tr>
+<tr><td class="num" id="LN254">254</td><td class="line">            retVal = [self networkStatusForFlags:flags];</td></tr>
+<tr><td class="num" id="LN255">255</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN256">256</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN257">257</td><td class="line">    <span class='keyword'>return</span> retVal;</td></tr>
+<tr><td class="num" id="LN258">258</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN259">259</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN260">260</td><td class="line">@end</td></tr>
+</table></body></html>

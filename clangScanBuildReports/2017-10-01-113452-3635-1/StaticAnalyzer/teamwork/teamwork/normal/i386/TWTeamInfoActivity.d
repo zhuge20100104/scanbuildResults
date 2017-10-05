@@ -1,0 +1,26 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/teamInfo/TWTeamInfoActivity.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/teamInfo/TWTeamInfoActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWBaseActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWAlterDialog.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWTableView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWTeamCircleTopicPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/groupMembers/TWLoadMembersService.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/teamInfo/TWTeamInfoMasterTable.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/teamInfo/TWTeamInfoBaseTable.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/teamInfo/TWTeamInfoCommonTable.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/teamInfo/TWTeamInfoOwerTable.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkGroupMemberActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkModifiActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWImageView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWWaitApproveActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseActiveObject.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/addMember/TWAddGroupMembers.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWTeamCirclePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamCircleTDCodeActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/teamInfo/TWTeamInfoSetOptionActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWTeamCircleDeletePact.h

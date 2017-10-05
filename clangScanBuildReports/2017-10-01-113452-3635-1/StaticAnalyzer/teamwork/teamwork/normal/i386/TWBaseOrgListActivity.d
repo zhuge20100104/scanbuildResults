@@ -1,0 +1,27 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/addMember/base/TWBaseOrgListActivity.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/addMember/base/TWBaseOrgListActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWBaseActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWAlterDialog.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWTableView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/addMember/base/TWBaseTeamListActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWBaseTableViewCell/TWBaseTableViewCell.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppDelegate.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApi.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApiObject.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWAdvertisementActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/TWNavigationController.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/TWCompanyListService.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/CompanyList.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/CABLoginService.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWRegisterPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/groupMembers/TWLoadMembersService.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/addMember/group/TWGroupAddOrgMemberListActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/addMember/base/TWBaseOrgMemberListActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/addMember/TWAddGroupMembers.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWTeamCirclePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWNetwork.h

@@ -1,0 +1,34 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/message/APNSService.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/message/APNSService.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/TWPushDataParser.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWMessageNotifycation.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/CABLoginService.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWRegisterPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/TWNavigationController.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWLoginActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWBaseActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWAlterDialog.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/AuthCodeView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppDelegate.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApi.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApiObject.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWAdvertisementActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWTools.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkTwoDimCodeActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarSDK.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/include/zbar.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarSymbol.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarImage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarImageScanner.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarReaderView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarReaderViewController.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarReaderController.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarCaptureReader.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarHelpController.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/ZBar/iPhone/include/ZBarSDK/ZBarCameraSimulator.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/addPhoto/AddPhotoFromCameraOrAlbum.h

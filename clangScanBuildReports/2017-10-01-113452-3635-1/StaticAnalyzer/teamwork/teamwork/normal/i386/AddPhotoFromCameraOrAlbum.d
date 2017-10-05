@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/addPhoto/AddPhotoFromCameraOrAlbum.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/addPhoto/AddPhotoFromCameraOrAlbum.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/addPhoto/QBImagePickerController/QBImagePickerController.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/addPhoto/QBImagePickerController/QBAssetCollectionViewControllerDelegate.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWAlterDialog.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkEditingSpeechActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWBaseActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkTopicsActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWTeamCirclePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/TWImage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/MBProgressHUD/MBProgressHUD.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/UIImage+TWCompression.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/TWNavigationController.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWLoadingView/TWProgressView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWLoadingView/LoadingAnimationView.h

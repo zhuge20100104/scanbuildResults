@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/commentsSend/CommentsSend.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/commentsSend/CommentsSend.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/TWCommentTextView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SELinkText.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SETextAttachment.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/SECompatibility.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/NSMutableAttributedString+Helper.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWCommentsAdd.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppPreference.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/config/TWUserPreferencePact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/AppPackage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/FuView/FuUI/TeamworkUI/emoji/EmojiKeyBoard.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/graphicMixRow/TWUITextView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/Toast/Toast+UIView.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWBaseActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWAlterDialog.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkEditingSpeechWarmActivity.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWTeamWorkGroupMemberPact.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/TWAppDelegate.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApi.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/umeng_ios_social_sdk_4.3_arm64_teamwork/UMSocial_Sdk_Extra_Frameworks/Wechat/WXApiObject.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/TWAdvertisementActivity.h

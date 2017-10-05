@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/MessageInterface.m \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/MessageInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPThreadMsgItem.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/XMPPInterface.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageBase.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageData.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageRequest.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageResponse.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/model/TWUploadImage.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/controller/TWBaseRoutine.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/common/TWFilePath.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/dao/TWTopicPostImageDao.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/SDWebImage/SDWebImageManager.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/SDWebImage/SDWebImageCompat.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/SDWebImage/SDWebImageOperation.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/SDWebImage/SDWebImageDownloader.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/SDWebImage/SDImageCache.h \
+  /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/services/XMPPInterface/Message/SDK/MessageFlip.h

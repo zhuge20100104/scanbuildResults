@@ -1,0 +1,600 @@
+<!doctype html>
+<html>
+<head>
+<title>/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkTwoDimCodeActivity.m</title>
+<style type="text/css">
+ body { color:#000000; background-color:#ffffff }
+ body { font-family:Helvetica, sans-serif; font-size:10pt }
+ h1 { font-size:14pt }
+ .code { border-collapse:collapse; width:100%; }
+ .code { font-family: "Monospace", monospace; font-size:10pt }
+ .code { line-height: 1.2em }
+ .comment { color: green; font-style: oblique }
+ .keyword { color: blue }
+ .string_literal { color: red }
+ .directive { color: darkmagenta }
+ .expansion { display: none; }
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
+ .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
+ .num { text-align:right; font-size:8pt }
+ .num { color:#444444 }
+ .line { padding-left: 1ex; border-left: 3px solid #ccc }
+ .line { white-space: pre }
+ .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
+ .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
+ .msg { font-family:Helvetica, sans-serif; font-size:8pt }
+ .msg { float:left }
+ .msg { padding:0.25em 1ex 0.25em 1ex }
+ .msg { margin-top:10px; margin-bottom:10px }
+ .msg { font-weight:bold }
+ .msg { max-width:60em; word-wrap: break-word; white-space: pre-wrap }
+ .msgT { padding:0x; spacing:0x }
+ .msgEvent { background-color:#fff8b4; color:#000000 }
+ .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
+ .mrange { background-color:#dfddf3 }
+ .mrange { border-bottom:1px solid #6F9DBE }
+ .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
+ .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
+ .PathIndexEvent { background-color:#bfba87 }
+ .PathIndexControl { background-color:#8c8c8c }
+ .PathNav a { text-decoration:none; font-size: larger }
+ .CodeInsertionHint { font-weight: bold; background-color: #10dd10 }
+ .CodeRemovalHint { background-color:#de1010 }
+ .CodeRemovalHint { border-bottom:1px solid #6F9DBE }
+ table.simpletable {
+   padding: 5px;
+   font-size:12pt;
+   margin:20px;
+   border-collapse: collapse; border-spacing: 0px;
+ }
+ td.rowname {
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
+</style>
+</head>
+<body>
+<!-- BUGDESC The 'viewWillDisappear:' instance method in UIViewController subclass 'TWTeamWorkTwoDimCodeActivity' is missing a [super viewWillDisappear:] call -->
+
+<!-- BUGTYPE Missing call to superclass -->
+
+<!-- BUGCATEGORY Core Foundation/Objective-C -->
+
+<!-- BUGFILE /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/view_iPhone/teamwork/TWTeamWorkTwoDimCodeActivity.m -->
+
+<!-- FILENAME TWTeamWorkTwoDimCodeActivity.m -->
+
+<!-- FUNCTIONNAME viewWillDisappear: -->
+
+<!-- ISSUEHASHCONTENTOFLINEINCONTEXT 58d92662b06136aa08fae0e8b0a28ec1 -->
+
+<!-- BUGLINE 163 -->
+
+<!-- BUGCOLUMN 1 -->
+
+<!-- BUGPATHLENGTH 1 -->
+
+<!-- BUGMETAEND -->
+<!-- REPORTHEADER -->
+<h3>Bug Summary</h3>
+<table class="simpletable">
+<tr><td class="rowname">File:</td><td>app/view_iPhone/teamwork/TWTeamWorkTwoDimCodeActivity.m</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 163, column 1</a><br />The 'viewWillDisappear:' instance method in UIViewController subclass 'TWTeamWorkTwoDimCodeActivity' is missing a [super viewWillDisappear:] call</td></tr>
+</table>
+<!-- REPORTSUMMARYEXTRA -->
+<h3>Annotated Source Code</h3>
+<table class="code">
+<tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"><span class='comment'>//  TWTeamWorkTwoDimCodeActivity.m</span></td></tr>
+<tr><td class="num" id="LN3">3</td><td class="line"><span class='comment'>//  teamwork</span></td></tr>
+<tr><td class="num" id="LN4">4</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN5">5</td><td class="line"><span class='comment'>//  Created by sunlin on 14-4-21.</span></td></tr>
+<tr><td class="num" id="LN6">6</td><td class="line"><span class='comment'>//  Copyright (c) 2014年 chanjet. All rights reserved.</span></td></tr>
+<tr><td class="num" id="LN7">7</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN8">8</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN9">9</td><td class="line"><span class='directive'>#import "TWTeamWorkTwoDimCodeActivity.h"</span></td></tr>
+<tr><td class="num" id="LN10">10</td><td class="line"><span class='directive'>#import "TWTeamCircleJoinActivity.h"</span></td></tr>
+<tr><td class="num" id="LN11">11</td><td class="line"><span class='directive'>#import "TWAlterDialog.h"</span></td></tr>
+<tr><td class="num" id="LN12">12</td><td class="line"><span class='directive'>#import "TWViewController.h"</span></td></tr>
+<tr><td class="num" id="LN13">13</td><td class="line"><span class='directive'>#import "TWMainTabBarActivity.h"</span></td></tr>
+<tr><td class="num" id="LN14">14</td><td class="line"><span class='directive'>#import "TWNavigationController.h"</span></td></tr>
+<tr><td class="num" id="LN15">15</td><td class="line"><span class='directive'>#import "TWAppDelegate.h"</span></td></tr>
+<tr><td class="num" id="LN16">16</td><td class="line"><span class='directive'>#import &lt;AVFoundation/AVFoundation.h&gt;</span></td></tr>
+<tr><td class="num" id="LN17">17</td><td class="line"><span class='directive'>#import "TWLightAppActivity.h"</span></td></tr>
+<tr><td class="num" id="LN18">18</td><td class="line"><span class='directive'>#import "TWLightAppConfigService.h"</span></td></tr>
+<tr><td class="num" id="LN19">19</td><td class="line"><span class='directive'>#import "PrintExceptionService.h"</span></td></tr>
+<tr><td class="num" id="LN20">20</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN21">21</td><td class="line"><span class='directive'>#define <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span>    65</span></td></tr>
+<tr><td class="num" id="LN22">22</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN23">23</td><td class="line"><span class='keyword'>static</span> BOOL appear = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN24">24</td><td class="line"><span class='keyword'>static</span> BOOL disappear = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN25">25</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN26">26</td><td class="line">@implementation TWTeamWorkTwoDimCodeActivity</td></tr>
+<tr><td class="num" id="LN27">27</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN28">28</td><td class="line">    ZBarReaderView *_readerView;</td></tr>
+<tr><td class="num" id="LN29">29</td><td class="line">    ZBarCameraSimulator *_cameraSim;</td></tr>
+<tr><td class="num" id="LN30">30</td><td class="line">    UIImageView *_readLineView;</td></tr>
+<tr><td class="num" id="LN31">31</td><td class="line">    UIImageView *_hbImageview;</td></tr>
+<tr><td class="num" id="LN32">32</td><td class="line">    BOOL _is_Anmotion;</td></tr>
+<tr><td class="num" id="LN33">33</td><td class="line">    BOOL _is_have;</td></tr>
+<tr><td class="num" id="LN34">34</td><td class="line">    BOOL _is_Bottom;</td></tr>
+<tr><td class="num" id="LN35">35</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN36">36</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN37">37</td><td class="line">- (<span class='keyword'>void</span>)dealloc</td></tr>
+<tr><td class="num" id="LN38">38</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN39">39</td><td class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</td></tr>
+<tr><td class="num" id="LN40">40</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN41">41</td><td class="line">    [self removeView];</td></tr>
+<tr><td class="num" id="LN42">42</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN43">43</td><td class="line">    <span class='keyword'>if</span> (self.camera &amp;&amp; [self.camera isKindOfClass:[AddPhotoFromCameraOrAlbum class]])</td></tr>
+<tr><td class="num" id="LN44">44</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN45">45</td><td class="line">        [self.camera imagePickerControllerDidCancel];</td></tr>
+<tr><td class="num" id="LN46">46</td><td class="line">        self.camera.delegate = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN47">47</td><td class="line">        self.camera = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN48">48</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN49">49</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN50">50</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN51">51</td><td class="line">- (<span class='keyword'>void</span>)removeView</td></tr>
+<tr><td class="num" id="LN52">52</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN53">53</td><td class="line">    <span class='keyword'>if</span> (_readerView)</td></tr>
+<tr><td class="num" id="LN54">54</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN55">55</td><td class="line">        [self viewDisappearForViewWillDisappear:<span class='macro'>NO<span class='expansion'>__objc_no</span></span> animated:<span class='macro'>NO<span class='expansion'>__objc_no</span></span>];</td></tr>
+<tr><td class="num" id="LN56">56</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN57">57</td><td class="line">        [_readerView flushCache];</td></tr>
+<tr><td class="num" id="LN58">58</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN59">59</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN60">60</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN61">61</td><td class="line">- (id)init</td></tr>
+<tr><td class="num" id="LN62">62</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN63">63</td><td class="line">    self = [super init];</td></tr>
+<tr><td class="num" id="LN64">64</td><td class="line">    <span class='keyword'>if</span> (self)</td></tr>
+<tr><td class="num" id="LN65">65</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN66">66</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN67">67</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN68">68</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN69">69</td><td class="line">    <span class='keyword'>return</span> self;</td></tr>
+<tr><td class="num" id="LN70">70</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN71">71</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN72">72</td><td class="line">- (<span class='keyword'>void</span>)loadView</td></tr>
+<tr><td class="num" id="LN73">73</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN74">74</td><td class="line">    [super loadView];</td></tr>
+<tr><td class="num" id="LN75">75</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN76">76</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN77">77</td><td class="line">- (<span class='keyword'>void</span>)onCreateViews</td></tr>
+<tr><td class="num" id="LN78">78</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN79">79</td><td class="line">    [super onCreateViews];</td></tr>
+<tr><td class="num" id="LN80">80</td><td class="line">    [self setHidesBottomBarWhenPushed:<span class='macro'>YES<span class='expansion'>__objc_yes</span></span>];</td></tr>
+<tr><td class="num" id="LN81">81</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN82">82</td><td class="line">    self.title = @<span class='string_literal'>"二维码"</span>;</td></tr>
+<tr><td class="num" id="LN83">83</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN84">84</td><td class="line">    [self showBarButton:[CSPUINavigationBar RIGHT] title:@<span class='string_literal'>"相册"</span>];</td></tr>
+<tr><td class="num" id="LN85">85</td><td class="line">    UIButton *button =  (UIButton *)self.navigationItem.rightBarButtonItem.customView;</td></tr>
+<tr><td class="num" id="LN86">86</td><td class="line">    [button.titleLabel setFont:[UIFont systemFontOfSize:13.0]];</td></tr>
+<tr><td class="num" id="LN87">87</td><td class="line">    [button setTitleColor:[UIColor colorWithString:@<span class='string_literal'>"#FFFFFF"</span>] forState:UIControlStateNormal];</td></tr>
+<tr><td class="num" id="LN88">88</td><td class="line">    [button setTitleColor:[UIColor colorWithString:@<span class='string_literal'>"#a1f5ff"</span>] forState:UIControlStateHighlighted];</td></tr>
+<tr><td class="num" id="LN89">89</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN90">90</td><td class="line">    _readerView = [[ZBarReaderView alloc] init];</td></tr>
+<tr><td class="num" id="LN91">91</td><td class="line">    _readerView.frame = CGRectMake(0, 64, self.frame.size.width, self.frame.size.height - 44);</td></tr>
+<tr><td class="num" id="LN92">92</td><td class="line">    _readerView.backgroundColor = [UIColor clearColor];</td></tr>
+<tr><td class="num" id="LN93">93</td><td class="line">    _readerView.readerDelegate = self;</td></tr>
+<tr><td class="num" id="LN94">94</td><td class="line">    _readerView.showsFPS = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN95">95</td><td class="line">    _readerView.torchMode = 0;</td></tr>
+<tr><td class="num" id="LN96">96</td><td class="line">    _readerView.allowsPinchZoom = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN97">97</td><td class="line">    _readerView.tracksSymbols = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN98">98</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN99">99</td><td class="line">    _readLineView = [[UIImageView alloc] init];</td></tr>
+<tr><td class="num" id="LN100">100</td><td class="line">    _readLineView.backgroundColor = [UIColor clearColor];</td></tr>
+<tr><td class="num" id="LN101">101</td><td class="line">    _readLineView.image = [UIImage imageNamed:@<span class='string_literal'>"tw_smx_1.png"</span>];</td></tr>
+<tr><td class="num" id="LN102">102</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN103">103</td><td class="line">    <span class='comment'>//y, x, height, width</span></td></tr>
+<tr><td class="num" id="LN104">104</td><td class="line">    CGRect scanMaskRect = CGRectMake(50 + 44, 50, 180, 200);</td></tr>
+<tr><td class="num" id="LN105">105</td><td class="line">    _readerView.scanCrop = [self getScanCrop:scanMaskRect readerViewBounds:_readerView.bounds];</td></tr>
+<tr><td class="num" id="LN106">106</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN107">107</td><td class="line">    <span class='keyword'>if</span> (<span class='macro'>TARGET_IPHONE_SIMULATOR<span class='expansion'>1</span></span>)</td></tr>
+<tr><td class="num" id="LN108">108</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN109">109</td><td class="line">        _cameraSim = [[ZBarCameraSimulator alloc] initWithViewController:self];</td></tr>
+<tr><td class="num" id="LN110">110</td><td class="line">        _cameraSim.readerView = _readerView;</td></tr>
+<tr><td class="num" id="LN111">111</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN112">112</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN113">113</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN114">114</td><td class="line"><span class='macro'>ON_SIGNAL3(CSPUINavigationBar, LEFT_TOUCHED, signal)<span class='expansion'>- (void)handleUISignal_CSPUINavigationBar_LEFT_TOUCHED:(CSPUISignal<br> *)signal</span></span></td></tr>
+<tr><td class="num" id="LN115">115</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN116">116</td><td class="line">    [self.activityStack popAcvitityAnimated:<span class='macro'>YES<span class='expansion'>__objc_yes</span></span>];</td></tr>
+<tr><td class="num" id="LN117">117</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN118">118</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN119">119</td><td class="line"><span class='macro'>ON_SIGNAL3(CSPUINavigationBar, RIGHT_TOUCHED, signal)<span class='expansion'>- (void)handleUISignal_CSPUINavigationBar_RIGHT_TOUCHED:(CSPUISignal<br> *)signal</span></span></td></tr>
+<tr><td class="num" id="LN120">120</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN121">121</td><td class="line"><span class='comment'>//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];</span></td></tr>
+<tr><td class="num" id="LN122">122</td><td class="line"><span class='comment'>//    picker.sourceType               = UIImagePickerControllerSourceTypePhotoLibrary;</span></td></tr>
+<tr><td class="num" id="LN123">123</td><td class="line"><span class='comment'>//    picker.delegate                 = self;</span></td></tr>
+<tr><td class="num" id="LN124">124</td><td class="line"><span class='comment'>//    picker.allowsEditing            = YES;</span></td></tr>
+<tr><td class="num" id="LN125">125</td><td class="line"><span class='comment'>//    [self presentModalViewController:picker animated:YES];</span></td></tr>
+<tr><td class="num" id="LN126">126</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN127">127</td><td class="line">    [self gotoCameraOrAlbum:AddPhotoFromAlbum];</td></tr>
+<tr><td class="num" id="LN128">128</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN129">129</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN130">130</td><td class="line">- (<span class='keyword'>void</span>)viewWillAppear:(BOOL)animated</td></tr>
+<tr><td class="num" id="LN131">131</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN132">132</td><td class="line">    <span class='keyword'>if</span> (<span class='macro'>NO<span class='expansion'>__objc_no</span></span> == appear)</td></tr>
+<tr><td class="num" id="LN133">133</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN134">134</td><td class="line">        [super viewWillAppear:animated];</td></tr>
+<tr><td class="num" id="LN135">135</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN136">136</td><td class="line">        [[TWUMAnalytics sharedInstance] event:<span class='macro'>TWUMAnalytics_quan_sweepQR<span class='expansion'>@"quan_sweepQR"</span></span>];</td></tr>
+<tr><td class="num" id="LN137">137</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN138">138</td><td class="line">        appear = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN139">139</td><td class="line">        disappear = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN140">140</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN141">141</td><td class="line">        [[UIApplication sharedApplication].delegate.window addSubview:_readerView];</td></tr>
+<tr><td class="num" id="LN142">142</td><td class="line">        _is_Anmotion = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN143">143</td><td class="line">        _is_have = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN144">144</td><td class="line">        [self loopDrawLine];</td></tr>
+<tr><td class="num" id="LN145">145</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN146">146</td><td class="line">        [_readerView start];</td></tr>
+<tr><td class="num" id="LN147">147</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN148">148</td><td class="line">        <span class='comment'>//相机权限 最低支持iOS 7.0</span></td></tr>
+<tr><td class="num" id="LN149">149</td><td class="line">        <span class='keyword'>if</span> (<span class='macro'>IOS7_OR_LATER<span class='expansion'>( [[[UIDevice currentDevice] systemVersion] compare:@"7.0"] !=<br> NSOrderedAscending )</span></span>)</td></tr>
+<tr><td class="num" id="LN150">150</td><td class="line">        {</td></tr>
+<tr><td class="num" id="LN151">151</td><td class="line">            AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];</td></tr>
+<tr><td class="num" id="LN152">152</td><td class="line">            <span class='keyword'>if</span> (authStatus == AVAuthorizationStatusDenied)</td></tr>
+<tr><td class="num" id="LN153">153</td><td class="line">            {</td></tr>
+<tr><td class="num" id="LN154">154</td><td class="line">                [self cameraDeniedAlert];</td></tr>
+<tr><td class="num" id="LN155">155</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN156">156</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN157">157</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN158">158</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN159">159</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN160">160</td><td class="line">- (<span class='keyword'>void</span>)viewWillDisappear:(BOOL)animated</td></tr>
+<tr><td class="num" id="LN161">161</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN162">162</td><td class="line">    [self viewDisappearForViewWillDisappear:<span class='macro'>YES<span class='expansion'>__objc_yes</span></span> animated:animated];</td></tr>
+<tr><td class="num" id="LN163">163</td><td class="line">}</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:1ex; max-width:36em">The 'viewWillDisappear:' instance method in UIViewController subclass 'TWTeamWorkTwoDimCodeActivity' is missing a [super viewWillDisappear:] call</div></td></tr>
+<tr><td class="num" id="LN164">164</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN165">165</td><td class="line">- (<span class='keyword'>void</span>)viewDidAppear:(BOOL)animated</td></tr>
+<tr><td class="num" id="LN166">166</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN167">167</td><td class="line">    <span class='keyword'>if</span> (<span class='macro'>NO<span class='expansion'>__objc_no</span></span> == appear)</td></tr>
+<tr><td class="num" id="LN168">168</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN169">169</td><td class="line">        [super viewDidAppear:animated];</td></tr>
+<tr><td class="num" id="LN170">170</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN171">171</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN172">172</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN173">173</td><td class="line">- (<span class='keyword'>void</span>)viewDidDisappear:(BOOL)animated</td></tr>
+<tr><td class="num" id="LN174">174</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN175">175</td><td class="line">    <span class='keyword'>if</span> (<span class='macro'>NO<span class='expansion'>__objc_no</span></span> == disappear)</td></tr>
+<tr><td class="num" id="LN176">176</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN177">177</td><td class="line">        [super viewDidDisappear:animated];</td></tr>
+<tr><td class="num" id="LN178">178</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN179">179</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN180">180</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN181">181</td><td class="line">- (<span class='keyword'>void</span>)didReceiveMemoryWarning</td></tr>
+<tr><td class="num" id="LN182">182</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN183">183</td><td class="line">    [super didReceiveMemoryWarning];</td></tr>
+<tr><td class="num" id="LN184">184</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN185">185</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN186">186</td><td class="line">- (<span class='keyword'>void</span>)viewDisappearForViewWillDisappear:(BOOL)viewWillDisappear animated:(BOOL)animated</td></tr>
+<tr><td class="num" id="LN187">187</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN188">188</td><td class="line">    <span class='keyword'>if</span> (<span class='macro'>NO<span class='expansion'>__objc_no</span></span> == disappear)</td></tr>
+<tr><td class="num" id="LN189">189</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN190">190</td><td class="line">        <span class='keyword'>if</span> (viewWillDisappear)</td></tr>
+<tr><td class="num" id="LN191">191</td><td class="line">        {</td></tr>
+<tr><td class="num" id="LN192">192</td><td class="line">            [super viewWillDisappear:animated];</td></tr>
+<tr><td class="num" id="LN193">193</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN194">194</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN195">195</td><td class="line">        disappear = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN196">196</td><td class="line">        appear = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN197">197</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN198">198</td><td class="line">        [_readerView stop];</td></tr>
+<tr><td class="num" id="LN199">199</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN200">200</td><td class="line">        _is_Anmotion = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN201">201</td><td class="line">        [_readLineView stopAnimating];</td></tr>
+<tr><td class="num" id="LN202">202</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN203">203</td><td class="line">        [_readerView removeFromSuperview];</td></tr>
+<tr><td class="num" id="LN204">204</td><td class="line">        [_hbImageview removeFromSuperview];</td></tr>
+<tr><td class="num" id="LN205">205</td><td class="line">        _is_have = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN206">206</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN207">207</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN208">208</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN209">209</td><td class="line">- (CGRect)getScanCrop:(CGRect)rect readerViewBounds:(CGRect)readerViewBounds</td></tr>
+<tr><td class="num" id="LN210">210</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN211">211</td><td class="line">    CGFloat x, y, width, height;</td></tr>
+<tr><td class="num" id="LN212">212</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN213">213</td><td class="line">    x = rect.origin.y / readerViewBounds.size.height;</td></tr>
+<tr><td class="num" id="LN214">214</td><td class="line">    y = 1 - (rect.origin.x + rect.size.width) / readerViewBounds.size.width;</td></tr>
+<tr><td class="num" id="LN215">215</td><td class="line">    width = (rect.origin.y + rect.size.height) / readerViewBounds.size.height;</td></tr>
+<tr><td class="num" id="LN216">216</td><td class="line">    height = 1 - rect.origin.x / readerViewBounds.size.width;</td></tr>
+<tr><td class="num" id="LN217">217</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN218">218</td><td class="line">    <span class='keyword'>return</span> CGRectMake(x, y, width, height);</td></tr>
+<tr><td class="num" id="LN219">219</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN220">220</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN221">221</td><td class="line">- (<span class='keyword'>void</span>)loopDrawLine</td></tr>
+<tr><td class="num" id="LN222">222</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN223">223</td><td class="line">    <span class='keyword'>if</span> (_readLineView)</td></tr>
+<tr><td class="num" id="LN224">224</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN225">225</td><td class="line">        [_readLineView removeFromSuperview];</td></tr>
+<tr><td class="num" id="LN226">226</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN227">227</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN228">228</td><td class="line">    <span class='keyword'>if</span> (!_is_Bottom)</td></tr>
+<tr><td class="num" id="LN229">229</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN230">230</td><td class="line">        _readLineView.frame = CGRectMake(50, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span>, 220, 7);</td></tr>
+<tr><td class="num" id="LN231">231</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN232">232</td><td class="line">    <span class='keyword'>else</span></td></tr>
+<tr><td class="num" id="LN233">233</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN234">234</td><td class="line">        _readLineView.frame = CGRectMake(50, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span> + 220 - 7, 220, 7);</td></tr>
+<tr><td class="num" id="LN235">235</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN236">236</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN237">237</td><td class="line">    [UIView animateWithDuration:3.0</td></tr>
+<tr><td class="num" id="LN238">238</td><td class="line">                          delay:0.0</td></tr>
+<tr><td class="num" id="LN239">239</td><td class="line">                        options:UIViewAnimationOptionCurveEaseIn</td></tr>
+<tr><td class="num" id="LN240">240</td><td class="line">                     animations:^{</td></tr>
+<tr><td class="num" id="LN241">241</td><td class="line">                         <span class='keyword'>if</span> (_is_Bottom)</td></tr>
+<tr><td class="num" id="LN242">242</td><td class="line">                         {</td></tr>
+<tr><td class="num" id="LN243">243</td><td class="line">                             _readLineView.frame = CGRectMake(50, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span>, 220, 7);</td></tr>
+<tr><td class="num" id="LN244">244</td><td class="line">                             _is_Bottom = <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN245">245</td><td class="line">                         }</td></tr>
+<tr><td class="num" id="LN246">246</td><td class="line">                         <span class='keyword'>else</span></td></tr>
+<tr><td class="num" id="LN247">247</td><td class="line">                         {</td></tr>
+<tr><td class="num" id="LN248">248</td><td class="line">                             _readLineView.frame = CGRectMake(50, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span> + 220 - 7, 220, 7);</td></tr>
+<tr><td class="num" id="LN249">249</td><td class="line">                             _is_Bottom = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN250">250</td><td class="line">                         }</td></tr>
+<tr><td class="num" id="LN251">251</td><td class="line">                         [_readLineView setAnimationRepeatCount:0];</td></tr>
+<tr><td class="num" id="LN252">252</td><td class="line">                     }</td></tr>
+<tr><td class="num" id="LN253">253</td><td class="line">                     completion:^(BOOL finished){</td></tr>
+<tr><td class="num" id="LN254">254</td><td class="line">                         <span class='keyword'>if</span> (!_is_Anmotion)</td></tr>
+<tr><td class="num" id="LN255">255</td><td class="line">                         {</td></tr>
+<tr><td class="num" id="LN256">256</td><td class="line">                             [self loopDrawLine];</td></tr>
+<tr><td class="num" id="LN257">257</td><td class="line">                         }</td></tr>
+<tr><td class="num" id="LN258">258</td><td class="line">                     }];</td></tr>
+<tr><td class="num" id="LN259">259</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN260">260</td><td class="line">    <span class='keyword'>if</span> (!_is_have)</td></tr>
+<tr><td class="num" id="LN261">261</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN262">262</td><td class="line">        UIImage *hbImage = [UIImage imageNamed:@<span class='string_literal'>"tw_smk_1.png"</span>];</td></tr>
+<tr><td class="num" id="LN263">263</td><td class="line">        _hbImageview = [[UIImageView alloc] initWithImage:hbImage];</td></tr>
+<tr><td class="num" id="LN264">264</td><td class="line">        CGRect hbImagerect = CGRectMake(50, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span> + 64, 220, 220);</td></tr>
+<tr><td class="num" id="LN265">265</td><td class="line">        [_hbImageview setFrame:hbImagerect];</td></tr>
+<tr><td class="num" id="LN266">266</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN267">267</td><td class="line">        [[UIApplication sharedApplication].delegate.window addSubview:_hbImageview];</td></tr>
+<tr><td class="num" id="LN268">268</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN269">269</td><td class="line">        CALayer *leftLayer, *rightLayer, *topLayer, *bottomLayer;</td></tr>
+<tr><td class="num" id="LN270">270</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN271">271</td><td class="line">        leftLayer = [CALayer new];</td></tr>
+<tr><td class="num" id="LN272">272</td><td class="line">        leftLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5].CGColor;</td></tr>
+<tr><td class="num" id="LN273">273</td><td class="line">        leftLayer.frame = CGRectMake(0, 0, 50, _readerView.frame.size.height);</td></tr>
+<tr><td class="num" id="LN274">274</td><td class="line">        [_readerView.layer addSublayer:leftLayer];</td></tr>
+<tr><td class="num" id="LN275">275</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN276">276</td><td class="line">        rightLayer = [CALayer new];</td></tr>
+<tr><td class="num" id="LN277">277</td><td class="line">        rightLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5].CGColor;</td></tr>
+<tr><td class="num" id="LN278">278</td><td class="line">        rightLayer.frame = CGRectMake(270, 0, 50, _readerView.frame.size.height);</td></tr>
+<tr><td class="num" id="LN279">279</td><td class="line">        [_readerView.layer addSublayer:rightLayer];</td></tr>
+<tr><td class="num" id="LN280">280</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN281">281</td><td class="line">        topLayer = [CALayer new];</td></tr>
+<tr><td class="num" id="LN282">282</td><td class="line">        topLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5].CGColor;</td></tr>
+<tr><td class="num" id="LN283">283</td><td class="line">        topLayer.frame = CGRectMake(hbImagerect.origin.x, 0, hbImagerect.size.width, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span>);</td></tr>
+<tr><td class="num" id="LN284">284</td><td class="line">        [_readerView.layer addSublayer:topLayer];</td></tr>
+<tr><td class="num" id="LN285">285</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN286">286</td><td class="line">        bottomLayer = [CALayer new];</td></tr>
+<tr><td class="num" id="LN287">287</td><td class="line">        bottomLayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5].CGColor;</td></tr>
+<tr><td class="num" id="LN288">288</td><td class="line">        bottomLayer.frame = CGRectMake(hbImagerect.origin.x, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span> + hbImagerect.size.height, hbImagerect.size.width, _readerView.frame.size.height - <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span> - hbImagerect.size.height);</td></tr>
+<tr><td class="num" id="LN289">289</td><td class="line">        [_readerView.layer addSublayer:bottomLayer];</td></tr>
+<tr><td class="num" id="LN290">290</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN291">291</td><td class="line">        UILabel *disLabel = [[UILabel alloc] init];</td></tr>
+<tr><td class="num" id="LN292">292</td><td class="line">        disLabel.backgroundColor = [UIColor clearColor];</td></tr>
+<tr><td class="num" id="LN293">293</td><td class="line">        disLabel.text = @<span class='string_literal'>"将二维码放入框内，即可自动扫描"</span>;</td></tr>
+<tr><td class="num" id="LN294">294</td><td class="line">        disLabel.textColor = [UIColor whiteColor];</td></tr>
+<tr><td class="num" id="LN295">295</td><td class="line">        disLabel.font = [UIFont systemFontOfSize:13];</td></tr>
+<tr><td class="num" id="LN296">296</td><td class="line">        disLabel.textAlignment = NSTextAlignmentCenter;</td></tr>
+<tr><td class="num" id="LN297">297</td><td class="line">        disLabel.frame = CGRectMake(hbImagerect.origin.x, <span class='macro'>HBImageViewTopMargin<span class='expansion'>65</span></span> + hbImagerect.size.height + 30, hbImagerect.size.width, 15);</td></tr>
+<tr><td class="num" id="LN298">298</td><td class="line">        [_readerView addSubview:disLabel];</td></tr>
+<tr><td class="num" id="LN299">299</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN300">300</td><td class="line">        _is_have = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN301">301</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN302">302</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN303">303</td><td class="line">    [_readerView addSubview:_readLineView];</td></tr>
+<tr><td class="num" id="LN304">304</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN305">305</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN306">306</td><td class="line">- (<span class='keyword'>void</span>)readerView:(ZBarReaderView *)view didReadSymbols:(ZBarSymbolSet *)syms fromImage:(UIImage *)img</td></tr>
+<tr><td class="num" id="LN307">307</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN308">308</td><td class="line">    <span class='keyword'>const</span> zbar_symbol_t *symbol = zbar_symbol_set_first_symbol(syms.zbarSymbolSet);</td></tr>
+<tr><td class="num" id="LN309">309</td><td class="line">    NSString *symbolStr = [NSString stringWithUTF8String:zbar_symbol_get_data(symbol)];</td></tr>
+<tr><td class="num" id="LN310">310</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN311">311</td><td class="line">    [self symbolParser:symbolStr];</td></tr>
+<tr><td class="num" id="LN312">312</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN313">313</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN314">314</td><td class="line"><span class='comment'>//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info</span></td></tr>
+<tr><td class="num" id="LN315">315</td><td class="line"><span class='comment'>//{</span></td></tr>
+<tr><td class="num" id="LN316">316</td><td class="line"><span class='comment'>//    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];</span></td></tr>
+<tr><td class="num" id="LN317">317</td><td class="line"><span class='comment'>//    if ([type isEqualToString:@"public.image"])</span></td></tr>
+<tr><td class="num" id="LN318">318</td><td class="line"><span class='comment'>//    {</span></td></tr>
+<tr><td class="num" id="LN319">319</td><td class="line"><span class='comment'>//        UIImage *originalImage = [info valueForKey:@"UIImagePickerControllerEditedImage"];</span></td></tr>
+<tr><td class="num" id="LN320">320</td><td class="line"><span class='comment'>//        </span></td></tr>
+<tr><td class="num" id="LN321">321</td><td class="line"><span class='comment'>//        ZBarReaderController *reader = [ZBarReaderController new];</span></td></tr>
+<tr><td class="num" id="LN322">322</td><td class="line"><span class='comment'>//        ZBarSymbol *symbol = nil;</span></td></tr>
+<tr><td class="num" id="LN323">323</td><td class="line"><span class='comment'>//        for (symbol in [reader scanImage:originalImage.CGImage])</span></td></tr>
+<tr><td class="num" id="LN324">324</td><td class="line"><span class='comment'>//        {</span></td></tr>
+<tr><td class="num" id="LN325">325</td><td class="line"><span class='comment'>//            break;</span></td></tr>
+<tr><td class="num" id="LN326">326</td><td class="line"><span class='comment'>//        }</span></td></tr>
+<tr><td class="num" id="LN327">327</td><td class="line"><span class='comment'>//        </span></td></tr>
+<tr><td class="num" id="LN328">328</td><td class="line"><span class='comment'>//        [picker dismissModalViewControllerAnimated:YES];</span></td></tr>
+<tr><td class="num" id="LN329">329</td><td class="line"><span class='comment'>//        </span></td></tr>
+<tr><td class="num" id="LN330">330</td><td class="line"><span class='comment'>//        [self symbolParser:symbol.data delay:0.5];</span></td></tr>
+<tr><td class="num" id="LN331">331</td><td class="line"><span class='comment'>//    }</span></td></tr>
+<tr><td class="num" id="LN332">332</td><td class="line"><span class='comment'>//}</span></td></tr>
+<tr><td class="num" id="LN333">333</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN334">334</td><td class="line"><span class='comment'>//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker</span></td></tr>
+<tr><td class="num" id="LN335">335</td><td class="line"><span class='comment'>//{</span></td></tr>
+<tr><td class="num" id="LN336">336</td><td class="line"><span class='comment'>//    [picker dismissModalViewControllerAnimated:YES];</span></td></tr>
+<tr><td class="num" id="LN337">337</td><td class="line"><span class='comment'>//}</span></td></tr>
+<tr><td class="num" id="LN338">338</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN339">339</td><td class="line"><span class='comment'>//跳转到相机(相册)</span></td></tr>
+<tr><td class="num" id="LN340">340</td><td class="line">- (<span class='keyword'>void</span>)gotoCameraOrAlbum:(AddPhotoType)type</td></tr>
+<tr><td class="num" id="LN341">341</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN342">342</td><td class="line">    self.camera = [[AddPhotoFromCameraOrAlbum alloc] initWithAddPhotoType:type andCurrentController:self.activityStack andMaximumNumberOfSelection:1 lightApp:<span class='macro'>NO<span class='expansion'>__objc_no</span></span>];</td></tr>
+<tr><td class="num" id="LN343">343</td><td class="line">    self.camera.delegate = self;</td></tr>
+<tr><td class="num" id="LN344">344</td><td class="line">    self.camera.isFromTopic = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN345">345</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN346">346</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN347">347</td><td class="line"><span class='comment'>//相机(相册)的代理</span></td></tr>
+<tr><td class="num" id="LN348">348</td><td class="line">- (<span class='keyword'>void</span>)returnImages:(NSArray *)images</td></tr>
+<tr><td class="num" id="LN349">349</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN350">350</td><td class="line"><span class='comment'>//    _images = [[NSMutableArray alloc] init];</span></td></tr>
+<tr><td class="num" id="LN351">351</td><td class="line"><span class='comment'>//    [_images addObjectsFromArray:images];</span></td></tr>
+<tr><td class="num" id="LN352">352</td><td class="line"><span class='comment'>//    if (_images &amp;&amp; [_images count] &gt; 0) {</span></td></tr>
+<tr><td class="num" id="LN353">353</td><td class="line"><span class='comment'>//        TWTeamWorkEditingSpeechActivity *speak = [[TWTeamWorkEditingSpeechActivity alloc] init];</span></td></tr>
+<tr><td class="num" id="LN354">354</td><td class="line"><span class='comment'>//        speak.teamid     = _preData.teamid;</span></td></tr>
+<tr><td class="num" id="LN355">355</td><td class="line"><span class='comment'>//        speak.imageArray = _images;</span></td></tr>
+<tr><td class="num" id="LN356">356</td><td class="line"><span class='comment'>//        speak.delegate   = self;</span></td></tr>
+<tr><td class="num" id="LN357">357</td><td class="line"><span class='comment'>//        [self.activityStack pushActivity:speak animated:NO];</span></td></tr>
+<tr><td class="num" id="LN358">358</td><td class="line"><span class='comment'>//    }</span></td></tr>
+<tr><td class="num" id="LN359">359</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN360">360</td><td class="line">    <span class='keyword'>if</span> (images &amp;&amp; [images count] &gt; 0)</td></tr>
+<tr><td class="num" id="LN361">361</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN362">362</td><td class="line">        UIImage *originalImage = (UIImage *)[images objectAtIndex:0];</td></tr>
+<tr><td class="num" id="LN363">363</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN364">364</td><td class="line">        ZBarReaderController *reader = [ZBarReaderController new];</td></tr>
+<tr><td class="num" id="LN365">365</td><td class="line">        ZBarSymbol *symbol = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN366">366</td><td class="line">        <span class='keyword'>for</span> (symbol in [reader scanImage:originalImage.CGImage])</td></tr>
+<tr><td class="num" id="LN367">367</td><td class="line">        {</td></tr>
+<tr><td class="num" id="LN368">368</td><td class="line">            <span class='keyword'>break</span>;</td></tr>
+<tr><td class="num" id="LN369">369</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN370">370</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN371">371</td><td class="line">        [self symbolParser:symbol.data delay:0.5];</td></tr>
+<tr><td class="num" id="LN372">372</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN373">373</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN374">374</td><td class="line">    self.camera.delegate = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN375">375</td><td class="line">    self.camera = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN376">376</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN377">377</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN378">378</td><td class="line">- (<span class='keyword'>void</span>)cameraDeniedAlert</td></tr>
+<tr><td class="num" id="LN379">379</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN380">380</td><td class="line">    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@<span class='string_literal'>"CFBundleDisplayName"</span>];</td></tr>
+<tr><td class="num" id="LN381">381</td><td class="line">    <span class='keyword'>if</span> (!appName)</td></tr>
+<tr><td class="num" id="LN382">382</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN383">383</td><td class="line">        appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@<span class='string_literal'>"CFBundleName"</span>];</td></tr>
+<tr><td class="num" id="LN384">384</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN385">385</td><td class="line">    NSString *model = @<span class='string_literal'>"设备"</span>;</td></tr>
+<tr><td class="num" id="LN386">386</td><td class="line">    NSString *message = [NSString stringWithFormat:@<span class='string_literal'>"请在%@的“设置-隐私-相机”选项中允许%@访问你的相机"</span>, model, appName];</td></tr>
+<tr><td class="num" id="LN387">387</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN388">388</td><td class="line">    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:<span class='macro'>nil<span class='expansion'>((void *)0)</span></span> message:message delegate:<span class='macro'>nil<span class='expansion'>((void *)0)</span></span> cancelButtonTitle:@<span class='string_literal'>"知道了"</span> otherButtonTitles:<span class='macro'>nil<span class='expansion'>((void *)0)</span></span>];</td></tr>
+<tr><td class="num" id="LN389">389</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN390">390</td><td class="line">    [alert show];</td></tr>
+<tr><td class="num" id="LN391">391</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN392">392</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN393">393</td><td class="line"><span class='directive'>#pragma mark - symbol</span></td></tr>
+<tr><td class="num" id="LN394">394</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN395">395</td><td class="line">- (<span class='keyword'>void</span>)symbolParser:(NSString *)symbolStr delay:(NSTimeInterval)delay</td></tr>
+<tr><td class="num" id="LN396">396</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN397">397</td><td class="line">    [self performSelector:@selector(symbolParser:) withObject:symbolStr afterDelay:delay];</td></tr>
+<tr><td class="num" id="LN398">398</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN399">399</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN400">400</td><td class="line">- (<span class='keyword'>void</span>)symbolParser:(NSString *)symbolStr</td></tr>
+<tr><td class="num" id="LN401">401</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN402">402</td><td class="line">    <span class='keyword'>if</span> (symbolStr &amp;&amp; [symbolStr length] &gt; 0)</td></tr>
+<tr><td class="num" id="LN403">403</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN404">404</td><td class="line">        NSString *regex = @<span class='string_literal'>"http[s]{0,1}+:[^\\s]*"</span>;</td></tr>
+<tr><td class="num" id="LN405">405</td><td class="line">        NSPredicate *predicate = [NSPredicate predicateWithFormat:@<span class='string_literal'>"SELF MATCHES %@"</span>, regex];</td></tr>
+<tr><td class="num" id="LN406">406</td><td class="line">        <span class='keyword'>if</span> ([predicate evaluateWithObject:symbolStr])</td></tr>
+<tr><td class="num" id="LN407">407</td><td class="line">        {</td></tr>
+<tr><td class="num" id="LN408">408</td><td class="line">            NSRange range = [symbolStr rangeOfString:@<span class='string_literal'>"/app/a/"</span>];</td></tr>
+<tr><td class="num" id="LN409">409</td><td class="line">            NSRange range1 = [symbolStr rangeOfString:@<span class='string_literal'>"/quan/i/apply?id="</span>];</td></tr>
+<tr><td class="num" id="LN410">410</td><td class="line">            <span class='keyword'>if</span> (range.length &gt; 0 || range1.length &gt; 0)</td></tr>
+<tr><td class="num" id="LN411">411</td><td class="line">            {</td></tr>
+<tr><td class="num" id="LN412">412</td><td class="line">                NSString *token;</td></tr>
+<tr><td class="num" id="LN413">413</td><td class="line">                <span class='keyword'>if</span> (range.length &gt; 0)</td></tr>
+<tr><td class="num" id="LN414">414</td><td class="line">                {</td></tr>
+<tr><td class="num" id="LN415">415</td><td class="line">                    token = [symbolStr substringFromIndex:range.location + range.length];</td></tr>
+<tr><td class="num" id="LN416">416</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN417">417</td><td class="line">                <span class='keyword'>else</span></td></tr>
+<tr><td class="num" id="LN418">418</td><td class="line">                {</td></tr>
+<tr><td class="num" id="LN419">419</td><td class="line">                    token = [symbolStr substringFromIndex:range1.location + range1.length];</td></tr>
+<tr><td class="num" id="LN420">420</td><td class="line">                }</td></tr>
+<tr><td class="num" id="LN421">421</td><td class="line">                </td></tr>
+<tr><td class="num" id="LN422">422</td><td class="line">                TWTeamCircleJoinActivity *joinActivity = [[TWTeamCircleJoinActivity alloc] init];</td></tr>
+<tr><td class="num" id="LN423">423</td><td class="line">                joinActivity.token = token;</td></tr>
+<tr><td class="num" id="LN424">424</td><td class="line">                joinActivity.fromTwoDim = <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN425">425</td><td class="line">                [self.activityStack pushActivity:joinActivity animated:<span class='macro'>YES<span class='expansion'>__objc_yes</span></span>];</td></tr>
+<tr><td class="num" id="LN426">426</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN427">427</td><td class="line">            <span class='keyword'>else</span></td></tr>
+<tr><td class="num" id="LN428">428</td><td class="line">            {</td></tr>
+<tr><td class="num" id="LN429">429</td><td class="line">                [TWAlterDialog showDialog:@<span class='string_literal'>" "</span> :symbolStr alignLeft:<span class='macro'>true<span class='expansion'>1</span></span> handler:^(NSUInteger buttonIndex) {</td></tr>
+<tr><td class="num" id="LN430">430</td><td class="line">                    <span class='keyword'>if</span> (1 == buttonIndex)</td></tr>
+<tr><td class="num" id="LN431">431</td><td class="line">                    {</td></tr>
+<tr><td class="num" id="LN432">432</td><td class="line">                        <span class='keyword'>if</span> ([self lightAppSwitch])</td></tr>
+<tr><td class="num" id="LN433">433</td><td class="line">                        {</td></tr>
+<tr><td class="num" id="LN434">434</td><td class="line">                            [self enterLightApp:@<span class='string_literal'>"0"</span> remote:symbolStr];</td></tr>
+<tr><td class="num" id="LN435">435</td><td class="line">                        }</td></tr>
+<tr><td class="num" id="LN436">436</td><td class="line">                        <span class='keyword'>else</span></td></tr>
+<tr><td class="num" id="LN437">437</td><td class="line">                        {</td></tr>
+<tr><td class="num" id="LN438">438</td><td class="line">                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:symbolStr]];</td></tr>
+<tr><td class="num" id="LN439">439</td><td class="line">                        }</td></tr>
+<tr><td class="num" id="LN440">440</td><td class="line">                    }</td></tr>
+<tr><td class="num" id="LN441">441</td><td class="line">                } cancelButtonTitle:@<span class='string_literal'>"取消"</span> otherButtonTitles:@<span class='string_literal'>"确定"</span>, <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>];</td></tr>
+<tr><td class="num" id="LN442">442</td><td class="line">            }</td></tr>
+<tr><td class="num" id="LN443">443</td><td class="line">        }</td></tr>
+<tr><td class="num" id="LN444">444</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN445">445</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN446">446</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN447">447</td><td class="line">- (<span class='keyword'>void</span>)enterLightApp:(NSString *)appid remote:(NSString *)remotePath</td></tr>
+<tr><td class="num" id="LN448">448</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN449">449</td><td class="line">    <span class='keyword'>if</span> (remotePath &amp;&amp; [remotePath length] &gt; 0)</td></tr>
+<tr><td class="num" id="LN450">450</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN451">451</td><td class="line">        [self lightAppConfig:appid];</td></tr>
+<tr><td class="num" id="LN452">452</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN453">453</td><td class="line">        TWLightAppActivity *activity = [[TWLightAppActivity alloc] init];</td></tr>
+<tr><td class="num" id="LN454">454</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN455">455</td><td class="line">        activity.wwwFolderName = remotePath;</td></tr>
+<tr><td class="num" id="LN456">456</td><td class="line">        activity.appid = appid;</td></tr>
+<tr><td class="num" id="LN457">457</td><td class="line">        </td></tr>
+<tr><td class="num" id="LN458">458</td><td class="line">        [self.activityStack pushActivity:activity animated:<span class='macro'>YES<span class='expansion'>__objc_yes</span></span>];</td></tr>
+<tr><td class="num" id="LN459">459</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN460">460</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN461">461</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN462">462</td><td class="line">- (<span class='keyword'>void</span>)lightAppConfig:(NSString *)appid</td></tr>
+<tr><td class="num" id="LN463">463</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN464">464</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.entId = [[TWAppPreference sharedInstance] getOrgId];</td></tr>
+<tr><td class="num" id="LN465">465</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.entName = [[TWAppPreference sharedInstance] getOrgName];</td></tr>
+<tr><td class="num" id="LN466">466</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.page = @<span class='string_literal'>"home"</span>;</td></tr>
+<tr><td class="num" id="LN467">467</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.tab = 0;</td></tr>
+<tr><td class="num" id="LN468">468</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.userid = [TWAppPreference sharedInstance].getBid;</td></tr>
+<tr><td class="num" id="LN469">469</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.userName = [[TWAppPreference sharedInstance] getName];</td></tr>
+<tr><td class="num" id="LN470">470</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.userAvatar = [[TWAppPreference sharedInstance] getHeadPictrue];</td></tr>
+<tr><td class="num" id="LN471">471</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.back_to_native = @<span class='string_literal'>"false"</span>;</td></tr>
+<tr><td class="num" id="LN472">472</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.auth = [[TWAppPreference sharedInstance] getAuthorization];</td></tr>
+<tr><td class="num" id="LN473">473</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.domain = [TWBaseRoutine unifiedEnvAddressIp];</td></tr>
+<tr><td class="num" id="LN474">474</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.Host = [TWBaseRoutine host];</td></tr>
+<tr><td class="num" id="LN475">475</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.accessToken = [[TWAppPreference sharedInstance] getAccessToken];</td></tr>
+<tr><td class="num" id="LN476">476</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.version = [NSString stringWithFormat:@<span class='string_literal'>"%@.001"</span>, [CSPSystemInfo appVersion]];</td></tr>
+<tr><td class="num" id="LN477">477</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.appId = appid;</td></tr>
+<tr><td class="num" id="LN478">478</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN479">479</td><td class="line">    UIDevice *device = [[UIDevice alloc] init];</td></tr>
+<tr><td class="num" id="LN480">480</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN481">481</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.manufacturer = @<span class='string_literal'>"Apple"</span>;</td></tr>
+<tr><td class="num" id="LN482">482</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.model = device.model;</td></tr>
+<tr><td class="num" id="LN483">483</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.osRelease = device.systemVersion;</td></tr>
+<tr><td class="num" id="LN484">484</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.networkStatus = @<span class='string_literal'>""</span>;</td></tr>
+<tr><td class="num" id="LN485">485</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.usedMemory = [NSString stringWithFormat:@<span class='string_literal'>"%@MB"</span>, @([[PrintExceptionService instance] usedMemory]).stringValue];</td></tr>
+<tr><td class="num" id="LN486">486</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.availableMemory = [NSString stringWithFormat:@<span class='string_literal'>"%@MB"</span>, @([[PrintExceptionService instance] availableMemory]).stringValue];</td></tr>
+<tr><td class="num" id="LN487">487</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.deviceType = @<span class='string_literal'>"IPH"</span>;</td></tr>
+<tr><td class="num" id="LN488">488</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.deviceInfo.deviceId = [[TWAppPreference sharedInstance] getOpenUUID];</td></tr>
+<tr><td class="num" id="LN489">489</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN490">490</td><td class="line">    [TWLightAppConfigService sharedInstance].configObject.ext = <span class='macro'>nil<span class='expansion'>((void *)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN491">491</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN492">492</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN493">493</td><td class="line">- (BOOL)lightAppSwitch</td></tr>
+<tr><td class="num" id="LN494">494</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN495">495</td><td class="line">    NSString *env = [TWBaseRoutine netEnvironment];</td></tr>
+<tr><td class="num" id="LN496">496</td><td class="line">    <span class='keyword'>if</span> ([env isEqualToString:@<span class='string_literal'>"DEVP"</span>] || [env isEqualToString:@<span class='string_literal'>"INTE"</span>])</td></tr>
+<tr><td class="num" id="LN497">497</td><td class="line">    {</td></tr>
+<tr><td class="num" id="LN498">498</td><td class="line">        <span class='keyword'>return</span> <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN499">499</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN500">500</td><td class="line">    </td></tr>
+<tr><td class="num" id="LN501">501</td><td class="line">    <span class='keyword'>return</span> <span class='macro'>NO<span class='expansion'>__objc_no</span></span>;</td></tr>
+<tr><td class="num" id="LN502">502</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN503">503</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN504">504</td><td class="line">@end</td></tr>
+</table></body></html>

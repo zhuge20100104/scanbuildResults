@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+ <key>clang_version</key>
+<string>clang version 4.0.0 (tags/checker/checker-279)</string>
+ <key>files</key>
+ <array>
+  <string>/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/app/widget/FuView/FuUI/TeamworkUI/TWTextBaseView.m</string>
+ </array>
+ <key>diagnostics</key>
+ <array>
+  <dict>
+   <key>path</key>
+   <array>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>426</integer>
+      <key>col</key><integer>1</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>The &apos;resignFirstResponder&apos; instance method in UIResponder subclass &apos;TWTextBaseView&apos; is missing a [super resignFirstResponder] call</string>
+     <key>message</key>
+     <string>The &apos;resignFirstResponder&apos; instance method in UIResponder subclass &apos;TWTextBaseView&apos; is missing a [super resignFirstResponder] call</string>
+    </dict>
+   </array>
+   <key>description</key><string>The &apos;resignFirstResponder&apos; instance method in UIResponder subclass &apos;TWTextBaseView&apos; is missing a [super resignFirstResponder] call</string>
+   <key>category</key><string>Core Foundation/Objective-C</string>
+   <key>type</key><string>Missing call to superclass</string>
+   <key>check_name</key><string>osx.cocoa.MissingSuperCall</string>
+   <!-- This hash is experimental and going to change! -->
+   <key>issue_hash_content_of_line_in_context</key><string>2f5b5529cb925f888723132423ddef8a</string>
+  <key>issue_context_kind</key><string>Objective-C method</string>
+  <key>issue_context</key><string>resignFirstResponder</string>
+  <key>issue_hash_function_offset</key><string>14</string>
+  <key>location</key>
+  <dict>
+   <key>line</key><integer>426</integer>
+   <key>col</key><integer>1</integer>
+   <key>file</key><integer>0</integer>
+  </dict>
+  <key>HTMLDiagnostics_files</key>
+  <array>
+   <string>report-85f19a.html</string>
+  </array>
+  </dict>
+ </array>
+</dict>
+</plist>

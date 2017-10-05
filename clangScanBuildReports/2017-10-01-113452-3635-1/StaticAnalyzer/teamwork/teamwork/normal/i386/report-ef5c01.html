@@ -1,0 +1,426 @@
+<!doctype html>
+<html>
+<head>
+<title>/Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/libqrencode/rscode.c</title>
+<style type="text/css">
+ body { color:#000000; background-color:#ffffff }
+ body { font-family:Helvetica, sans-serif; font-size:10pt }
+ h1 { font-size:14pt }
+ .code { border-collapse:collapse; width:100%; }
+ .code { font-family: "Monospace", monospace; font-size:10pt }
+ .code { line-height: 1.2em }
+ .comment { color: green; font-style: oblique }
+ .keyword { color: blue }
+ .string_literal { color: red }
+ .directive { color: darkmagenta }
+ .expansion { display: none; }
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000;   border-radius:5px;  box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
+ .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
+ .num { text-align:right; font-size:8pt }
+ .num { color:#444444 }
+ .line { padding-left: 1ex; border-left: 3px solid #ccc }
+ .line { white-space: pre }
+ .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { box-shadow:1px 1px 7px #000 }
+ .msg { -webkit-border-radius:5px }
+ .msg { border-radius:5px }
+ .msg { font-family:Helvetica, sans-serif; font-size:8pt }
+ .msg { float:left }
+ .msg { padding:0.25em 1ex 0.25em 1ex }
+ .msg { margin-top:10px; margin-bottom:10px }
+ .msg { font-weight:bold }
+ .msg { max-width:60em; word-wrap: break-word; white-space: pre-wrap }
+ .msgT { padding:0x; spacing:0x }
+ .msgEvent { background-color:#fff8b4; color:#000000 }
+ .msgControl { background-color:#bbbbbb; color:#000000 }
+ .msgNote { background-color:#ddeeff; color:#000000 }
+ .mrange { background-color:#dfddf3 }
+ .mrange { border-bottom:1px solid #6F9DBE }
+ .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
+ .PathIndex { -webkit-border-radius:8px }
+ .PathIndex { border-radius:8px }
+ .PathIndexEvent { background-color:#bfba87 }
+ .PathIndexControl { background-color:#8c8c8c }
+ .PathNav a { text-decoration:none; font-size: larger }
+ .CodeInsertionHint { font-weight: bold; background-color: #10dd10 }
+ .CodeRemovalHint { background-color:#de1010 }
+ .CodeRemovalHint { border-bottom:1px solid #6F9DBE }
+ table.simpletable {
+   padding: 5px;
+   font-size:12pt;
+   margin:20px;
+   border-collapse: collapse; border-spacing: 0px;
+ }
+ td.rowname {
+   text-align: right;
+   vertical-align: top;
+   font-weight: bold;
+   color:#444444;
+   padding-right:2ex;
+ }
+</style>
+</head>
+<body>
+<!-- BUGDESC Assigned value is garbage or undefined -->
+
+<!-- BUGTYPE Assigned value is garbage or undefined -->
+
+<!-- BUGCATEGORY Logic error -->
+
+<!-- BUGFILE /Users/Lily/csp_teamwork_iphone/teamwork/teamwork/third-libs/libqrencode/rscode.c -->
+
+<!-- FILENAME rscode.c -->
+
+<!-- FUNCTIONNAME init_rs_char -->
+
+<!-- ISSUEHASHCONTENTOFLINEINCONTEXT 8390909ae6c35148aa3f71158a6f2036 -->
+
+<!-- BUGLINE 196 -->
+
+<!-- BUGCOLUMN 20 -->
+
+<!-- BUGPATHLENGTH 27 -->
+
+<!-- BUGMETAEND -->
+<!-- REPORTHEADER -->
+<h3>Bug Summary</h3>
+<table class="simpletable">
+<tr><td class="rowname">File:</td><td>third-libs/libqrencode/rscode.c</td></tr>
+<tr><td class="rowname">Warning:</td><td><a href="#EndPath">line 196, column 20</a><br />Assigned value is garbage or undefined</td></tr>
+</table>
+<!-- REPORTSUMMARYEXTRA -->
+<h3>Annotated Source Code</h3>
+<table class="code">
+<tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>/*</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"> <span class='comment'>* qrencode - QR Code encoder</span></td></tr>
+<tr><td class="num" id="LN3">3</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN4">4</td><td class="line"> <span class='comment'>* Reed solomon encoder. This code is taken from Phil Karn's libfec then</span></td></tr>
+<tr><td class="num" id="LN5">5</td><td class="line"> <span class='comment'>* editted and packed into a pair of .c and .h files.</span></td></tr>
+<tr><td class="num" id="LN6">6</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN7">7</td><td class="line"> <span class='comment'>* Copyright (C) 2002, 2003, 2004, 2006 Phil Karn, KA9Q</span></td></tr>
+<tr><td class="num" id="LN8">8</td><td class="line"> <span class='comment'>* (libfec is released under the GNU Lesser General Public License.)</span></td></tr>
+<tr><td class="num" id="LN9">9</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN10">10</td><td class="line"> <span class='comment'>* Copyright (C) 2006, 2007, 2008, 2009 Kentaro Fukuchi &lt;fukuchi@megaui.net&gt;</span></td></tr>
+<tr><td class="num" id="LN11">11</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN12">12</td><td class="line"> <span class='comment'>* This library is free software; you can redistribute it and/or</span></td></tr>
+<tr><td class="num" id="LN13">13</td><td class="line"> <span class='comment'>* modify it under the terms of the GNU Lesser General Public</span></td></tr>
+<tr><td class="num" id="LN14">14</td><td class="line"> <span class='comment'>* License as published by the Free Software Foundation; either</span></td></tr>
+<tr><td class="num" id="LN15">15</td><td class="line"> <span class='comment'>* version 2.1 of the License, or any later version.</span></td></tr>
+<tr><td class="num" id="LN16">16</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN17">17</td><td class="line"> <span class='comment'>* This library is distributed in the hope that it will be useful,</span></td></tr>
+<tr><td class="num" id="LN18">18</td><td class="line"> <span class='comment'>* but WITHOUT ANY WARRANTY; without even the implied warranty of</span></td></tr>
+<tr><td class="num" id="LN19">19</td><td class="line"> <span class='comment'>* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</span></td></tr>
+<tr><td class="num" id="LN20">20</td><td class="line"> <span class='comment'>* Lesser General Public License for more details.</span></td></tr>
+<tr><td class="num" id="LN21">21</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN22">22</td><td class="line"> <span class='comment'>* You should have received a copy of the GNU Lesser General Public</span></td></tr>
+<tr><td class="num" id="LN23">23</td><td class="line"> <span class='comment'>* License along with this library; if not, write to the Free Software</span></td></tr>
+<tr><td class="num" id="LN24">24</td><td class="line"> <span class='comment'>* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</span></td></tr>
+<tr><td class="num" id="LN25">25</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN26">26</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN27">27</td><td class="line"><span class='directive'>#include &lt;stdlib.h&gt;</span></td></tr>
+<tr><td class="num" id="LN28">28</td><td class="line"><span class='directive'>#include &lt;string.h&gt;</span></td></tr>
+<tr><td class="num" id="LN29">29</td><td class="line"><span class='directive'>#include "rscode.h"</span></td></tr>
+<tr><td class="num" id="LN30">30</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN31">31</td><td class="line"><span class='comment'>/* Stuff specific to the 8-bit symbol version of the general purpose RS codecs</span></td></tr>
+<tr><td class="num" id="LN32">32</td><td class="line"> <span class='comment'>*</span></td></tr>
+<tr><td class="num" id="LN33">33</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN34">34</td><td class="line"><span class='keyword'>typedef</span> <span class='keyword'>unsigned</span> <span class='keyword'>char</span> data_t;</td></tr>
+<tr><td class="num" id="LN35">35</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN36">36</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN37">37</td><td class="line"><span class='comment'>/**</span></td></tr>
+<tr><td class="num" id="LN38">38</td><td class="line"> <span class='comment'>* Reed-Solomon codec control block</span></td></tr>
+<tr><td class="num" id="LN39">39</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN40">40</td><td class="line"><span class='keyword'>struct</span> _RS {</td></tr>
+<tr><td class="num" id="LN41">41</td><td class="line">	<span class='keyword'>int</span> mm;              <span class='comment'>/* Bits per symbol */</span></td></tr>
+<tr><td class="num" id="LN42">42</td><td class="line">	<span class='keyword'>int</span> nn;              <span class='comment'>/* Symbols per block (= (1&lt;&lt;mm)-1) */</span></td></tr>
+<tr><td class="num" id="LN43">43</td><td class="line">	data_t *alpha_to;     <span class='comment'>/* log lookup table */</span></td></tr>
+<tr><td class="num" id="LN44">44</td><td class="line">	data_t *index_of;     <span class='comment'>/* Antilog lookup table */</span></td></tr>
+<tr><td class="num" id="LN45">45</td><td class="line">	data_t *genpoly;      <span class='comment'>/* Generator polynomial */</span></td></tr>
+<tr><td class="num" id="LN46">46</td><td class="line">	<span class='keyword'>int</span> nroots;     <span class='comment'>/* Number of generator roots = number of parity symbols */</span></td></tr>
+<tr><td class="num" id="LN47">47</td><td class="line">	<span class='keyword'>int</span> fcr;        <span class='comment'>/* First consecutive root, index form */</span></td></tr>
+<tr><td class="num" id="LN48">48</td><td class="line">	<span class='keyword'>int</span> prim;       <span class='comment'>/* Primitive element, index form */</span></td></tr>
+<tr><td class="num" id="LN49">49</td><td class="line">	<span class='keyword'>int</span> iprim;      <span class='comment'>/* prim-th root of 1, index form */</span></td></tr>
+<tr><td class="num" id="LN50">50</td><td class="line">	<span class='keyword'>int</span> pad;        <span class='comment'>/* Padding bytes in shortened block */</span></td></tr>
+<tr><td class="num" id="LN51">51</td><td class="line">	<span class='keyword'>int</span> gfpoly;</td></tr>
+<tr><td class="num" id="LN52">52</td><td class="line">	<span class='keyword'>struct</span> _RS *next;</td></tr>
+<tr><td class="num" id="LN53">53</td><td class="line">};</td></tr>
+<tr><td class="num" id="LN54">54</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN55">55</td><td class="line"><span class='keyword'>static</span> RS *rslist = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN56">56</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN57">57</td><td class="line"><span class='keyword'>static</span> <span class='keyword'>inline</span> <span class='keyword'>int</span> modnn(RS *rs, <span class='keyword'>int</span> x){</td></tr>
+<tr><td class="num" id="LN58">58</td><td class="line">	<span class='keyword'>while</span> (x &gt;= rs-&gt;nn) {</td></tr>
+<tr><td class="num" id="LN59">59</td><td class="line">		x -= rs-&gt;nn;</td></tr>
+<tr><td class="num" id="LN60">60</td><td class="line">		x = (x &gt;&gt; rs-&gt;mm) + (x &amp; rs-&gt;nn);</td></tr>
+<tr><td class="num" id="LN61">61</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN62">62</td><td class="line">	<span class='keyword'>return</span> x;</td></tr>
+<tr><td class="num" id="LN63">63</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN64">64</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN65">65</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN66">66</td><td class="line"><span class='directive'>#define <span class='macro'>MODNN(x)<span class='expansion'>modnn(rs,x)</span></span> modnn(rs,x)</span></td></tr>
+<tr><td class="num" id="LN67">67</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN68">68</td><td class="line"><span class='directive'>#define <span class='macro'>MM<span class='expansion'>(rs-&gt;mm)</span></span> (rs-&gt;mm)</span></td></tr>
+<tr><td class="num" id="LN69">69</td><td class="line"><span class='directive'>#define <span class='macro'>NN<span class='expansion'>(rs-&gt;nn)</span></span> (rs-&gt;nn)</span></td></tr>
+<tr><td class="num" id="LN70">70</td><td class="line"><span class='directive'>#define <span class='macro'>ALPHA_TO<span class='expansion'>(rs-&gt;alpha_to)</span></span> (rs-&gt;alpha_to)</span> </td></tr>
+<tr><td class="num" id="LN71">71</td><td class="line"><span class='directive'>#define <span class='macro'>INDEX_OF<span class='expansion'>(rs-&gt;index_of)</span></span> (rs-&gt;index_of)</span></td></tr>
+<tr><td class="num" id="LN72">72</td><td class="line"><span class='directive'>#define <span class='macro'>GENPOLY<span class='expansion'>(rs-&gt;genpoly)</span></span> (rs-&gt;genpoly)</span></td></tr>
+<tr><td class="num" id="LN73">73</td><td class="line"><span class='directive'>#define <span class='macro'>NROOTS<span class='expansion'>(rs-&gt;nroots)</span></span> (rs-&gt;nroots)</span></td></tr>
+<tr><td class="num" id="LN74">74</td><td class="line"><span class='directive'>#define <span class='macro'>FCR<span class='expansion'>(rs-&gt;fcr)</span></span> (rs-&gt;fcr)</span></td></tr>
+<tr><td class="num" id="LN75">75</td><td class="line"><span class='directive'>#define <span class='macro'>PRIM<span class='expansion'>(rs-&gt;prim)</span></span> (rs-&gt;prim)</span></td></tr>
+<tr><td class="num" id="LN76">76</td><td class="line"><span class='directive'>#define <span class='macro'>IPRIM<span class='expansion'>(rs-&gt;iprim)</span></span> (rs-&gt;iprim)</span></td></tr>
+<tr><td class="num" id="LN77">77</td><td class="line"><span class='directive'>#define <span class='macro'>PAD<span class='expansion'>(rs-&gt;pad)</span></span> (rs-&gt;pad)</span></td></tr>
+<tr><td class="num" id="LN78">78</td><td class="line"><span class='directive'>#define <span class='macro'>A0<span class='expansion'>((rs-&gt;nn))</span></span> (<span class='macro'>NN<span class='expansion'>(rs-&gt;nn)</span></span>)</span></td></tr>
+<tr><td class="num" id="LN79">79</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN80">80</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN81">81</td><td class="line"><span class='comment'>/* Initialize a Reed-Solomon codec</span></td></tr>
+<tr><td class="num" id="LN82">82</td><td class="line"> <span class='comment'>* symsize = symbol size, bits</span></td></tr>
+<tr><td class="num" id="LN83">83</td><td class="line"> <span class='comment'>* gfpoly = Field generator polynomial coefficients</span></td></tr>
+<tr><td class="num" id="LN84">84</td><td class="line"> <span class='comment'>* fcr = first root of RS code generator polynomial, index form</span></td></tr>
+<tr><td class="num" id="LN85">85</td><td class="line"> <span class='comment'>* prim = primitive element to generate polynomial roots</span></td></tr>
+<tr><td class="num" id="LN86">86</td><td class="line"> <span class='comment'>* nroots = RS code generator polynomial degree (number of roots)</span></td></tr>
+<tr><td class="num" id="LN87">87</td><td class="line"> <span class='comment'>* pad = padding bytes at front of shortened block</span></td></tr>
+<tr><td class="num" id="LN88">88</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN89">89</td><td class="line"><span class='keyword'>static</span> RS *init_rs_char(<span class='keyword'>int</span> symsize, <span class='keyword'>int</span> gfpoly, <span class='keyword'>int</span> fcr, <span class='keyword'>int</span> prim, <span class='keyword'>int</span> nroots, <span class='keyword'>int</span> pad)</td></tr>
+<tr><td class="num" id="LN90">90</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN91">91</td><td class="line">  RS *rs;</td></tr>
+<tr><td class="num" id="LN92">92</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN93">93</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN94">94</td><td class="line"><span class='comment'>/* Common code for intializing a Reed-Solomon control block (char or int symbols)</span></td></tr>
+<tr><td class="num" id="LN95">95</td><td class="line"> <span class='comment'>* Copyright 2004 Phil Karn, KA9Q</span></td></tr>
+<tr><td class="num" id="LN96">96</td><td class="line"> <span class='comment'>* May be used under the terms of the GNU Lesser General Public License (LGPL)</span></td></tr>
+<tr><td class="num" id="LN97">97</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN98">98</td><td class="line"><span class='comment'>//#undef NULL</span></td></tr>
+<tr><td class="num" id="LN99">99</td><td class="line"><span class='comment'>//#define NULL ((void *)0)</span></td></tr>
+<tr><td class="num" id="LN100">100</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN101">101</td><td class="line">  <span class='keyword'>int</span> i, j, sr,root,iprim;</td></tr>
+<tr><td class="num" id="LN102">102</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN103">103</td><td class="line">  rs = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN104">104</td><td class="line">  <span class='comment'>/* Check parameter ranges */</span></td></tr>
+<tr><td class="num" id="LN105">105</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">symsize &lt; 0</span> || <span class="mrange">symsize &gt; (<span class='keyword'>int</span>)(8*<span class='keyword'>sizeof</span>(data_t))</span>){</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">1</div></td><td>Assuming 'symsize' is &gt;= 0</td><td><div class="PathNav"><a href="#Path2" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path2" class="msg msgEvent" style="margin-left:21ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path3" title="Next event (3)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path3" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">3</div></td><td><div class="PathNav"><a href="#Path2" title="Previous event (2)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path4" title="Next event (4)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN106">106</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN107">107</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN108">108</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN109">109</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">fcr &lt; 0</span> || fcr &gt;= (1&lt;&lt;symsize))</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path4" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">4</div></td><td><div class="PathNav"><a href="#Path3" title="Previous event (3)">&#x2190;</a></div></td></td><td>Assuming 'fcr' is &gt;= 0</td><td><div class="PathNav"><a href="#Path5" title="Next event (5)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path5" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">5</div></td><td><div class="PathNav"><a href="#Path4" title="Previous event (4)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path6" title="Next event (6)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN110">110</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN111">111</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">prim &lt;= 0</span> || prim &gt;= (1&lt;&lt;symsize))</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path6" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">6</div></td><td><div class="PathNav"><a href="#Path5" title="Previous event (5)">&#x2190;</a></div></td></td><td>Assuming 'prim' is &gt; 0</td><td><div class="PathNav"><a href="#Path7" title="Next event (7)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path7" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">7</div></td><td><div class="PathNav"><a href="#Path6" title="Previous event (6)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path8" title="Next event (8)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN112">112</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN113">113</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">nroots &lt; 0</span> || nroots &gt;= (1&lt;&lt;symsize))</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path8" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">8</div></td><td><div class="PathNav"><a href="#Path7" title="Previous event (7)">&#x2190;</a></div></td></td><td>Assuming 'nroots' is &gt;= 0</td><td><div class="PathNav"><a href="#Path9" title="Next event (9)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path9" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">9</div></td><td><div class="PathNav"><a href="#Path8" title="Previous event (8)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path10" title="Next event (10)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN114">114</td><td class="line">    <span class='keyword'>goto</span> done; <span class='comment'>/* Can't have more roots than symbol values! */</span></td></tr>
+<tr><td class="num" id="LN115">115</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">pad &lt; 0</span> || pad &gt;= ((1&lt;&lt;symsize) -1 - nroots))</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path10" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">10</div></td><td><div class="PathNav"><a href="#Path9" title="Previous event (9)">&#x2190;</a></div></td></td><td>Assuming 'pad' is &gt;= 0</td><td><div class="PathNav"><a href="#Path11" title="Next event (11)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path11" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">11</div></td><td><div class="PathNav"><a href="#Path10" title="Previous event (10)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path12" title="Next event (12)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN116">116</td><td class="line">    <span class='keyword'>goto</span> done; <span class='comment'>/* Too much padding */</span></td></tr>
+<tr><td class="num" id="LN117">117</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN118">118</td><td class="line">  rs = (RS *)calloc(1,<span class='keyword'>sizeof</span>(RS));</td></tr>
+<tr><td class="num" id="LN119">119</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">rs == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>)</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path12" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">12</div></td><td><div class="PathNav"><a href="#Path11" title="Previous event (11)">&#x2190;</a></div></td></td><td>Assuming 'rs' is not equal to null</td><td><div class="PathNav"><a href="#Path13" title="Next event (13)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path13" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">13</div></td><td><div class="PathNav"><a href="#Path12" title="Previous event (12)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path14" title="Next event (14)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN120">120</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN121">121</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN122">122</td><td class="line">  rs-&gt;mm = symsize;</td></tr>
+<tr><td class="num" id="LN123">123</td><td class="line">  rs-&gt;nn = (1&lt;&lt;symsize)-1;</td></tr>
+<tr><td class="num" id="LN124">124</td><td class="line">  rs-&gt;pad = pad;</td></tr>
+<tr><td class="num" id="LN125">125</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN126">126</td><td class="line">  rs-&gt;alpha_to = (data_t *)malloc(<span class='keyword'>sizeof</span>(data_t)*(rs-&gt;nn+1));</td></tr>
+<tr><td class="num" id="LN127">127</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">rs-&gt;alpha_to == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>){</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path14" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">14</div></td><td><div class="PathNav"><a href="#Path13" title="Previous event (13)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path15" title="Next event (15)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path15" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">15</div></td><td><div class="PathNav"><a href="#Path14" title="Previous event (14)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path16" title="Next event (16)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN128">128</td><td class="line">    free(rs);</td></tr>
+<tr><td class="num" id="LN129">129</td><td class="line">    rs = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN130">130</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN131">131</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN132">132</td><td class="line">  rs-&gt;index_of = (data_t *)malloc(<span class='keyword'>sizeof</span>(data_t)*(rs-&gt;nn+1));</td></tr>
+<tr><td class="num" id="LN133">133</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">rs-&gt;index_of == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>){</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path16" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">16</div></td><td><div class="PathNav"><a href="#Path15" title="Previous event (15)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path17" title="Next event (17)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path17" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">17</div></td><td><div class="PathNav"><a href="#Path16" title="Previous event (16)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path18" title="Next event (18)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN134">134</td><td class="line">    free(rs-&gt;alpha_to);</td></tr>
+<tr><td class="num" id="LN135">135</td><td class="line">    free(rs);</td></tr>
+<tr><td class="num" id="LN136">136</td><td class="line">    rs = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN137">137</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN138">138</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN139">139</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN140">140</td><td class="line">  <span class='comment'>/* Generate Galois field lookup tables */</span></td></tr>
+<tr><td class="num" id="LN141">141</td><td class="line">  rs-&gt;index_of[0] = <span class='macro'>A0<span class='expansion'>((rs-&gt;nn))</span></span>; <span class='comment'>/* log(zero) = -inf */</span></td></tr>
+<tr><td class="num" id="LN142">142</td><td class="line">  rs-&gt;alpha_to[<span class='macro'>A0<span class='expansion'>((rs-&gt;nn))</span></span>] = 0; <span class='comment'>/* alpha**-inf = 0 */</span></td></tr>
+<tr><td class="num" id="LN143">143</td><td class="line">  sr = 1;</td></tr>
+<tr><td class="num" id="LN144">144</td><td class="line">  <span class='keyword'>for</span>(i=0;<span class="mrange">i&lt;rs-&gt;nn</span>;i++){</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path18" class="msg msgEvent" style="margin-left:11ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">18</div></td><td><div class="PathNav"><a href="#Path17" title="Previous event (17)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path19" title="Next event (19)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path19" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">19</div></td><td><div class="PathNav"><a href="#Path18" title="Previous event (18)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 152</td><td><div class="PathNav"><a href="#Path20" title="Next event (20)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN145">145</td><td class="line">    rs-&gt;index_of[sr] = i;</td></tr>
+<tr><td class="num" id="LN146">146</td><td class="line">    rs-&gt;alpha_to[i] = sr;</td></tr>
+<tr><td class="num" id="LN147">147</td><td class="line">    sr &lt;&lt;= 1;</td></tr>
+<tr><td class="num" id="LN148">148</td><td class="line">    <span class='keyword'>if</span>(sr &amp; (1&lt;&lt;symsize))</td></tr>
+<tr><td class="num" id="LN149">149</td><td class="line">      sr ^= gfpoly;</td></tr>
+<tr><td class="num" id="LN150">150</td><td class="line">    sr &amp;= rs-&gt;nn;</td></tr>
+<tr><td class="num" id="LN151">151</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN152">152</td><td class="line">  <span class='keyword'>if</span>(sr != 1){</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path20" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">20</div></td><td><div class="PathNav"><a href="#Path19" title="Previous event (19)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path21" title="Next event (21)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN153">153</td><td class="line">    <span class='comment'>/* field generator polynomial is not primitive! */</span></td></tr>
+<tr><td class="num" id="LN154">154</td><td class="line">    free(rs-&gt;alpha_to);</td></tr>
+<tr><td class="num" id="LN155">155</td><td class="line">    free(rs-&gt;index_of);</td></tr>
+<tr><td class="num" id="LN156">156</td><td class="line">    free(rs);</td></tr>
+<tr><td class="num" id="LN157">157</td><td class="line">    rs = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN158">158</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN159">159</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN160">160</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN161">161</td><td class="line">  <span class='comment'>/* Form RS code generator polynomial from its roots */</span></td></tr>
+<tr><td class="num" id="LN162">162</td><td class="line">  rs-&gt;genpoly = (data_t *)malloc(<span class='keyword'>sizeof</span>(data_t)*(nroots+1));</td></tr>
+<tr><td class="num" id="LN163">163</td><td class="line">  <span class='keyword'>if</span>(<span class="mrange">rs-&gt;genpoly == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span></span>){</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path21" class="msg msgEvent" style="margin-left:6ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">21</div></td><td><div class="PathNav"><a href="#Path20" title="Previous event (20)">&#x2190;</a></div></td></td><td>Assuming the condition is false</td><td><div class="PathNav"><a href="#Path22" title="Next event (22)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path22" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">22</div></td><td><div class="PathNav"><a href="#Path21" title="Previous event (21)">&#x2190;</a></div></td></td><td>Taking false branch</td><td><div class="PathNav"><a href="#Path23" title="Next event (23)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN164">164</td><td class="line">    free(rs-&gt;alpha_to);</td></tr>
+<tr><td class="num" id="LN165">165</td><td class="line">    free(rs-&gt;index_of);</td></tr>
+<tr><td class="num" id="LN166">166</td><td class="line">    free(rs);</td></tr>
+<tr><td class="num" id="LN167">167</td><td class="line">    rs = <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>;</td></tr>
+<tr><td class="num" id="LN168">168</td><td class="line">    <span class='keyword'>goto</span> done;</td></tr>
+<tr><td class="num" id="LN169">169</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN170">170</td><td class="line">  rs-&gt;fcr = fcr;</td></tr>
+<tr><td class="num" id="LN171">171</td><td class="line">  rs-&gt;prim = prim;</td></tr>
+<tr><td class="num" id="LN172">172</td><td class="line">  rs-&gt;nroots = nroots;</td></tr>
+<tr><td class="num" id="LN173">173</td><td class="line">  rs-&gt;gfpoly = gfpoly;</td></tr>
+<tr><td class="num" id="LN174">174</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN175">175</td><td class="line">  <span class='comment'>/* Find prim-th root of 1, used in decoding */</span></td></tr>
+<tr><td class="num" id="LN176">176</td><td class="line">  <span class='keyword'>for</span>(iprim=1;(iprim % prim) != 0;iprim += rs-&gt;nn)</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path23" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">23</div></td><td><div class="PathNav"><a href="#Path22" title="Previous event (22)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 178</td><td><div class="PathNav"><a href="#Path24" title="Next event (24)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN177">177</td><td class="line">    ;</td></tr>
+<tr><td class="num" id="LN178">178</td><td class="line">  rs-&gt;iprim = iprim / prim;</td></tr>
+<tr><td class="num" id="LN179">179</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN180">180</td><td class="line">  rs-&gt;genpoly[0] = 1;</td></tr>
+<tr><td class="num" id="LN181">181</td><td class="line">  <span class='keyword'>for</span> (i = 0,root=fcr*prim; <span class="mrange">i &lt; nroots</span>; i++,root += prim) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path24" class="msg msgEvent" style="margin-left:29ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">24</div></td><td><div class="PathNav"><a href="#Path23" title="Previous event (23)">&#x2190;</a></div></td></td><td>Assuming 'i' is &gt;= 'nroots'</td><td><div class="PathNav"><a href="#Path25" title="Next event (25)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path25" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">25</div></td><td><div class="PathNav"><a href="#Path24" title="Previous event (24)">&#x2190;</a></div></td></td><td>Loop condition is false. Execution continues on line 195</td><td><div class="PathNav"><a href="#Path26" title="Next event (26)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN182">182</td><td class="line">    rs-&gt;genpoly[i+1] = 1;</td></tr>
+<tr><td class="num" id="LN183">183</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN184">184</td><td class="line">    <span class='comment'>/* Multiply rs-&gt;genpoly[] by  @**(root + x) */</span></td></tr>
+<tr><td class="num" id="LN185">185</td><td class="line">    <span class='keyword'>for</span> (j = i; j &gt; 0; j--){</td></tr>
+<tr><td class="num" id="LN186">186</td><td class="line">      <span class='keyword'>if</span> (rs-&gt;genpoly[j] != 0)</td></tr>
+<tr><td class="num" id="LN187">187</td><td class="line">	rs-&gt;genpoly[j] = rs-&gt;genpoly[j-1] ^ rs-&gt;alpha_to[modnn(rs,rs-&gt;index_of[rs-&gt;genpoly[j]] + root)];</td></tr>
+<tr><td class="num" id="LN188">188</td><td class="line">      <span class='keyword'>else</span></td></tr>
+<tr><td class="num" id="LN189">189</td><td class="line">	rs-&gt;genpoly[j] = rs-&gt;genpoly[j-1];</td></tr>
+<tr><td class="num" id="LN190">190</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN191">191</td><td class="line">    <span class='comment'>/* rs-&gt;genpoly[0] can never be zero */</span></td></tr>
+<tr><td class="num" id="LN192">192</td><td class="line">    rs-&gt;genpoly[0] = rs-&gt;alpha_to[modnn(rs,rs-&gt;index_of[rs-&gt;genpoly[0]] + root)];</td></tr>
+<tr><td class="num" id="LN193">193</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN194">194</td><td class="line">  <span class='comment'>/* convert rs-&gt;genpoly[] to index form for quicker encoding */</span></td></tr>
+<tr><td class="num" id="LN195">195</td><td class="line">  <span class='keyword'>for</span> (i = 0; i &lt;= nroots; i++)</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path26" class="msg msgControl" style="margin-left:3ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">26</div></td><td><div class="PathNav"><a href="#Path25" title="Previous event (25)">&#x2190;</a></div></td></td><td>Loop condition is true.  Entering loop body</td><td><div class="PathNav"><a href="#EndPath" title="Next event (27)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN196">196</td><td class="line">    rs-&gt;genpoly[i] = <span class="mrange">rs-&gt;index_of[rs-&gt;genpoly[i]]</span>;</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:20ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">27</div></td><td><div class="PathNav"><a href="#Path26" title="Previous event (26)">&#x2190;</a></div></td></td><td>Assigned value is garbage or undefined</td></tr></table></div></td></tr>
+<tr><td class="num" id="LN197">197</td><td class="line"> done:;</td></tr>
+<tr><td class="num" id="LN198">198</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN199">199</td><td class="line">  <span class='keyword'>return</span> rs;</td></tr>
+<tr><td class="num" id="LN200">200</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN201">201</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN202">202</td><td class="line">RS *init_rs(<span class='keyword'>int</span> symsize, <span class='keyword'>int</span> gfpoly, <span class='keyword'>int</span> fcr, <span class='keyword'>int</span> prim, <span class='keyword'>int</span> nroots, <span class='keyword'>int</span> pad)</td></tr>
+<tr><td class="num" id="LN203">203</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN204">204</td><td class="line">	RS *rs;</td></tr>
+<tr><td class="num" id="LN205">205</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN206">206</td><td class="line">	<span class='keyword'>for</span>(rs = rslist; rs != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>; rs = rs-&gt;next) {</td></tr>
+<tr><td class="num" id="LN207">207</td><td class="line">		<span class='keyword'>if</span>(rs-&gt;pad != pad) <span class='keyword'>continue</span>;</td></tr>
+<tr><td class="num" id="LN208">208</td><td class="line">		<span class='keyword'>if</span>(rs-&gt;nroots != nroots) <span class='keyword'>continue</span>;</td></tr>
+<tr><td class="num" id="LN209">209</td><td class="line">		<span class='keyword'>if</span>(rs-&gt;mm != symsize) <span class='keyword'>continue</span>;</td></tr>
+<tr><td class="num" id="LN210">210</td><td class="line">		<span class='keyword'>if</span>(rs-&gt;gfpoly != gfpoly) <span class='keyword'>continue</span>;</td></tr>
+<tr><td class="num" id="LN211">211</td><td class="line">		<span class='keyword'>if</span>(rs-&gt;fcr != fcr) <span class='keyword'>continue</span>;</td></tr>
+<tr><td class="num" id="LN212">212</td><td class="line">		<span class='keyword'>if</span>(rs-&gt;prim != prim) <span class='keyword'>continue</span>;</td></tr>
+<tr><td class="num" id="LN213">213</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN214">214</td><td class="line">		<span class='keyword'>goto</span> DONE;</td></tr>
+<tr><td class="num" id="LN215">215</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN216">216</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN217">217</td><td class="line">	rs = init_rs_char(symsize, gfpoly, fcr, prim, nroots, pad);</td></tr>
+<tr><td class="num" id="LN218">218</td><td class="line">	<span class='keyword'>if</span>(rs == <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) <span class='keyword'>goto</span> DONE;</td></tr>
+<tr><td class="num" id="LN219">219</td><td class="line">	rs-&gt;next = rslist;</td></tr>
+<tr><td class="num" id="LN220">220</td><td class="line">	rslist = rs;</td></tr>
+<tr><td class="num" id="LN221">221</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN222">222</td><td class="line">DONE:</td></tr>
+<tr><td class="num" id="LN223">223</td><td class="line">	<span class='keyword'>return</span> rs;</td></tr>
+<tr><td class="num" id="LN224">224</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN225">225</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN226">226</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN227">227</td><td class="line"><span class='keyword'>void</span> free_rs_char(RS *rs)</td></tr>
+<tr><td class="num" id="LN228">228</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN229">229</td><td class="line">	free(rs-&gt;alpha_to);</td></tr>
+<tr><td class="num" id="LN230">230</td><td class="line">	free(rs-&gt;index_of);</td></tr>
+<tr><td class="num" id="LN231">231</td><td class="line">	free(rs-&gt;genpoly);</td></tr>
+<tr><td class="num" id="LN232">232</td><td class="line">	free(rs);</td></tr>
+<tr><td class="num" id="LN233">233</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN234">234</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN235">235</td><td class="line"><span class='keyword'>void</span> free_rs_cache(<span class='keyword'>void</span>)</td></tr>
+<tr><td class="num" id="LN236">236</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN237">237</td><td class="line">	RS *rs, *next;</td></tr>
+<tr><td class="num" id="LN238">238</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN239">239</td><td class="line">	rs = rslist;</td></tr>
+<tr><td class="num" id="LN240">240</td><td class="line">	<span class='keyword'>while</span>(rs != <span class='macro'>NULL<span class='expansion'>((void*)0)</span></span>) {</td></tr>
+<tr><td class="num" id="LN241">241</td><td class="line">		next = rs-&gt;next;</td></tr>
+<tr><td class="num" id="LN242">242</td><td class="line">		free_rs_char(rs);</td></tr>
+<tr><td class="num" id="LN243">243</td><td class="line">		rs = next;</td></tr>
+<tr><td class="num" id="LN244">244</td><td class="line">	}</td></tr>
+<tr><td class="num" id="LN245">245</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN246">246</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN247">247</td><td class="line"><span class='comment'>/* The guts of the Reed-Solomon encoder, meant to be #included</span></td></tr>
+<tr><td class="num" id="LN248">248</td><td class="line"> <span class='comment'>* into a function body with the following typedefs, macros and variables supplied</span></td></tr>
+<tr><td class="num" id="LN249">249</td><td class="line"> <span class='comment'>* according to the code parameters:</span></td></tr>
+<tr><td class="num" id="LN250">250</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN251">251</td><td class="line"> <span class='comment'>* data_t - a typedef for the data symbol</span></td></tr>
+<tr><td class="num" id="LN252">252</td><td class="line"> <span class='comment'>* data_t data[] - array of NN-NROOTS-PAD and type data_t to be encoded</span></td></tr>
+<tr><td class="num" id="LN253">253</td><td class="line"> <span class='comment'>* data_t parity[] - an array of NROOTS and type data_t to be written with parity symbols</span></td></tr>
+<tr><td class="num" id="LN254">254</td><td class="line"> <span class='comment'>* NROOTS - the number of roots in the RS code generator polynomial,</span></td></tr>
+<tr><td class="num" id="LN255">255</td><td class="line"> <span class='comment'>*          which is the same as the number of parity symbols in a block.</span></td></tr>
+<tr><td class="num" id="LN256">256</td><td class="line">            <span class='comment'>Integer variable or literal.</span></td></tr>
+<tr><td class="num" id="LN257">257</td><td class="line">	    <span class='comment'>*</span> </td></tr>
+<tr><td class="num" id="LN258">258</td><td class="line"> <span class='comment'>* NN - the total number of symbols in a RS block. Integer variable or literal.</span></td></tr>
+<tr><td class="num" id="LN259">259</td><td class="line"> <span class='comment'>* PAD - the number of pad symbols in a block. Integer variable or literal.</span></td></tr>
+<tr><td class="num" id="LN260">260</td><td class="line"> <span class='comment'>* ALPHA_TO - The address of an array of NN elements to convert Galois field</span></td></tr>
+<tr><td class="num" id="LN261">261</td><td class="line"> <span class='comment'>*            elements in index (log) form to polynomial form. Read only.</span></td></tr>
+<tr><td class="num" id="LN262">262</td><td class="line"> <span class='comment'>* INDEX_OF - The address of an array of NN elements to convert Galois field</span></td></tr>
+<tr><td class="num" id="LN263">263</td><td class="line"> <span class='comment'>*            elements in polynomial form to index (log) form. Read only.</span></td></tr>
+<tr><td class="num" id="LN264">264</td><td class="line"> <span class='comment'>* MODNN - a function to reduce its argument modulo NN. May be inline or a macro.</span></td></tr>
+<tr><td class="num" id="LN265">265</td><td class="line"> <span class='comment'>* GENPOLY - an array of NROOTS+1 elements containing the generator polynomial in index form</span></td></tr>
+<tr><td class="num" id="LN266">266</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN267">267</td><td class="line"> <span class='comment'>* The memset() and memmove() functions are used. The appropriate header</span></td></tr>
+<tr><td class="num" id="LN268">268</td><td class="line"> <span class='comment'>* file declaring these functions (usually &lt;string.h&gt;) must be included by the calling</span></td></tr>
+<tr><td class="num" id="LN269">269</td><td class="line"> <span class='comment'>* program.</span></td></tr>
+<tr><td class="num" id="LN270">270</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN271">271</td><td class="line"> <span class='comment'>* Copyright 2004, Phil Karn, KA9Q</span></td></tr>
+<tr><td class="num" id="LN272">272</td><td class="line"> <span class='comment'>* May be used under the terms of the GNU Lesser General Public License (LGPL)</span></td></tr>
+<tr><td class="num" id="LN273">273</td><td class="line"> <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN274">274</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN275">275</td><td class="line"><span class='directive'>#undef <span class='macro'>A0<span class='expansion'>((rs-&gt;nn))</span></span></span></td></tr>
+<tr><td class="num" id="LN276">276</td><td class="line"><span class='directive'>#define <span class='macro'>A0<span class='expansion'>((rs-&gt;nn))</span></span> (<span class='macro'>NN<span class='expansion'>(rs-&gt;nn)</span></span>) /* Special reserved value encoding zero in index form */</span></td></tr>
+<tr><td class="num" id="LN277">277</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN278">278</td><td class="line"><span class='keyword'>void</span> encode_rs_char(RS *rs, <span class='keyword'>const</span> data_t *data, data_t *parity)</td></tr>
+<tr><td class="num" id="LN279">279</td><td class="line">{</td></tr>
+<tr><td class="num" id="LN280">280</td><td class="line">  <span class='keyword'>int</span> i, j;</td></tr>
+<tr><td class="num" id="LN281">281</td><td class="line">  data_t feedback;</td></tr>
+<tr><td class="num" id="LN282">282</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN283">283</td><td class="line">  <span class='macro'>memset(parity,0,NROOTS*<span class='keyword'>sizeof</span>(data_t))<span class='expansion'>__builtin___memset_chk (parity, 0, (rs-&gt;nroots)*sizeof(data_t<br>), __builtin_object_size (parity, 0))</span></span>;</td></tr>
+<tr><td class="num" id="LN284">284</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN285">285</td><td class="line">  <span class='keyword'>for</span>(i=0;i&lt;<span class='macro'>NN<span class='expansion'>(rs-&gt;nn)</span></span>-<span class='macro'>NROOTS<span class='expansion'>(rs-&gt;nroots)</span></span>-<span class='macro'>PAD<span class='expansion'>(rs-&gt;pad)</span></span>;i++){</td></tr>
+<tr><td class="num" id="LN286">286</td><td class="line">    feedback = <span class='macro'>INDEX_OF<span class='expansion'>(rs-&gt;index_of)</span></span>[data[i] ^ parity[0]];</td></tr>
+<tr><td class="num" id="LN287">287</td><td class="line">    <span class='keyword'>if</span>(feedback != <span class='macro'>A0<span class='expansion'>((rs-&gt;nn))</span></span>){      <span class='comment'>/* feedback term is non-zero */</span></td></tr>
+<tr><td class="num" id="LN288">288</td><td class="line"><span class='directive'>#ifdef UNNORMALIZED</span></td></tr>
+<tr><td class="num" id="LN289">289</td><td class="line">      <span class='comment'>/* This line is unnecessary when GENPOLY[NROOTS] is unity, as it must</span></td></tr>
+<tr><td class="num" id="LN290">290</td><td class="line">       <span class='comment'>* always be for the polynomials constructed by init_rs()</span></td></tr>
+<tr><td class="num" id="LN291">291</td><td class="line">       <span class='comment'>*/</span></td></tr>
+<tr><td class="num" id="LN292">292</td><td class="line">      feedback = <span class='macro'>MODNN(NN - GENPOLY[NROOTS] + feedback)<span class='expansion'>modnn(rs,(rs-&gt;nn) - (rs-&gt;genpoly)[(rs-&gt;nroots)] + feedback<br>)</span></span>;</td></tr>
+<tr><td class="num" id="LN293">293</td><td class="line"><span class='directive'>#endif</span></td></tr>
+<tr><td class="num" id="LN294">294</td><td class="line">      <span class='keyword'>for</span>(j=1;j&lt;<span class='macro'>NROOTS<span class='expansion'>(rs-&gt;nroots)</span></span>;j++)</td></tr>
+<tr><td class="num" id="LN295">295</td><td class="line">	parity[j] ^= <span class='macro'>ALPHA_TO<span class='expansion'>(rs-&gt;alpha_to)</span></span>[<span class='macro'>MODNN(feedback + GENPOLY[NROOTS-j])<span class='expansion'>modnn(rs,feedback + (rs-&gt;genpoly)[(rs-&gt;nroots)-j])</span></span>];</td></tr>
+<tr><td class="num" id="LN296">296</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN297">297</td><td class="line">    <span class='comment'>/* Shift */</span></td></tr>
+<tr><td class="num" id="LN298">298</td><td class="line">    <span class='macro'>memmove(&amp;parity[0],&amp;parity[1],<span class='keyword'>sizeof</span>(data_t)*(NROOTS-1))<span class='expansion'>__builtin___memmove_chk (&amp;parity[0], &amp;parity[1], sizeof<br>(data_t)*((rs-&gt;nroots)-1), __builtin_object_size (&amp;parity<br>[0], 0))</span></span>;</td></tr>
+<tr><td class="num" id="LN299">299</td><td class="line">    <span class='keyword'>if</span>(feedback != <span class='macro'>A0<span class='expansion'>((rs-&gt;nn))</span></span>)</td></tr>
+<tr><td class="num" id="LN300">300</td><td class="line">      parity[<span class='macro'>NROOTS<span class='expansion'>(rs-&gt;nroots)</span></span>-1] = <span class='macro'>ALPHA_TO<span class='expansion'>(rs-&gt;alpha_to)</span></span>[<span class='macro'>MODNN(feedback + GENPOLY[0])<span class='expansion'>modnn(rs,feedback + (rs-&gt;genpoly)[0])</span></span>];</td></tr>
+<tr><td class="num" id="LN301">301</td><td class="line">    <span class='keyword'>else</span></td></tr>
+<tr><td class="num" id="LN302">302</td><td class="line">      parity[<span class='macro'>NROOTS<span class='expansion'>(rs-&gt;nroots)</span></span>-1] = 0;</td></tr>
+<tr><td class="num" id="LN303">303</td><td class="line">  }</td></tr>
+<tr><td class="num" id="LN304">304</td><td class="line">}</td></tr>
+</table></body></html>
